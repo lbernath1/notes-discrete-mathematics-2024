@@ -1,0 +1,1098 @@
+\documentclass[english]{lbscript}
+
+\begin{document}
+\include{titelseite}
+
+\tableofcontents{}
+
+\pagebreak
+
+\section{Overview}
+\label{sec:overview}
+
+\begin{itemize}
+\item  First a few lectures (app. two weeks) on \textbf{combinatorics}: The art of counting
+\begin{itemize}
+\item Basic combinatorics
+\item Generating functions
+\item Recursion
+\end{itemize}
+\item \textbf{Graph theory} % (unfortunately just two lectures, but since its the first time in 20 years that he holds the lecture, so he won't make adjustments to the syllabus)
+\item \textbf{Rings and (finite) fields}
+\item \textbf{Coding theory}: take a message and add things such that it is less likely to be corrupted.
+\end{itemize}
+
+
+\section{Basic Combinatorics}
+\label{sec:basic-combinatorics}
+
+The idea is that we want to count things.
+
+\subsection{Two basic principles}
+\label{sec:two-basic-principles}
+
+
+The first principle is that if we can do it either in one of \(10\) things this way, or \(15\) that way, than together there is the sum of those, so \(10+15=25\) possibilities. So if ways are mutually exclusive, we can add the number of them up.
+
+The second principle is the rule of product. Suppose we are at a restaurant and there are \(5\) possible starters, \(6\) possible mains and \(4\) possible desserts. The rule of product says that  the total number of three course meals is \(5⋅6⋅4=120\).
+
+There you can start to see, that combinatorial answers usually get pretty large.\footnote{For example there are \(100!\) possibilities to sort 100 books, which is a very large number.} People are bad at understanding large numbers, which is also why people play the lottery.
+
+Now change the problem a little bit. \\
+\emph{b) How many 1-course (main), 2-course (main+starter or main+dessert), or 3-course meals can you order?}
+
+\textbf{First solution:}
+\begin{itemize}
+\item 1-course meals: \(6\)
+\item main+starter: \(5⋅6=30\)
+\item main+dessert: \(6⋅4=24\)
+\item 3-course: \(5⋅6⋅4=120\)
+\end{itemize}
+Since they are mutually exclusive, total is the sum so \(180\).
+
+\textbf{Second solution:}
+Add ``dummy starter'', ``dummy dessert'', so \(6⋅6⋅5=180\).
+
+
+\subsection{Permutations}
+\label{sec:permutations}
+
+Let \(𝛺=\left\{ a_1,a_2,\dots, a_n \right\} \) be a finite set.
+
+For example if \(n=4\) there are \(4⋅3⋅2⋅1=4!\) possible ways to order this set. The \(!\) is called factorial.\footnote{He does not like the notation ! for the factorial.}
+
+If we just permute \(2\) of the elements (2-permutation) the total number is \(4⋅3= \frac{4⋅3⋅2⋅1}{2⋅1}= \frac{4!}{(4-2)!}\).
+
+In general for permuting \(k\) elements out of \(n\) elements we have \(\frac{n!}{(n-k)!}\), but to compute this better cancel them out before.
+
+\begin{example}{How many 5 letter ``words'' can we form from the letters in a) BROWN b) GREEN c) MATHEMATICS.}{}
+  % We use words here very lightly but this is mathematics not linguistics, so we can not halt ourselves with things like words existing
+\begin{enumerate}[label=\alph{*})]
+\item\label{item:1} \(5\overset{!}{=}120\)
+\item\label{item:2} If the two ``E''s were distinguishable this would be easy and also just be \(5!\). So lets make them distinguishable, but then we double count. We count every word exactly twice, because you can exchange the ``E''s in both words. So the solution is \(5!/2\overset{!}{=}60\)
+\item\label{item:3} In this case we have \(\frac{11!}{2!2!2!}\)
+\end{enumerate}
+\end{example}
+
+\subsection{Combinatorics}
+\label{sec:combinatorics}
+
+Let \(A\) be a finite set with \(n\) elements \(\abs{A}=n\).
+
+How many subsets of \(A\) with \(k\) elements are there?
+
+If we care about order it would be \(\frac{n!}{(n-k)!}\)
+
+But these can be rearanged in \(k!\) ways (and still be the same subset).
+
+So in total there are
+\begin{equation}
+\label{eq:1}
+\binom{n}{k} = \frac{n!}{(n-k)!k!} = C(n, k) = {}^{n}_{k}C
+\end{equation}
+different subsets. (One says \enquote{\(n\) choose \(k\)} in english, not \(n\) over \(k\),\footnote{In Swedish they say \enquote{\(n\) över \(k\)} as in German, where one says \enquote{\(n\) über \(k\)}} because the ladder mostly means \(\frac{n}{k}\).
+
+These are also called binomial coefficients because they are the coefficients of a binomial
+\begin{equation}
+\label{eq:2}
+(a+b)^{n} = ∑_{k=1}^{n} \binom{n}{k} a^{n-k} b^{k}
+\end{equation}
+This is because \((a+b)^{n}=(a+b)(a+b)\dots(a+b)\) and at each factor you choose either \(a\) or \(b\). So in a non-commutative ring there would be \(2^{n}\) summands. But using commutativity many factors are the same (e.g. \(a²ba^{n-3}=a^{n-1}b\)). All the terms have the order \(n\). But in how many terms the \(b\) is chosen exactly \(k\) times? It is \(\binom{n}{k}\).
+
+From that it also follows that
+\begin{equation}
+\label{eq:3}
+∑_{k=0}^{n} \binom{n}{k} = 2^{n}
+\end{equation}
+
+\begin{example}{We have 10 (identical) cookies, and want to distribute them among 4 children.}{}
+  The idea is to include 3 lines so in the end there are \(\frac{13!}{3!10!}\).
+
+  If every child should have at least 1 cookie first hand out one cookie to every child and then do the process with the remaining cookies.
+\end{example}
+
+\begin{example}{How many integer solutions are there to \(x_1+x_2+ x_3+x_4=20\) with \(x_1,x_2≥0, x_3≥3, x_4≥-1\)}{}
+  We can solve this by first doing a change of variables \(y_1=x_1, y_2=x_2, y_3=x_3-3, y_4=x_4+1\) then the new equation is
+\begin{equation}
+\label{eq:4}
+y_1+y_2+y_3+y_4=x_1+x_2+x_3+x_4-2 = 18
+\end{equation}
+with \(y_k≥0\). There then will be \(\binom{18+3}{3}\) number of solutions as before.
+\end{example}
+
+\subsection{Pigeonhole principle}
+\label{sec:pigeonhole-principle}
+
+The next thing is in English called the pigeonhole principle. When you have 20 pigeonholes and 21 pigeons then at least one pigeonhole must contain 2 pidgeons.
+
+In general: \textbf{Pigeonhole principle:} if you distribute \(n\) elements in \(k\) containers with \(n>k\), then at least one container must contain at least two elements.
+
+Then he took a lot of examples.
+
+\subsection{Counting relations and functions}
+\label{sec:count-relat-funct}
+
+\begin{definition}{}{}
+Let \(A\) and \(B\) be sets. Then we can form the Cartesian product
+\begin{equation}
+\label{eq:5}
+A×B= \left\{ (a,b); a∈A, b∈B \right\}
+\end{equation}
+\end{definition}
+\begin{remark}{}{}
+It holds that if \(\abs{A}=n\), \(\abs{B=m}\) then \(\abs{A×B}=n⋅m\).
+\end{remark}
+
+\begin{definition}{}{}
+A relation on \(A\) and \(B\) is a subset of \(A×B\).
+\end{definition}
+\begin{example}{}{}
+Familiar example: \(A=B=ℤ\), \(≤\). Then e.g. \((3,4)∈≤\), usually we write \(3≤4\).
+\end{example}
+
+Let \(\abs{A}=n, \abs{B}=m\). How many possible relations on \(A\) and \(B\) are there?
+\begin{proposition}{}{}
+There are \(2^{nm}\) relations (= \# of subsets) on \(A×B\) if \(\abs{A}=n, \abs{B}=m\).
+\end{proposition}
+
+If you want you can try to find the number of equivalence relations. (Those are reflexive, symmetric and transitive.)
+
+How is a function defined?
+\begin{definition}{}{}
+A function \(f:A→B\) is a relation on \(A\) and \(B\), (i.e. a subset of \(A×B\)) with the property that \(∀a∈A ∃! b∈B\), s.t. \((a,b)∈f\). Normally, we write \(f(a)=b\).
+\end{definition}
+
+\begin{proposition}{}{}
+Let \(A, B\) be finite sets, with \(\abs{A}=n, \abs{B}=m\). How many functions \(f:A→B\) are there?\\
+There are \(m^{n}\) because we have \(m\) choices for each of the \(n\) elements in \(A\).
+\end{proposition}
+
+\begin{remark}{}{}
+  Let \(f: A → \left\{ 1, 0 \right\} \). We can identify a subset \(\tilde{A}⊆A\) by \(f(a) = \begin{cases} 1 & \text{ if } a∈\tilde{A} \\ 0 & \text{ if } a ∉ \tilde{A} \end{cases}\).
+
+  This is the reason that the power set of \(A\), i.e. the set of all subsets of \(A\) is often denoted by \(2^{A}\).
+\end{remark}
+
+\subsubsection{Injective functions}
+\label{sec:injective-functions}
+
+\begin{definition}{Injective functions}{}
+  \(f:A→B\) is called \textbf{injective} if
+
+\begin{equation}
+\label{eq:6}
+f(a)=f(b)⟹ a=b
+\end{equation}
+(or if you prefer \(a≠b⟹f(a)≠f(b)\).)
+\end{definition}
+
+\begin{proposition}{}{}
+  Let \(A\), \(B\) be finite sets, \(\abs{A}=n, \abs{B}=m\). How many injective functions \(f:A→B\) are there?\\
+
+  If \(m<n\) there are no injective functions \(A→B\).
+
+  If \(m≥n\), then \(f(a_1)\) has \(m\) possible values, \(f(a_2)\) has \(m-1\) possible values. ...
+
+  The total number thus is \(\frac{m!}{(m-n)!}\).
+\end{proposition}
+
+\subsubsection{The principle of exclusion/inclusion}
+\label{sec:princ-excl}
+
+\begin{proposition}{}{}
+Let \(A, B\) be finite sets, \(\abs{A}=n\), \(\abs{B}=m\).
+\begin{equation}
+\label{eq:7}
+\abs{A \cup B} = \abs{A} + \abs{B} - \abs{A \cap B}.
+\end{equation}
+
+How about three sets?
+\begin{equation}
+\label{eq:8}
+\abs{A\cup B \cup C} = \abs{A} + \abs{B} + \abs{C} - \abs{A\cap B} - \abs{A \cap C} - \abs{B \cap C} + \abs{A\cap B \cap C}.
+\end{equation}
+\end{proposition}
+
+More generally:
+\begin{proposition}{}{}
+  More generally:
+\begin{equation}
+\label{eq:9}
+\abs{A_1 \cup A_2 \cup \dots \cup A_n} = ∑_{k=1}^{n} (-1)^{k-1} ∑_{\text{all $k$-subsets} \left\{ m_1, \dots, m_k \right\} \text{ of } \left\{ 1, \dots, n \right\}  } \abs{A_{m_1} \cap \dots \cap A_{m_{k}}}
+\end{equation}
+\end{proposition}
+
+\begin{example}{How many integers in \(\left\{ 1, \dots, 100 \right\} \) are not divisible by any of \(2, 3, 5\)?}{}
+
+  Let's count the complement instead. Let \(A_k\) be the set of integers in \(A\) that are divisible by \(k\). So:
+\begin{align}
+\label{eq:10}
+ &\abs{A_2 \cup A_3 \cup A_5} \\
+ &= \abs{A_2} + \abs{A_3} + \abs{A_5} - \abs{A_2∩ A_3} - \abs{A_2∩A_5} - \abs{A_3∩A_5} + \abs{A_2∩A_3∩A_5}\\
+ &= \abs{A_2} + \abs{A_3} + \abs{A_5} - \abs{A_6} - \abs{A_{10}} - \abs{A_{15}} + \abs{A_{30}}\\
+ &= \left\lfloor \frac{100}{2} \right\rfloor + \left\lfloor \frac{100}{3} \right\rfloor   + \dots \\
+ &= 50 + 33 + 20 - 16 - 10 - 6 + 3 = 74
+\end{align}
+Hence  26 are not.
+\end{example}
+\begin{example}{}{}
+  How many permutations of the letters in FRAGMENT do not contain the substrings TAG, ME, MAG.
+
+  There are \(8!\) permutations.\\
+  How many contain the substring TAG? TAG, F, R, M, E, N so \(6!\)\\
+  How many contain the substring ME? \(7!\)\\
+  How many contain the substring MAG? \(6!\)\\
+
+  How many contain TAG and ME? \(5!\)\\
+  How many contain TAG and MAG? 0\\
+  How many contain ME and MAG? 0\\
+  How many contain TAG, ME and MAG? 0\\
+
+  Inclusion/Exclusion gives us
+\begin{equation}
+\label{eq:11}
+8! - 6! - 7! - 6! + 5! = 33960
+\end{equation}
+\end{example}
+As an exercise do the same thing, but start with a word, that has a repeat, or two repeats, while one is in the condition and the other one not.
+
+\begin{example}{Derangements}{}
+  Let us compute the number of permutations of \(\left\{ 1, \dots, n \right\} \) without fixpoints, i.e. the number \(k\) is never in the $k$th spot. A derangement is a permutation without a fixed point.
+
+  Let \(A_k\) be the set of all permutations fixing \(k\).
+\begin{align}
+\label{eq:12}
+  \abs{A_1 ∪ A_2 ∪ \dots ∪ A_n}
+  = &\abs{A_1} + \abs{A_2} + \dots + \abs{A_n} \\
+  &-\abs{A_1 ∩ A_2} - \abs{A_1∩A_2} - \dots \\
+  &+\abs{A_1∩A_2∩A_3} + \abs{A_1∩A_2∩A_4}+ \dots\\
+  &- \dots
+\end{align}
+This is equal to:
+\begin{equation}
+\label{eq:13}
+\binom{n}{1}(n-1) - \binom{n}{2}(n-2)! + \binom{n}{3}(n-3)! - \dots = n! - \frac{n!}{2!} + \frac{n!}{3!} - \dots = n! \left( 1 - \frac{1}{2!} + \frac{1}{3!} - \frac{1}{4!} + \dots \right)
+\end{equation}
+
+The total number of derangements is \(n!\) minus this, so
+\begin{equation}
+\label{eq:14}
+n!\left(1 - 1 + \frac{1}{2!} - \frac{1}{3!} + \frac{1}{4!} - \dots \right) ≈ \frac{n!}{e}
+\end{equation}
+\end{example}
+
+
+\subsubsection{Counting surjective functions}
+\label{sec:injective-functions-1}
+
+\begin{definition}{Surjectivity}{}
+  A function \(f:A→B\) is \textbf{surjective} if \(∀b∈B, ∃a∈A: f(a)=b\).
+\end{definition}
+
+\begin{proposition}{}{}
+Assume \(A, B\) are finite, \(\abs{A}=m, \abs{B}=n\), \(m≥n\).
+\begin{equation}
+\label{eq:15}
+A=\left\{ a_1, a_2, \dots, a_n \right\} , B= \left\{ b_1, b_2, \dots, b_n \right\}
+\end{equation}
+
+How many surjective functions \(f:A→B\) are there?
+
+Let \(X_j= \left\{ f: A→B, b_j∉f(A) \right\} \).
+
+Note: \(f\) is surjektive iff \(f∉X_1∪\dots∪X_n\).
+
+\begin{align}
+\label{eq:16}
+  \abs{X_1 ∪ X_2 ∪ \dots ∪ X_n} =
+  &\abs{X_1} + \abs{X_2} + \dots + \abs{X_n} \\
+  &-\abs{X_1 ∩ X_2} - \abs{X_1∩X_2} - \dots \\
+  &+\abs{X_1∩X_2∩X_3} + \abs{X_1∩X_2∩X_4}+ \dots\\
+  &- \dots\\
+  &= \binom{n}{1} (n-1)^{m} - \binom{n}{2} (n-2)^{n} + \binom{n}{3}(n-3)^{m} - \dots
+\end{align}
+So the total number of surjections is
+\begin{equation}
+\label{eq:16}
+\binom{n}{0} n^{m}- \binom{n}{1} (n-1)^{m} + \binom{n}{2} (n-2)^{n} - \binom{n}{3}(n-3)^{m} + \dots = ∑_{k=0}^{n} (-1)^{k} \binom{n}{k}(n-k)^{m}
+\end{equation}
+\end{proposition}
+
+\begin{proposition}{}{}
+Distribute \(m\) distinct object in \(n\) identical container, leaving no container empty.\\
+Or: In how many ways can we write \(\left\{ 1, 2, \dots, m \right\} \) as a union of \(n\) non-empty subsets?
+
+\textbf{Solution:} If the containers are distinct, this is the same as counting the number of surjective functions from \(\left\{ 1, \dots, m \right\} → \left\{ 1, \dots, n \right\}\).\\
+But we can rearrange the containers in \(n!\) ways, so the number we're looking for is
+\begin{equation}
+\label{eq:17}
+\frac{1}{n!}\#\left(\text{surjections} \right) = \frac{1}{n!}∑_{k=0}^{n} (-1)^{k} \binom{n}{k}(n-k)^{m}
+\end{equation}
+These are called Stirling numbers (of the second kind) and denoted by
+\begin{equation}
+\label{eq:41}
+S(m, n)= \left\{ \begin{array}{c} m \\ n  \end{array} \right\}.
+\end{equation}
+\end{proposition}
+
+\begin{example}{}{}
+  Exercise: Give a  combinatorial proof of
+\begin{equation}
+\label{eq:18}
+S(m+1,n) = S(m, n-1) + n S(m,n)
+\end{equation}
+\end{example}
+
+
+\section{Generating functions}
+\label{sec:generating-functions}
+
+\subsection{Motivating example}
+\label{sec:motivating-example}
+
+Motivating example: In how many ways can we distribute 8 apples between three (distinct) people \(A, B, C\) such that:
+\begin{enumerate}
+\item\label{item:4} \(A\) gets an odd number of apples
+\item\label{item:5} \(B\) gets at least one apple
+\item\label{item:6} \(C\) gets two or three apples
+\end{enumerate}
+
+\textbf{Solution 1:} Split into cases:\\
+Case 1: \(C=2\), (6 left) \(A∈\left\{ 1,3,5 \right\} \), so three ways\\
+Case 2: \(C=3\), (5 left) \(A∈\left\{ 1, 3 \right\}\) so two ways.\\
+So in total 5 ways.
+
+\textbf{Solution 2:}\\
+Let \(A(x)=x+x³+x⁵+x⁷\),\footnote{Why this polynomials? The exponent corresponds to the number of apples, that \(A\) can possibly have, the coefficient (here 1) corresponds to the number of ways that \(A\) can have that number of apples which is here one, because the apples are indistinguishable.} \(B(x)= x + x²+x³+x⁴+x⁵+x⁶+x⁷+x⁸\), \(C(x)=x²+x³\)
+
+Idea: Compute \(A(x)B(x)C(x)\) and identify the \(x⁸\) coefficient. This will be the number of solutions.
+
+If you just multiply them as they are this just corresponds to counting all possible cases. So for this to make sense we need a smarter way to compute the product.
+
+One example way to do this: Add the infinitely many terms:
+\begin{equation}
+\label{eq:19}
+B(x) = ∑_{k=1}^{∞}x^{k} = x⋅∑_{k=0}^{∞}x^{k}= \frac{x}{1-x}
+\end{equation}
+\begin{equation}
+\label{eq:20}
+A(x) = ∑_{k=0}^{∞} x^{2k+1} = x⋅ ∑_{k=1}^{∞} (x²)^{k} = \frac{x}{1-x²}
+\end{equation}
+\begin{equation}
+\label{eq:21}
+C(x) = x²(1+x)
+\end{equation}
+So:
+\begin{equation}
+\label{eq:22}
+A(x)B(x)C(x) = \frac{x}{1-x²} \frac{x}{1-x} x² (1+x) = \frac{x⁴}{(1-x)²}
+\end{equation}
+I want the \(x^{8}\) coefficient in the expansion of \(\frac{x^{4}}{(1-x)²}\) which is the same thing as the \(x^{4}\) coefficient in the expansion of \(\frac{1}{(1-x)²}\).
+
+So define \(g(x) = (1-x)^{-2}\) thus the coefficient is \(\frac{g^{(4)}(0)}{4!}\).
+
+In our case: \(g'(x)=2(1-x)^{-3}, g''(x)=6(1-x)^{-4}, g'''(x)=24(1-x)^{-5}, g^{(4)}(x) = 120(1-x)^{-6}\).
+
+The answer to our problem is thus \(\frac{g^{(4)}(0)}{4!}= \frac{120}{24}=5\).
+
+
+\subsection{Terminology and basic methods}
+\label{sec:terminology}
+
+\begin{definition}{}{}
+The function (really formal power series)
+\begin{equation}
+\label{eq:23}
+a_0 + a_1x + x_2x² + a_3x³ +\dots
+\end{equation}
+is called the \textbf{generating function} of the sequence \((a_0, a_1, a_2, \dots)\).
+\end{definition}
+
+\begin{example}{}{}
+Look at the series
+\begin{equation}
+\label{eq:24}
+\binom{n}{0}, \binom{n}{1}, \binom{n}{2}, \dots, \binom{n}{n}, 0, 0, \dots
+\end{equation}
+
+Its generating function is
+\begin{equation}
+\label{eq:25}
+\binom{n}{0} + \binom{n}{1}x + \binom{n}{2}x² + \dots + \binom{n}{n} x^{n} = (1+x)^{n}
+\end{equation}
+\end{example}
+\begin{example}{}{}
+  The generating function of the sequence \((1, 1, \dots )\) is
+\begin{equation}
+\label{eq:26}
+∑_{k=1}^{∞} x^{k} = \frac{x}{1-x}
+\end{equation}
+\end{example}
+\begin{example}{}{}
+The generting function of the sequence \((\underbrace{1, \dots, 1}_{n \text{ times}}, 0, 0, \dots\) is
+\begin{equation}
+\label{eq:27}
+∑_{k=1}^{n} x^{k} =x ∑_{k=0}^{n-1} x^{k} = x \frac{1 - x^{n}}{1-x}
+\end{equation}
+\end{example}
+\begin{definition}{Some useful operations, Shifting, Differentiation, Products}{}
+\begin{enumerate}
+\item\label{item:7} \textbf{Shifting:} If \((a_0, a_1, a_2, \dots) \leftrightarrow A(x)\),\\
+  then \((\underbrace{0, 0, \dots, 0}_{n \text{ zeros}}, a_0, a_1, \dots) \leftrightarrow x^{n} A(x)\)
+\item\label{item:8} \textbf{Differentiation:} If \(a_0, a_1, \dots) \leftrightarrow A(x)\), then \\
+  \((a_1, 2a_2, 3a_3, \dots) \leftrightarrow A'(x)\)
+\item\label{item:9} \textbf{Products:} If \((a_0, a_1, \dots)\leftrightarrow A(x), (b_0, b_1, \dots) \leftrightarrow B\left(x \right)  \), \\
+  then
+\begin{align}
+\label{eq:29}
+  A(x)B(x)
+  &= a_0b_0 + (a_0b_1 + a_1b_0)x + (a_0b_2+a_1b_1+a_2b_0)x² + \dots \\
+  &= ∑_{n=0}^{∞} \left(∑_{k=0}^{n} a_k b_{n-k} \right) x^{n}
+\end{align}
+\end{enumerate}
+\end{definition}
+\begin{example}{Exercise}{}
+  Compute the g.f. (=generating function) for \(0²,1²,2²,3²,\dots\).\\
+  \textbf{Solution:}
+It is
+\begin{equation}
+\label{eq:28}
+∑_{k=0}^{∞} k² x^{k} = \dots
+\end{equation}
+My idea: Let  \(f(a, k) = ∑_{k=0}^{∞} e^{ak} x^{k} = \frac{1}{1-xe^{a}}\).
+
+Then the solution is just \(∂_{a}²f\eval_{a=0}\).
+\end{example}
+
+\begin{example}{}{}
+  In how many ways can we fill a bag with \(n\) fruits (apples, bananas, organges, pears) in such a way that
+\begin{enumerate}
+\item\label{item:10} The number of apples is even
+\item\label{item:11} The number of bananas is a multiple of 5
+\item\label{item:12} There are at most 4 oranges
+\item\label{item:13} There is a most 1 pear
+\end{enumerate}
+Let
+\begin{align}
+\label{eq:30}
+  A(x)
+  &= 1 + x² + x^{4} + x^{6} + \dots = ∑_{k=0}^{∞} (x²)^{k} = \frac{1}{1-x²} \\
+  B(x)
+  &= 1 + x^{5} + x^{10} + \dots = \frac{1}{1-x^{5}}\\
+  O(x)
+  &= 1 + x + x²+x³+x^{4} = \frac{1-x^{5}}{1-x}\\
+  P(x)
+  &= 1 + x
+\end{align}
+Therefore
+\begin{equation}
+\label{eq:31}
+\frac{1}{1-x²} \frac{1}{1-x^{5}} \frac{1-x^{5}}{1-x} 1+x = \frac{1}{(1-x)²}
+\end{equation}
+How to compute this?\\
+Two Options to compute this: Option 1:
+\begin{equation}
+\label{eq:32}
+\frac{1}{1-x} \frac{1}{1-x} (1+x+x²+\dots)(1+x+x²+\dots) = 1 + 2x + 3x² + \dots = ∑_{n=0}^{n} (n+1)x^{n+1}
+\end{equation}
+Hence there are \(n+1\) ways to fill the bag with \(n\) fruits!
+
+The second option is to see that the derivative of \(\frac{1}{1-x} \) is \(\frac{1}{(1-x)²}\).
+\end{example}
+
+This method is great if the conditions are weird but not too weird. Some regularities in the conditions are needed, for example if the number of apples has to be a prime number than the generating function won't give you a closed form!
+
+
+\subsection{Newton's Binomial Theorem}
+\label{sec:newt-binom-theor}
+
+If \(n∈ℕ\) then
+\begin{equation}
+\label{eq:33}
+(1+x)^{n} = ∑_{k=0}^{n} \binom{n}{k} x^{k} \arr[=]{If we define the Binomial coefficient to be zero outside of its usual range.} ∑_{k=0}^{∞} \binom{n}{k} x^{k}
+\end{equation}
+
+Newtons version says that if \(𝛼∈ℝ\) then
+\begin{equation}
+\label{eq:34}
+(1+x)^{𝛼} = ∑_{k=0}^{∞} \binom{𝛼}{k} x^{k}, \quad \quad \abs{x}<1
+\end{equation}
+
+What is the binomial coefficient?
+\begin{equation}
+\label{eq:35}
+\binom{𝛼}{k} = \frac{𝛼!}{(𝛼-k)!k!} = \frac{𝛼(𝛼-1)\dots(𝛼-k+1)}{k!}
+\end{equation}
+
+\textbf{Note:} If \(n\) is a positive integer, then
+\begin{align}
+\label{eq:36}
+  \binom{-n}{k}
+  &= \frac{(-n)(-n-1)(-n-2)\dots(-n-k+1)}{k!} \\
+  &= (-1)^{k} \frac{n(n+1) (n+2)\dots (n+k-1)}{k!} \\
+  &= (-1)^{k} \binom{n+k-1}{k}
+\end{align}
+If \(n\) is a negative integer
+
+\begin{example}{}{}
+Assume we have 12 identical cookies and want to distribute amonst three (distinct) children. In how many ways can we do this if
+\begin{enumerate}[label=(\alph{*})]
+\item\label{item:14} Each child gets at least two cookies
+\item\label{item:15} Each child gets at least 2 and at most 5 cookies.
+\end{enumerate}
+
+Focus on one child. Generating function?
+\begin{equation}
+\label{eq:37}
+A(x)=x²+x³+\dots+x^{12}(+x^{13}+\dots), \quad B(x), C(x) \text{ same }
+\end{equation}
+We want to extract the \(x^{12}\) coefficient in the expansion of
+\begin{equation}
+\label{eq:38}
+A(x)³ = \left( \frac{x²}{1-x} \right)³ = \frac{x^{6}}{(1-x)³}
+\end{equation}
+or the \(x^{6}\) coefficient of
+\begin{equation}
+\label{eq:39}
+\frac{1}{(1-x)³} = ∑_{k=0}^{∞} \binom{-3}{k} (-x)^{k} = ∑_{k=0}^{∞} (-1)^{k} \binom{-3}{k} x^{k} = ∑_{k=0}^{∞} (-1)^{k}(-1)^{k} \binom{3+k-1}{k} x^{k}
+\end{equation}
+So the number of solutions is
+\begin{equation}
+\label{eq:40}
+\binom{3+6-1}{6}= \binom{8}{6}=\binom{8}{2}= 28
+\end{equation}
+
+The solution of (b) is an exercise and in the lecture notes.
+
+\end{example}
+
+\subsection{\enquote{Partitions} of integers}
+\begin{equation}
+\label{eq:42}
+4 = 4 = 3+1=2+2=2+2+1+1=1+1+1+1
+\end{equation}
+How many partitions of \(n\) are there?
+\begin{align}
+\label{eq:43}
+  &\left(1+x+x²+x³+\dots \right) \left(1+x²+x⁴+\dots \right) \left(1+x³+x⁶+\dots \right) \left(1+x^{4}+x^{8}+\dots \right) \dots\\
+  &= \frac{1}{1-x} \frac{1}{1-x²} \frac{1}{1-x³}\dots\\
+  &= \prod_{k=1}^{∞} \frac{1}{1-k}
+\end{align}
+We cannot simplify this expression.
+
+But simplified versions an be solved by hand.
+
+For example: How many partitions of \(n\) are there, if we only allow 1's and 2's?
+\begin{align}
+\label{eq:44}
+&= \frac{1}{1-x} \frac{1}{1-x²}\\
+&= \frac{1}{2} \frac{1}{(1-x)²} + \frac{1}{4} \frac{1}{1-x} + \frac{1}{4} \frac{1}{1+x}\\
+&= ∑_{k=0}^{∞} \frac{1}{2} \binom{-2}{k} (-x)^{k} + \frac{1}{4} x^{k} + \frac{1}{4}(-k)^{k}
+\end{align}
+Here we can fairly easily conpute the coefficient of \(x^{n}\).
+
+
+\subsection{Exponential generating functions}
+\label{sec:expon-gener-funct}
+
+Good at solving counting problems where we want do distribute identical objects in distinct containers.
+
+\begin{example}{How many 4 letter \enquote{words} can we form out of AAABBC??}{}
+  If it where 6 letter word the answer would be \(\frac{6!}{3!2!}\).
+
+  But 4 letter words are more tricky because we then do not know, out of how many of which letters they consist of. One could try cases, but this is tedious and error prone, because there will be a lot of cases.
+
+  One idea would be to solve \(a+b+c=4\), with \(0≤a≤3,0≤b≤2, 0≤c≤1\).\\
+  For each such solution, there are \(\frac{4!}{a!b!c!}\) possibilities. So sum over all solutions!
+
+Think of a generating function
+\begin{equation}
+\label{eq:45}
+\left(1+ \frac{x}{1!} + \frac{x²}{2!} + \frac{x³}{3!} \right) \left(1+\frac{x}{1!} + \frac{x²}{2!} \right)  \left(1+ \frac{x}{1!} \right)
+\end{equation}
+
+The total number of 4 letter words is \(4!\) times the coefficient of \(x^{4}\) in the expansion.
+\end{example}
+
+\begin{example}{}{}
+  What is the exponential generating function of the sequence \(1, -2, 2², -2³,x⁴,-x⁵,\dots\)?\\
+  It is
+\begin{equation}
+\label{eq:46}
+1+ \frac{(-2)}{1!}x + \frac{(-2)²}{2!}x² + \frac{(-2)³}{3!}x³+\dots=e^{-2x}
+\end{equation}
+\end{example}
+
+\begin{example}{}{}
+  Assume we have 48 flags: 12 red, 12 blue, 12 white, and 12 black.
+
+  How many signals can we send using 12 flags on a flagpole if
+\begin{enumerate}[label=(\alph{*})]
+\item\label{item:16} there are an even number of red flags
+\item\label{item:17} there is at least one flag of each colour
+\end{enumerate}
+
+a): The generating function of the red flags is
+\begin{equation}
+\label{eq:47}
+\left(1+\frac{x²}{2} + \frac{x^{4}}{4!} + \dots + \frac{x^{12}}{12!} \right)
+\end{equation}
+But since if we had more than 12 red flags it wouldn't matter, because we are only using 12 flags in total, we can add the infinitely many terms for that to get an infinite series, which is much better for computation.\\
+The same goes fot the other colors. So the generating function of the hole problem is
+\begin{align}
+\label{eq:48}
+  f(x)
+  &= \left(1+\frac{x²}{2} + \frac{x^{4}}{4!} + \dots + \frac{x^{12}}{12!} + \frac{x^{14}}{14!}+\dots \right) \left(1 + \frac{x^{1}}{1!}+\frac{x²}{2!}+\dots \right)³\\
+  &= \frac{e^{x}+e^{-x}}{2} e^{3x} = \frac{1}{2}\left(e^{4x}+e^{2x} \right)
+\end{align}
+The number we are looking for is \(12!\) times the \(x^{12}\)-coefficient in the expansion.
+
+\begin{equation}
+\label{eq:49}
+\frac{1}{2}(e^{4x}+e^{2x}) = \frac{1}{2} ∑_{k=0}^{∞} \frac{(4x)^{k}}{k!} + \frac{(2x)^{k}}{k!}
+\end{equation}
+so the \(x^{12}\) coefficient is \(\frac{1}{2}\left( \frac{4^{12}}{12!} + \frac{2^{12}}{12!}\right)\)
+
+So the number of signals is: \(\frac{1}{2} \left(4^{12}+2^{2} \right) \).
+
+b) The generating function is
+\begin{align}
+\label{eq:50}
+  \left(\frac{x}{1!} + \frac{x²}{2!}+ \frac{x³}{3!} + \dots \right)^{4}
+  &= \left(e^{x}-1 \right)^{4} = e^{4x}-4e^{3x}+6e^{2x}-4e^{x}+1 \\
+  &= \left(∑_{k=0}^{∞} \frac{(4x)^{k}}{k!} - 4 \frac{(3x)^{k}}{k!} + 6 \frac{(2x)^{k}}{k!} - 4 \frac{x^{k}}{k!} \right) - 1
+\end{align}
+In particular, the \(x^{12}\) coefficient is
+\begin{equation}
+\label{eq:51}
+\frac{4^{12}}{12!} - 4 \frac{3^{12}}{12!} + 6 \frac{2^{12}}{12!} - 4 \frac{1}{12!}
+\end{equation}
+So the number of signals is 12! times this, i.e. \(4^{12}-4 3^{12} + 6 2^{12} - 4\).
+\end{example}
+
+\subsection{Summing a sequence}
+\label{sec:summing-sequence}
+
+If \((a_0, a_1, a_2, \dots)\) has the ordinary generating function (ogf)
+\begin{equation}
+\label{eq:52}
+f(x) = a_0 + a_1x + a_2x²+\dots
+\end{equation}
+What is then the generating function for \(a_0, a_0+a_1, a_0+a_1+a_2, a_0+a_1+a_2+a_3\):
+
+\begin{equation}
+\label{eq:53}
+\left(a_0+a_1x+a_2x²+\dots\right) \underbrace{\left(1+x+x²+\dots \right) }_{= \frac{1}{1-x}} = a_0 + (a_0+a_1)x+ (a_0+a_1+a_2)x²+\dots
+\end{equation}
+So the sequence of the partial sums has the generating function \(\frac{f(x)}{1-x}\)
+
+\begin{example}{}{}
+  What is \(0²+1²+2²+\dots+n²\)?\\
+  What is the generating function for \(0²,1²+2²+3²,\dots\)?\\
+  It is
+\begin{equation}
+\label{eq:55}
+f(x)= \frac{x(x+1)}{(1-x)³}\quad \quad \text{(Exercise!)}
+\end{equation}
+The partial sums then have the generating function
+\begin{equation}
+\label{eq:56}
+\frac{f(x)}{1-x} = \frac{x(1+x)}{(1-x)^{4}} = (x+x²)(1-x)^{-4}
+\end{equation}
+
+We want the coefficient of \(x^{n}\) in the expansion of this!\\
+\begin{equation}
+\label{eq:57}
+(x+x²) ∑_{k=0}^{∞} \binom{-4}{k} (-x)^{k}
+\end{equation}
+So the coefficient of \(x^{n}\) is
+\begin{align}
+\label{eq:58}
+  \binom{-4}{n-1} (-1)^{n-1} + \binom{-4}{n-2} (-1)^{n-2}
+  &= \binom{n+2}{n-1} (-1)^{n-1}(-1)^{n-1} + \binom{n+1}{n-2} (-1)^{n-2} (-1)^{n-2}\\
+  &= \binom{n+2}{3} + \binom{n+1}{3}\\
+  &\frac{(n+2)(n+1)n}{6} + \frac{(n+1)n(n-1)}{6} \\
+  &= \frac{1}{6} n(n+1)(2n+1)
+\end{align}
+\end{example}
+
+
+\section{Recurrence relations}
+
+\begin{example}{}{}
+  \(1,1,2,3,5,8,13,...\) This is the fibonacci sequence where \(F_{n+2}=F_{n+1}+F_{n}, n≥1\) (or \(F_n=F_{n-1}+F_{n-2}, n≥3\).
+\end{example}
+The good thing with difference equations is that contrary to differential equations, it is at least obvious that there exists a solution.
+
+
+\begin{example}{}{}
+\((n+1)! = (n+1)n!, 0!=1\)
+\end{example}
+
+We will mostly focus on linear recurrence relations (often of order 1 and 2).\\
+\textbf{Order 1:} \(a_{n+1} + g_n a_n = f_n\) (usually \(g_n=\)constant, because otherwise very hard to solve.\\
+\textbf{Order 2:} \(a_{n+2} + p_n a_{n+1} + q_n a_n=f_n\).
+
+There are at least three reasonable ways so solve such equations.
+
+% \textbf{Method 1:} Generating functions
+
+\subsection{Method 1: Generating function}
+\label{sec:method-1:-generating}
+\begin{example}{}{}
+\begin{equation}
+\label{eq:59}
+a_{n+2} - a_{n+1} - 2a_n = -4, \quad a_0=0, a_1=1
+\end{equation}
+Let \(f(x)=a_0+a_1x+a_2x²+\dots\). Multiply \cref{eq:59} by \(x^{n+2}\) and sum!
+\begin{align}
+\label{eq:54}
+∑_{n=0}^{∞} \left( a_{n+2}x^{n+2} - a_{n+1} x^{n+2} - 2a_n x^{n+2} \right)
+&= ∑_{n=0}^{∞} -4 x^{n+2}
+= \frac{-4x²}{1-x}\\
+ \left(f(x) - a_0 - a_1x \right) - x\left(f(x) - a_0 \right) - 2x²f(x) &=
+\end{align}
+Solve for \(f(x)\)!
+\begin{equation}
+\label{eq:60}
+f(x) \left(1-x-2x² \right)  - x = \frac{-4x²}{1-x}
+\end{equation}
+So
+\begin{equation}
+\label{eq:61}
+f(x) = \frac{-5x²+x}{(1-x-2x²)(1-x)} \arr[=]{partial fraction} \frac{2}{1-x} - \frac{1}{x+1} - \frac{1}{1-2x} - \frac{1}{1-2x}
+\end{equation}
+this is the sum of three geometric series so it is easy to see the \(n\)th coefficient.
+\end{example}
+
+\subsection{Method 2: Linear Algebra}
+\label{sec:method-2:-linear}
+%\textbf{Method 2: Linear Algebra}\\
+Mostly useful for the homogeneous case (RHS=0).
+\begin{example}{}{}
+\begin{equation}
+\label{eq:62}
+a_{n+2} - a_{n+1} - 2a_n = 0, \quad a_0=-2, a_1=-1
+\end{equation}
+Let
+\begin{equation}
+\label{eq:63}
+X_{n}= \begin{pmatrix} a_{n+1} \\ a_n \end{pmatrix},
+\end{equation}
+then
+\begin{align}
+\label{eq:64}
+  X_{n+1}= \begin{pmatrix} a_{n+2} \\ a_{n+1} \end{pmatrix}
+  = \begin{pmatrix} a_{n+1} + 2a_n \\ a_{n+1} \end{pmatrix}
+  = \begin{pmatrix} 1  & 2 \\ 1  & 0 \end{pmatrix} \begin{pmatrix} a_{n+1} \\ a_n \end{pmatrix}
+  = A⋅X_{n}
+\end{align}
+So we know that \(X_{n}=A^{n}X_0\). If we can diagonalize \(A\), i.e. find matrices \(P, D\) s.t. \(A=PDP⁻¹\) where \(D\) is a diagonal matrix, then
+\begin{equation}
+\label{eq:65}
+X_{n}= A^{n}X = (PDP⁻¹)^{n}X_0 = PDP⁻¹PDP⁻¹\dots PDP⁻¹ X_0 = P D^{n} P⁻¹ X_0
+\end{equation}
+where in fact \(D=\begin{pmatrix}
+𝜆_{1}  & 0 \\
+0      & 𝜆_{2}
+ \end{pmatrix}\) and \(𝜆_{1}, 𝜆_{2}\) are eigenvalues and \(P = \begin{pmatrix}
+\vec{u}_1  & \vec{u}_{2}
+                                                                \end{pmatrix}\) where \(u_1, u_2\) are the corresponding eigenvectors.\\
+
+In our example \(A=\begin{pmatrix} 1  & 2 \\ 1  & 0 \end{pmatrix}\), \(𝜆_{1}=2\), \(u_1= \begin{pmatrix}
+2 \\ 1\end{pmatrix}\),
+\(𝜆_{2}=-1\), \(u_2=\begin{pmatrix} -1&1\end{pmatrix}\)\\
+                                                                                 So
+\begin{equation}
+\label{eq:66}
+A = \begin{pmatrix} 2  & -1 \\ 1  & 1 \end{pmatrix}
+\begin{pmatrix} 2  & 0 \\ 0  & -1 \end{pmatrix}
+\begin{pmatrix} \frac{1}{3}  & \frac{1}{3} \\ -\frac{1}{3}  & \frac{2}{3} \end{pmatrix}
+\end{equation}
+thus
+\begin{equation}
+\label{eq:67}
+X_{n}= PD^{n}P⁻¹ X_0 = \begin{pmatrix} 2  & -1 \\ 1  & 1 \end{pmatrix}
+\begin{pmatrix} 2^{n}  & 0 \\ 0  & (-1)^{n} \end{pmatrix}
+\begin{pmatrix} \frac{1}{3}  & \frac{1}{3} \\ -\frac{1}{3}  & \frac{2}{3} \end{pmatrix} \begin{pmatrix} -1 & -2 \end{pmatrix} = \dots =
+\begin{pmatrix} -2⋅2^{n} + (-1)^{n} \\ -2^{n} - (-1)^{n} \end{pmatrix}
+\end{equation}
+Hence \(a_n=-2^{n}-(-1)^{n}\).
+
+In general we see that the solution will be of the form \(A 𝜆_{1}^{n}+B 𝜆_{2}^{n}\) (assuming \(𝜆_{1}≠𝜆_{2}\)).
+\end{example}
+
+\subsection{Method 3: The characteristic equation}
+\label{sec:meth-3:-char}
+
+In practice the quickest way to solve this is \enquote{{Method 3}}.
+
+\begin{example}{}{}
+\begin{equation}
+\label{eq:68}
+a_{n+2}-5 a_{n+1} + 6 a_n = 0, \quad a_0=a_1=1
+\end{equation}
+We look for solutions of the type \(r^{n}\).\\
+If \(a_n=r^{n}\) then \(a_{n+1}=r^{n+1}=r r^{n}, a_{n+2}=r^{n+2} = r² r^{n} \).
+Hence
+\begin{equation}
+\label{eq:69}
+r²⋅r^{n} - 5r r^{n} + 6r^{n} = 0 \quad r^{n}\underbrace{\left(r² - 5r + 6 \right)}_{\mathclap{\text{The characteristic equation}}}  = 0
+\end{equation}
+So
+\begin{equation}
+\label{eq:70}
+r²-5r+6=(r-2)(r-3)=0, ⟹ r_1=2, r_2=3
+\end{equation}
+So \(a_n= C 2^{n} + D 3^{n}\) is a solution to the recurrence relation (for every choice of \(C, D\).). In fact every solution is of this form.
+
+We also need to match the initial conditions: \(1=a_0=C+D, 1=a_1=2C+3D\), therefore \(C=2, D=-1\).
+
+Our solution is
+\begin{equation}
+\label{eq:71}
+a_n=2⋅2^{n} +(-1)3^{n}.
+\end{equation}
+\end{example}
+
+Now we want to generalize this method. There are three cases (also generalizations to higher order recurrence relations).
+
+The characteristic equation can have
+\begin{enumerate}[label=\arabic{*})]
+\item\label{item:18} Two distinct real roots \(r_1, r_2\): Solution \(C r_1^{n}+Dr^{n}\)
+\item\label{item:19} Two complex roots \(r_1, \overline{r_1}\): Solution \(C r_1^{n} + D \overline{r_1}^{n}\)\\
+  Sometimes we want \enquote{real} solutions. \(r_1=𝜌e^{i𝜃}\) (\(𝜌≥0, 0≤𝜃≤2𝜋\)), then \(r_2= \overline{r_1}= 𝜌 e^{-i𝜃}\).
+So
+\begin{align}
+\label{eq:72}
+  a_n
+  &= C\left(𝜌 e^{i𝜃} \right)^{n}+D\left(𝜌 e^{-i𝜃} \right)^{n}\\
+  &= C 𝜌^{n} e^{in𝜃}+D𝜌^{n}e^{-in𝜃}\\
+  &= C 𝜌^{n} \left(\cos(n𝜃)+i\sin(n𝜃) \right)  + D𝜌^{n}\left(\cos(n𝜃)-i\sin(n𝜃) \right) \\
+  &= \underbrace{(C+D)}_{\tilde{C}} 𝜌^{n} \cos(n𝜃) + \underbrace{i(C-D)}_{\tilde{D}} 𝜌^{n} \sin(n𝜃) \\
+  &= \tilde{C} 𝜌^{n} \cos(n𝜃)+\tilde{D} 𝜌^{n} \sin(n𝜃)
+\end{align}
+
+\item\label{item:20} Double root \(r\). One solution is \(r^{n}\). But we need a second \enquote{linearly independent} solution.
+\end{enumerate}
+
+\begin{example}{}{}
+Exercise: Try solving
+\begin{equation}
+\label{eq:73}
+a_{n+2}-2a_{n+1} + a_{n} = 0, \quad \quad a_0=0, a_1=1
+\end{equation}
+in a very naive way! (Compute the first terms by hand.)
+\end{example}
+
+It turns out, that in case 3, a second solution is given by \(a_n=n r^{n}\). So look at
+\begin{equation}
+\label{eq:74}
+a_{n+2} + p a_{n+1} + q a_n = 0
+\end{equation}
+and
+\begin{equation}
+\label{eq:75}
+r²+pr+q=0
+\end{equation}
+has a double root \(r_1\), i.e.
+\begin{equation}
+\label{eq:76}
+(r-r_1)² = r²+pr+\quad ⟹\quad -2r_1=p, \quad r_1²=q
+\end{equation}
+
+\textbf{Claim:} \(a_n=n r_1^{n}\) is a solution. Then \(a_{n+1}=(n+1)r_1^{n+1}= r_1 (n+1)r_1^{n}\), \(a_{n+2}=(n+2)r_1^{n+2}= r_1²(n+2)r_1^{n}\)
+
+Plug in
+\begin{align}
+\label{eq:77}
+r_1²(n+2)r_1^{n}+p r_1(n+1) r_1^{n} + qn r_1^{n}\\
+&= r_1^{n}\left(n r_1² + n r_1p + qn + 2r_1² + p r_1 \right) \\
+&= r_1^{n}\left(n r_1² - 2n r_1² + r_1²n+2r_1²-2r_1² \right) \\
+&= 0
+\end{align}
+So the general solution to this case is
+\begin{equation}
+\label{eq:78}
+C r_1^{n}+D n r_1^{n}
+\end{equation}
+
+How to generalize this to higher (or lower) orders?
+
+Higher (or lower) order linear recurrence relations with constant coefficients:
+\begin{equation}
+\label{eq:79}
+a_{n+k} + c_1 a_{n+k-1} + c_2 a_{n+k-2}+\dots+c_n a_n = 0
+\end{equation}
+
+Looking for solutions \(r^{n}\) we get the characteristic equation
+\begin{equation}
+\label{eq:80}
+r^{k} + c_1 r^{k-1} + c_2 r^{k-2}+\dots + c_n = 0.
+\end{equation}
+Every root (real or complex) gives a solution \(r^{n}\). If \(r\) is a root of multiplicity \(m>1\), we get solutions \(r^{n}, n r^{n}, n² r^{n}, \dots, n^{m-1} r^{n}\).
+
+
+How about non-homogeneous recurrence relations?\\
+
+\subsection{Non-homogeneous recurrence relations}
+\label{sec:non-homog-recurr}
+
+In general to solve
+\begin{equation}
+\label{eq:81}
+a_{n+2} + p a_{n+1} + q a_{n} = f(n),
+\end{equation}
+we do the following.\footnote{Similarly to differencial equations}
+\begin{enumerate}[label=\arabic{*})]
+\item\label{item:21} Solve the correspoinding homogeneous equation.
+\item\label{item:22} Find one particular solution by judicious guessing.
+\item\label{item:23} The general solution is then \ref{item:21} + \ref{item:22}.
+\item\label{item:24} Match initial conditions
+\end{enumerate}
+
+Here are some general guesses for the particular solution \ref{item:22}.\\
+\begin{tabular}{rl}
+\toprule
+  \(f(n)\) & ansatz \\
+  \midrule
+  constant & constant \\
+  poly of degree \(d\) & poly of degree \(d\) \\
+  \(S^{n}\) & constant \(⋅ S^{n}\)\\
+  (polynomial of degree \(d\)) \(⋅ S^{n}\) & (polynomial of degree \(d\)) \(⋅ S^{n}\) \\
+  \bottomrule
+\end{tabular}
+
+\begin{example}{}{}
+  Solve:
+\begin{enumerate}[label=\alph{*})]
+\item\label{item:25} \(a_{n+2}-5 a_{n+1} + 6 a_n = 0\)
+\item\label{item:26} \(a_{n+2}-5 a_{n+1} + 6 a_n = n\)
+\item\label{item:28} \(a_{n+2}-5 a_{n+1} + 6 a_n = (-1)^{n}\)
+\item\label{item:29} \(a_{n+2}-5 a_{n+1} + 6 a_n = 2^{n}\)
+\end{enumerate}
+\tcblower
+\begin{enumerate}[label=Sol. \alph{*})]
+\item Char equation:
+\begin{equation}
+\label{eq:83}
+r² - 5r + 6 = 0 = (r-2)(r-3)
+\end{equation}
+So
+\begin{equation}
+\label{eq:84}
+a_n=C 2^{n} + D 3^{n}
+\end{equation}
+\item Natural ansatz is \(a_{n}^{P}= En +F\), hence
+\begin{equation}
+\label{eq:85}
+E(n+2)+F - 5 (E(n+1)+F)+6(En+F)  = n
+\end{equation}
+\begin{equation}
+\label{eq:86}
+2En + (-3E +2F) = n
+\end{equation}
+Therefore \(2E=1, -3E+2F=0\), so \(E= \frac{1}{2}, F= \frac{3}{4}\), thus \(a_{n}^{p}= \frac{1}{2}n + \frac{3}{4}\) is a particular solution.
+\item\label{item:30} Do it yorself. Ansatz: \(a^{p}_{n}= E (-1)^{n}\)
+\item\label{item:31} The natural ansatz would be \(a_n^{p}=E⋅2^{n}\).\\
+  This can't work! (Since \(E⋅2^{n}\) solves the corresponding homogeneous equation!)
+
+  Maybe we can try \enquote{\(n\) times the natural ansatz}, \(a_n^{p}=En2^{n}\).
+\begin{align}
+\label{eq:87}
+4E(n+2)2^{n} - 10E(n+1)2^{n} + 6 E n 2^{n} = 2^{n} ⟺ -2E⋅2^{n} = 2^{n}
+\end{align}
+i.e. \(E=-½\), i.e. \(a_n^{p}=-½n 2^{n}\).
+\end{enumerate}
+\end{example}
+
+
+\begin{example}{}{}
+  How many strings of length \(n\) using the symbols \(A, B, C\) are there with no consecutive \(A\)'s or \(B\)'s?
+
+  Let us denote by \(a_n\) the number of such strings.
+
+  Let's also denote by \(b_n\) the number of such strings that end in \(A\) or \(B\), and by \(c_n\) the number of such strings that end with \(C\).
+
+  Of course \(a_n=b_n+c_n\).
+
+  What is \(b_{n+1}, c_{n+1}\)?
+
+
+\begin{equation}
+\label{eq:82}
+b_{n+1}= b_n + 2c_n  \quad \quad c_{n+1} = b_n + c_n (=a_n)
+\end{equation}
+The right equation follows from the fact, that when one letter is fixed, then the rest of the word can be changed freely. The left equation from the fact, that the string before the letter was added could start with an
+
+So:
+\begin{equation}
+\label{eq:88}
+a_{n+1}= b_{n+1}+c_{n+1} = 2a_n+c_n = 2a_n+a_{n-1}
+\end{equation}
+Thus
+\begin{equation}
+\label{eq:89}
+a_{n+1} - 2a_n - a_{n-1} = 0
+\end{equation}
+The characteristic equation is
+\begin{equation}
+\label{eq:90}
+r²-2r -1 = 0 \quad ⟹ \quad  r = 1±\sqrt{2}
+\end{equation}
+So
+\begin{equation}
+\label{eq:91}
+a_{n} = A(1+\sqrt{2})^{n} + B(1-\sqrt{2})^{n}
+\end{equation}
+We can work out the initial conditions from the question: \(a_0=1, a_1=3, (a_2=7)\). (\(a_0\) comes from the empty world.)
+Therefore
+\begin{equation}
+\label{eq:92}
+1=A+B\quad 3=A(1+\sqrt{2}) + B(1-\sqrt{2})= A+B + \sqrt{2}(A-B) = 1 + \sqrt{2}(A-B)
+\end{equation}
+Therefore \(A= \frac{1+\sqrt{2}}{2}, B= \frac{1-\sqrt{2}}{2}\).
+
+So the answer to our problem is
+\begin{equation}
+\label{eq:93}
+a_n= \frac{1+\sqrt{2}}{2}\left(1+\sqrt{2} \right)^{n} + \frac{1-\sqrt{2}}{2} \left(1-\sqrt{2} \right)^{n}= ½\left( \left(1+\sqrt{2} \right)^{n+1} + \left(1-\sqrt{2} \right)^{n+1}  \right)
+\end{equation}
+\end{example}
+
+
+\section{Graph Theory}
+\label{sec:graph-theory}
+
+\begin{definition}{Graph}{}
+A \textbf{Graph} \(G\) consists of a set of vertices \(V\) and a (multi-)set of edges (which are 2-subsets of \(V\) or pairs for directed graphs).
+\end{definition}
+
+\begin{definition}{}{}
+  Let \(G\) be a graph and \(x, y\) vertices in \(G\) (\(x=y\) is allowed).
+  \begin{itemize}
+  \item A \textbf{walk} from \(x\) to \(y\) is a sequence
+\begin{equation}
+\label{eq:94}
+x= v_0,e_1,v_1,e_2,\dots, e_n, v_n=y
+\end{equation}
+alternating between vertives and edges, such that \(e_k\) is between \(v_k\) and \(v_{k-1}\).
+\item A walk from \(x\) to \(y\) where \(x=y\) is called a \textbf{closed walk}.
+\item A walk with no repeated edges is called a \textbf{trail}.
+\item A closed trail is called a \textbf{circuit}.
+\item A walk with no repeated vertices is called a \textbf{path}.
+\item A circuit that is also a path, i.e. a closed walk with no repeated edges and no repeated vertices, is called a \textbf{cycle}.
+  \end{itemize}
+
+\end{definition}
+
+
+% TODO: Fix Binom,
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

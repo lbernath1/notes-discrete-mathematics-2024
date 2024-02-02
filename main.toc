@@ -1,0 +1,25 @@
+\babel@toc {english}{}\relax 
+\contentsline {section}{\numberline {1}Overview}{3}{section.1}%
+\contentsline {section}{\numberline {2}Basic Combinatorics}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Two basic principles}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Permutations}{4}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Combinatorics}{4}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Pigeonhole principle}{5}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Counting relations and functions}{6}{subsection.2.5}%
+\contentsline {subsubsection}{\numberline {2.5.1}Injective functions}{7}{subsubsection.2.5.1}%
+\contentsline {subsubsection}{\numberline {2.5.2}The principle of exclusion/inclusion}{7}{subsubsection.2.5.2}%
+\contentsline {subsubsection}{\numberline {2.5.3}Counting surjective functions}{9}{subsubsection.2.5.3}%
+\contentsline {section}{\numberline {3}Generating functions}{11}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Motivating example}{11}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Terminology and basic methods}{12}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Newton's Binomial Theorem}{14}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}\enquote {Partitions} of integers}{15}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Exponential generating functions}{16}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Summing a sequence}{18}{subsection.3.6}%
+\contentsline {section}{\numberline {4}Recurrence relations}{19}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Method 1: Generating function}{19}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Method 2: Linear Algebra}{19}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Method 3: The characteristic equation}{20}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Non-homogeneous recurrence relations}{23}{subsection.4.4}%
+\contentsline {section}{\numberline {5}Graph Theory}{25}{section.5}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
