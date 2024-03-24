@@ -22,4 +22,19 @@
 \contentsline {subsection}{\numberline {4.3}Method 3: The characteristic equation}{20}{subsection.4.3}%
 \contentsline {subsection}{\numberline {4.4}Non-homogeneous recurrence relations}{23}{subsection.4.4}%
 \contentsline {section}{\numberline {5}Graph Theory}{25}{section.5}%
+\contentsline {section}{\numberline {6}Rings and Fields}{29}{section.6}%
+\contentsline {subsection}{\numberline {6.1}The ring \(ℤ_n\)}{30}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Homomorphisms and Isomorphisms of rings}{32}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Fermat's little Theorem}{33}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}The Chinese remainder theorem}{35}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Fields and vector spaces}{36}{subsection.6.5}%
+\contentsline {section}{\numberline {7}Introduction to Coding theory}{38}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Some definitions}{39}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Perfect codes}{40}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Linear codes}{42}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Finding the separation from the control matrix}{45}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Detection and correction of linear codes}{45}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.6}Hamming codes}{47}{subsection.7.6}%
+\contentsline {subsection}{\numberline {7.7}Reed-Solomon codes}{48}{subsection.7.7}%
+\contentsline {subsection}{\numberline {7.8}Reed-Muller codes}{50}{subsection.7.8}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
