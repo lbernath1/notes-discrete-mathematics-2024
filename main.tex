@@ -5,21 +5,25 @@
 
 \tableofcontents{}
 
+\vfill
+
+\emph{Disclaimer:} These are my personal notes for the lecture, so I do not guarantee correctness. If you come across errors, feel free to file an issue.
+
 \pagebreak
 
 \section{Overview}
 \label{sec:overview}
 
 \begin{itemize}
-	\item  First a few lectures (app. two weeks) on \textbf{combinatorics}: The art of counting
-	      \begin{itemize}
-		      \item Basic combinatorics
-		      \item Generating functions
-		      \item Recursion
-	      \end{itemize}
-	\item \textbf{Graph theory} % (unfortunately just two lectures, but since its the first time in 20 years that he holds the lecture, so he won't make adjustments to the syllabus)
-	\item \textbf{Rings and (finite) fields}
-	\item \textbf{Coding theory}: take a message and add things such that it is less likely to be corrupted.
+  \item  First a few lectures (app. two weeks) on \textbf{combinatorics}: The art of counting
+        \begin{itemize}
+          \item Basic combinatorics
+          \item Generating functions
+          \item Recursion
+        \end{itemize}
+  \item \textbf{Graph theory} % (unfortunately just two lectures, but since its the first time in 20 years that he holds the lecture, so he won't make adjustments to the syllabus)
+  \item \textbf{Rings and (finite) fields}
+  \item \textbf{Coding theory}: take a message and add things such that it is less likely to be corrupted.
 \end{itemize}
 
 
@@ -43,10 +47,10 @@ Now change the problem a little bit. \\
 
 \textbf{First solution:}
 \begin{itemize}
-	\item 1-course meals: \(6\)
-	\item main+starter: \(5⋅6=30\)
-	\item main+dessert: \(6⋅4=24\)
-	\item 3-course: \(5⋅6⋅4=120\)
+  \item 1-course meals: \(6\)
+  \item main+starter: \(5⋅6=30\)
+  \item main+dessert: \(6⋅4=24\)
+  \item 3-course: \(5⋅6⋅4=120\)
 \end{itemize}
 Since they are mutually exclusive, total is the sum so \(180\).
 
@@ -66,12 +70,12 @@ If we just permute \(2\) of the elements (2-permutation) the total number is \(4
 In general for permuting \(k\) elements out of \(n\) elements we have \(\frac{n!}{(n-k)!}\), but to compute this better cancel them out before.
 
 \begin{example}{How many 5 letter ``words'' can we form from the letters in a) BROWN b) GREEN c) MATHEMATICS.}{}
-	% We use words here very lightly but this is mathematics not linguistics, so we can not halt ourselves with things like words existing
-	\begin{enumerate}[label=\alph{*})]
-		\item\label{item:1} \(5\overset{!}{=}120\)
-		\item\label{item:2} If the two ``E''s were distinguishable this would be easy and also just be \(5!\). So lets make them distinguishable, but then we double count. We count every word exactly twice, because you can exchange the ``E''s in both words. So the solution is \(5!/2\overset{!}{=}60\)
-		\item\label{item:3} In this case we have \(\frac{11!}{2!2!2!}\)
-	\end{enumerate}
+  % We use words here very lightly but this is mathematics not linguistics, so we can not halt ourselves with things like words existing
+  \begin{enumerate}[label=\alph{*})]
+    \item\label{item:1} \(5\overset{!}{=}120\)
+    \item\label{item:2} If the two ``E''s were distinguishable this would be easy and also just be \(5!\). So lets make them distinguishable, but then we double count. We count every word exactly twice, because you can exchange the ``E''s in both words. So the solution is \(5!/2\overset{!}{=}60\)
+    \item\label{item:3} In this case we have \(\frac{11!}{2!2!2!}\)
+  \end{enumerate}
 \end{example}
 
 \subsection{Combinatorics}
@@ -87,37 +91,37 @@ But these can be rearanged in \(k!\) ways (and still be the same subset).
 
 So in total there are
 \begin{equation}
-	\label{eq:1}
-	\binom{n}{k} = \frac{n!}{(n-k)!k!} = C(n, k) = {}^{n}_{k}C
+  \label{eq:1}
+  \binom{n}{k} = \frac{n!}{(n-k)!k!} = C(n, k) = {}^{n}_{k}C
 \end{equation}
 different subsets. (One says \enquote{\(n\) choose \(k\)} in english, not \(n\) over \(k\),\footnote{In Swedish they say \enquote{\(n\) över \(k\)} as in German, where one says \enquote{\(n\) über \(k\)}} because the ladder mostly means \(\frac{n}{k}\).
 
 These are also called binomial coefficients because they are the coefficients of a binomial
 \begin{equation}
-	\label{eq:2}
-	(a+b)^{n} = ∑_{k=1}^{n} \binom{n}{k} a^{n-k} b^{k}
+  \label{eq:2}
+  (a+b)^{n} = ∑_{k=1}^{n} \binom{n}{k} a^{n-k} b^{k}
 \end{equation}
 This is because \((a+b)^{n}=(a+b)(a+b)\dots(a+b)\) and at each factor you choose either \(a\) or \(b\). So in a non-commutative ring there would be \(2^{n}\) summands. But using commutativity many factors are the same (e.g. \(a²ba^{n-3}=a^{n-1}b\)). All the terms have the order \(n\). But in how many terms the \(b\) is chosen exactly \(k\) times? It is \(\binom{n}{k}\).
 
 From that it also follows that
 \begin{equation}
-	\label{eq:3}
-	∑_{k=0}^{n} \binom{n}{k} = 2^{n}
+  \label{eq:3}
+  ∑_{k=0}^{n} \binom{n}{k} = 2^{n}
 \end{equation}
 
 \begin{example}{We have 10 (identical) cookies, and want to distribute them among 4 children.}{}
-	The idea is to include 3 lines so in the end there are \(\frac{13!}{3!10!}\).
+  The idea is to include 3 lines so in the end there are \(\frac{13!}{3!10!}\).
 
-	If every child should have at least 1 cookie first hand out one cookie to every child and then do the process with the remaining cookies.
+  If every child should have at least 1 cookie first hand out one cookie to every child and then do the process with the remaining cookies.
 \end{example}
 
 \begin{example}{How many integer solutions are there to \(x_1+x_2+ x_3+x_4=20\) with \(x_1,x_2≥0, x_3≥3, x_4≥-1\)}{}
-	We can solve this by first doing a change of variables \(y_1=x_1, y_2=x_2, y_3=x_3-3, y_4=x_4+1\) then the new equation is
-	\begin{equation}
-		\label{eq:4}
-		y_1+y_2+y_3+y_4=x_1+x_2+x_3+x_4-2 = 18
-	\end{equation}
-	with \(y_k≥0\). There then will be \(\binom{18+3}{3}\) number of solutions as before.
+  We can solve this by first doing a change of variables \(y_1=x_1, y_2=x_2, y_3=x_3-3, y_4=x_4+1\) then the new equation is
+  \begin{equation}
+    \label{eq:4}
+    y_1+y_2+y_3+y_4=x_1+x_2+x_3+x_4-2 = 18
+  \end{equation}
+  with \(y_k≥0\). There then will be \(\binom{18+3}{3}\) number of solutions as before.
 \end{example}
 
 \subsection{Pigeonhole principle}
@@ -133,152 +137,152 @@ Then he took a lot of examples.
 \label{sec:count-relat-funct}
 
 \begin{definition}{}{}
-	Let \(A\) and \(B\) be sets. Then we can form the Cartesian product
-	\begin{equation}
-		\label{eq:5}
-		A×B= \left\{ (a,b); a∈A, b∈B \right\}
-	\end{equation}
+  Let \(A\) and \(B\) be sets. Then we can form the Cartesian product
+  \begin{equation}
+    \label{eq:5}
+    A×B= \left\{ (a,b); a∈A, b∈B \right\}
+  \end{equation}
 \end{definition}
 \begin{remark}{}{}
-	It holds that if \(\abs{A}=n\), \(\abs{B=m}\) then \(\abs{A×B}=n⋅m\).
+  It holds that if \(\abs{A}=n\), \(\abs{B=m}\) then \(\abs{A×B}=n⋅m\).
 \end{remark}
 
 \begin{definition}{}{}
-	A relation on \(A\) and \(B\) is a subset of \(A×B\).
+  A relation on \(A\) and \(B\) is a subset of \(A×B\).
 \end{definition}
 \begin{example}{}{}
-	Familiar example: \(A=B=ℤ\), \(≤\). Then e.g. \((3,4)∈≤\), usually we write \(3≤4\).
+  Familiar example: \(A=B=ℤ\), \(≤\). Then e.g. \((3,4)∈≤\), usually we write \(3≤4\).
 \end{example}
 
 Let \(\abs{A}=n, \abs{B}=m\). How many possible relations on \(A\) and \(B\) are there?
 \begin{proposition}{}{}
-	There are \(2^{nm}\) relations (= \# of subsets) on \(A×B\) if \(\abs{A}=n, \abs{B}=m\).
+  There are \(2^{nm}\) relations (= \# of subsets) on \(A×B\) if \(\abs{A}=n, \abs{B}=m\).
 \end{proposition}
 
 If you want you can try to find the number of equivalence relations. (Those are reflexive, symmetric and transitive.)
 
 How is a function defined?
 \begin{definition}{}{}
-	A function \(f:A→B\) is a relation on \(A\) and \(B\), (i.e. a subset of \(A×B\)) with the property that \(∀a∈A ∃! b∈B\), s.t. \((a,b)∈f\). Normally, we write \(f(a)=b\).
+  A function \(f:A→B\) is a relation on \(A\) and \(B\), (i.e. a subset of \(A×B\)) with the property that \(∀a∈A ∃! b∈B\), s.t. \((a,b)∈f\). Normally, we write \(f(a)=b\).
 \end{definition}
 
 \begin{proposition}{}{}
-	Let \(A, B\) be finite sets, with \(\abs{A}=n, \abs{B}=m\). How many functions \(f:A→B\) are there?\\
-	There are \(m^{n}\) because we have \(m\) choices for each of the \(n\) elements in \(A\).
+  Let \(A, B\) be finite sets, with \(\abs{A}=n, \abs{B}=m\). How many functions \(f:A→B\) are there?\\
+  There are \(m^{n}\) because we have \(m\) choices for each of the \(n\) elements in \(A\).
 \end{proposition}
 
 \begin{remark}{}{}
-	Let \(f: A → \left\{ 1, 0 \right\} \). We can identify a subset \(\tilde{A}⊆A\) by \(f(a) = \begin{cases} 1 & \text{ if } a∈\tilde{A} \\ 0 & \text{ if } a ∉ \tilde{A} \end{cases}\).
+  Let \(f: A → \left\{ 1, 0 \right\} \). We can identify a subset \(\tilde{A}⊆A\) by \(f(a) = \begin{cases} 1 & \text{ if } a∈\tilde{A} \\ 0 & \text{ if } a ∉ \tilde{A} \end{cases}\).
 
-	This is the reason that the power set of \(A\), i.e. the set of all subsets of \(A\) is often denoted by \(2^{A}\).
+  This is the reason that the power set of \(A\), i.e. the set of all subsets of \(A\) is often denoted by \(2^{A}\).
 \end{remark}
 
 \subsubsection{Injective functions}
 \label{sec:injective-functions}
 
 \begin{definition}{Injective functions}{}
-	\(f:A→B\) is called \textbf{injective} if
+  \(f:A→B\) is called \textbf{injective} if
 
-	\begin{equation}
-		\label{eq:6}
-		f(a)=f(b)⟹ a=b
-	\end{equation}
-	(or if you prefer \(a≠b⟹f(a)≠f(b)\).)
+  \begin{equation}
+    \label{eq:6}
+    f(a)=f(b)⟹ a=b
+  \end{equation}
+  (or if you prefer \(a≠b⟹f(a)≠f(b)\).)
 \end{definition}
 
 \begin{proposition}{}{}
-	Let \(A\), \(B\) be finite sets, \(\abs{A}=n, \abs{B}=m\). How many injective functions \(f:A→B\) are there?\\
+  Let \(A\), \(B\) be finite sets, \(\abs{A}=n, \abs{B}=m\). How many injective functions \(f:A→B\) are there?\\
 
-	If \(m<n\) there are no injective functions \(A→B\).
+  If \(m<n\) there are no injective functions \(A→B\).
 
-	If \(m≥n\), then \(f(a_1)\) has \(m\) possible values, \(f(a_2)\) has \(m-1\) possible values. ...
+  If \(m≥n\), then \(f(a_1)\) has \(m\) possible values, \(f(a_2)\) has \(m-1\) possible values. ...
 
-	The total number thus is \(\frac{m!}{(m-n)!}\).
+  The total number thus is \(\frac{m!}{(m-n)!}\).
 \end{proposition}
 
 \subsubsection{The principle of exclusion/inclusion}
 \label{sec:princ-excl}
 
 \begin{proposition}{}{}
-	Let \(A, B\) be finite sets, \(\abs{A}=n\), \(\abs{B}=m\).
-	\begin{equation}
-		\label{eq:7}
-		\abs{A \cup B} = \abs{A} + \abs{B} - \abs{A \cap B}.
-	\end{equation}
+  Let \(A, B\) be finite sets, \(\abs{A}=n\), \(\abs{B}=m\).
+  \begin{equation}
+    \label{eq:7}
+    \abs{A \cup B} = \abs{A} + \abs{B} - \abs{A \cap B}.
+  \end{equation}
 
-	How about three sets?
-	\begin{equation}
-		\label{eq:8}
-		\abs{A\cup B \cup C} = \abs{A} + \abs{B} + \abs{C} - \abs{A\cap B} - \abs{A \cap C} - \abs{B \cap C} + \abs{A\cap B \cap C}.
-	\end{equation}
+  How about three sets?
+  \begin{equation}
+    \label{eq:8}
+    \abs{A\cup B \cup C} = \abs{A} + \abs{B} + \abs{C} - \abs{A\cap B} - \abs{A \cap C} - \abs{B \cap C} + \abs{A\cap B \cap C}.
+  \end{equation}
 \end{proposition}
 
 More generally:
 \begin{proposition}{}{}
-	More generally:
-	\begin{equation}
-		\label{eq:9}
-		\abs{A_1 \cup A_2 \cup \dots \cup A_n} = ∑_{k=1}^{n} (-1)^{k-1} ∑_{\text{all $k$-subsets} \left\{ m_1, \dots, m_k \right\} \text{ of } \left\{ 1, \dots, n \right\}  } \abs{A_{m_1} \cap \dots \cap A_{m_{k}}}
-	\end{equation}
+  More generally:
+  \begin{equation}
+    \label{eq:9}
+    \abs{A_1 \cup A_2 \cup \dots \cup A_n} = ∑_{k=1}^{n} (-1)^{k-1} ∑_{\text{all $k$-subsets} \left\{ m_1, \dots, m_k \right\} \text{ of } \left\{ 1, \dots, n \right\}  } \abs{A_{m_1} \cap \dots \cap A_{m_{k}}}
+  \end{equation}
 \end{proposition}
 
 \begin{example}{How many integers in \(\left\{ 1, \dots, 100 \right\} \) are not divisible by any of \(2, 3, 5\)?}{}
 
-	Let's count the complement instead. Let \(A_k\) be the set of integers in \(A\) that are divisible by \(k\). So:
-	\begin{align}
-		\label{eq:10}
-		 & \abs{A_2 \cup A_3 \cup A_5}                                                                              \\
-		 & = \abs{A_2} + \abs{A_3} + \abs{A_5} - \abs{A_2∩ A_3} - \abs{A_2∩A_5} - \abs{A_3∩A_5} + \abs{A_2∩A_3∩A_5} \\
-		 & = \abs{A_2} + \abs{A_3} + \abs{A_5} - \abs{A_6} - \abs{A_{10}} - \abs{A_{15}} + \abs{A_{30}}             \\
-		 & = \left\lfloor \frac{100}{2} \right\rfloor + \left\lfloor \frac{100}{3} \right\rfloor   + \dots          \\
-		 & = 50 + 33 + 20 - 16 - 10 - 6 + 3 = 74
-	\end{align}
-	Hence  26 are not.
+  Let's count the complement instead. Let \(A_k\) be the set of integers in \(A\) that are divisible by \(k\). So:
+  \begin{align}
+    \label{eq:10}
+     & \abs{A_2 \cup A_3 \cup A_5}                                                                              \\
+     & = \abs{A_2} + \abs{A_3} + \abs{A_5} - \abs{A_2∩ A_3} - \abs{A_2∩A_5} - \abs{A_3∩A_5} + \abs{A_2∩A_3∩A_5} \\
+     & = \abs{A_2} + \abs{A_3} + \abs{A_5} - \abs{A_6} - \abs{A_{10}} - \abs{A_{15}} + \abs{A_{30}}             \\
+     & = \left\lfloor \frac{100}{2} \right\rfloor + \left\lfloor \frac{100}{3} \right\rfloor   + \dots          \\
+     & = 50 + 33 + 20 - 16 - 10 - 6 + 3 = 74
+  \end{align}
+  Hence  26 are not.
 \end{example}
 \begin{example}{}{}
-	How many permutations of the letters in FRAGMENT do not contain the substrings TAG, ME, MAG.
+  How many permutations of the letters in FRAGMENT do not contain the substrings TAG, ME, MAG.
 
-	There are \(8!\) permutations.\\
-	How many contain the substring TAG? TAG, F, R, M, E, N so \(6!\)\\
-	How many contain the substring ME? \(7!\)\\
-	How many contain the substring MAG? \(6!\)\\
+  There are \(8!\) permutations.\\
+  How many contain the substring TAG? TAG, F, R, M, E, N so \(6!\)\\
+  How many contain the substring ME? \(7!\)\\
+  How many contain the substring MAG? \(6!\)\\
 
-	How many contain TAG and ME? \(5!\)\\
-	How many contain TAG and MAG? 0\\
-	How many contain ME and MAG? 0\\
-	How many contain TAG, ME and MAG? 0\\
+  How many contain TAG and ME? \(5!\)\\
+  How many contain TAG and MAG? 0\\
+  How many contain ME and MAG? 0\\
+  How many contain TAG, ME and MAG? 0\\
 
-	Inclusion/Exclusion gives us
-	\begin{equation}
-		\label{eq:11}
-		8! - 6! - 7! - 6! + 5! = 33960
-	\end{equation}
+  Inclusion/Exclusion gives us
+  \begin{equation}
+    \label{eq:11}
+    8! - 6! - 7! - 6! + 5! = 33960
+  \end{equation}
 \end{example}
 As an exercise do the same thing, but start with a word, that has a repeat, or two repeats, while one is in the condition and the other one not.
 
 \begin{example}{Derangements}{}
-	Let us compute the number of permutations of \(\left\{ 1, \dots, n \right\} \) without fixpoints, i.e. the number \(k\) is never in the $k$th spot. A derangement is a permutation without a fixed point.
+  Let us compute the number of permutations of \(\left\{ 1, \dots, n \right\} \) without fixpoints, i.e. the number \(k\) is never in the $k$th spot. A derangement is a permutation without a fixed point.
 
-	Let \(A_k\) be the set of all permutations fixing \(k\).
-	\begin{align}
-		\label{eq:12}
-		\abs{A_1 ∪ A_2 ∪ \dots ∪ A_n}
-		= & \abs{A_1} + \abs{A_2} + \dots + \abs{A_n}     \\
-		  & -\abs{A_1 ∩ A_2} - \abs{A_1∩A_2} - \dots      \\
-		  & +\abs{A_1∩A_2∩A_3} + \abs{A_1∩A_2∩A_4}+ \dots \\
-		  & - \dots
-	\end{align}
-	This is equal to:
-	\begin{equation}
-		\label{eq:13}
-		\binom{n}{1}(n-1) - \binom{n}{2}(n-2)! + \binom{n}{3}(n-3)! - \dots = n! - \frac{n!}{2!} + \frac{n!}{3!} - \dots = n! \left( 1 - \frac{1}{2!} + \frac{1}{3!} - \frac{1}{4!} + \dots \right)
-	\end{equation}
+  Let \(A_k\) be the set of all permutations fixing \(k\).
+  \begin{align}
+    \label{eq:12}
+    \abs{A_1 ∪ A_2 ∪ \dots ∪ A_n}
+    = & \abs{A_1} + \abs{A_2} + \dots + \abs{A_n}     \\
+      & -\abs{A_1 ∩ A_2} - \abs{A_1∩A_2} - \dots      \\
+      & +\abs{A_1∩A_2∩A_3} + \abs{A_1∩A_2∩A_4}+ \dots \\
+      & - \dots
+  \end{align}
+  This is equal to:
+  \begin{equation}
+    \label{eq:13}
+    \binom{n}{1}(n-1) - \binom{n}{2}(n-2)! + \binom{n}{3}(n-3)! - \dots = n! - \frac{n!}{2!} + \frac{n!}{3!} - \dots = n! \left( 1 - \frac{1}{2!} + \frac{1}{3!} - \frac{1}{4!} + \dots \right)
+  \end{equation}
 
-	The total number of derangements is \(n!\) minus this, so
-	\begin{equation}
-		\label{eq:14}
-		n!\left(1 - 1 + \frac{1}{2!} - \frac{1}{3!} + \frac{1}{4!} - \dots \right) ≈ \frac{n!}{e}
-	\end{equation}
+  The total number of derangements is \(n!\) minus this, so
+  \begin{equation}
+    \label{eq:14}
+    n!\left(1 - 1 + \frac{1}{2!} - \frac{1}{3!} + \frac{1}{4!} - \dots \right) ≈ \frac{n!}{e}
+  \end{equation}
 \end{example}
 
 
@@ -286,61 +290,61 @@ As an exercise do the same thing, but start with a word, that has a repeat, or t
 \label{sec:injective-functions-1}
 
 \begin{definition}{Surjectivity}{}
-	A function \(f:A→B\) is \textbf{surjective} if \(∀b∈B, ∃a∈A: f(a)=b\).
+  A function \(f:A→B\) is \textbf{surjective} if \(∀b∈B, ∃a∈A: f(a)=b\).
 \end{definition}
 
 \begin{proposition}{}{}
-	Assume \(A, B\) are finite, \(\abs{A}=m, \abs{B}=n\), \(m≥n\).
-	\begin{equation}
-		\label{eq:15}
-		A=\left\{ a_1, a_2, \dots, a_n \right\} , B= \left\{ b_1, b_2, \dots, b_n \right\}
-	\end{equation}
+  Assume \(A, B\) are finite, \(\abs{A}=m, \abs{B}=n\), \(m≥n\).
+  \begin{equation}
+    \label{eq:15}
+    A=\left\{ a_1, a_2, \dots, a_n \right\} , B= \left\{ b_1, b_2, \dots, b_n \right\}
+  \end{equation}
 
-	How many surjective functions \(f:A→B\) are there?
+  How many surjective functions \(f:A→B\) are there?
 
-	Let \(X_j= \left\{ f: A→B, b_j∉f(A) \right\} \).
+  Let \(X_j= \left\{ f: A→B, b_j∉f(A) \right\} \).
 
-	Note: \(f\) is surjektive iff \(f∉X_1∪\dots∪X_n\).
+  Note: \(f\) is surjektive iff \(f∉X_1∪\dots∪X_n\).
 
-	\begin{align}
-		\label{eq:16}
-		\abs{X_1 ∪ X_2 ∪ \dots ∪ X_n} =
-		 & \abs{X_1} + \abs{X_2} + \dots + \abs{X_n}                                         \\
-		 & -\abs{X_1 ∩ X_2} - \abs{X_1∩X_2} - \dots                                          \\
-		 & +\abs{X_1∩X_2∩X_3} + \abs{X_1∩X_2∩X_4}+ \dots                                     \\
-		 & - \dots                                                                           \\
-		 & = \binom{n}{1} (n-1)^{m} - \binom{n}{2} (n-2)^{n} + \binom{n}{3}(n-3)^{m} - \dots
-	\end{align}
-	So the total number of surjections is
-	\begin{equation}
-		\label{eq:16}
-		\binom{n}{0} n^{m}- \binom{n}{1} (n-1)^{m} + \binom{n}{2} (n-2)^{n} - \binom{n}{3}(n-3)^{m} + \dots = ∑_{k=0}^{n} (-1)^{k} \binom{n}{k}(n-k)^{m}
-	\end{equation}
+  \begin{align}
+    \label{eq:16}
+    \abs{X_1 ∪ X_2 ∪ \dots ∪ X_n} =
+     & \abs{X_1} + \abs{X_2} + \dots + \abs{X_n}                                         \\
+     & -\abs{X_1 ∩ X_2} - \abs{X_1∩X_2} - \dots                                          \\
+     & +\abs{X_1∩X_2∩X_3} + \abs{X_1∩X_2∩X_4}+ \dots                                     \\
+     & - \dots                                                                           \\
+     & = \binom{n}{1} (n-1)^{m} - \binom{n}{2} (n-2)^{n} + \binom{n}{3}(n-3)^{m} - \dots
+  \end{align}
+  So the total number of surjections is
+  \begin{equation}
+    \label{eq:16}
+    \binom{n}{0} n^{m}- \binom{n}{1} (n-1)^{m} + \binom{n}{2} (n-2)^{n} - \binom{n}{3}(n-3)^{m} + \dots = ∑_{k=0}^{n} (-1)^{k} \binom{n}{k}(n-k)^{m}
+  \end{equation}
 \end{proposition}
 
 \begin{proposition}{}{}
-	Distribute \(m\) distinct object in \(n\) identical container, leaving no container empty.\\
-	Or: In how many ways can we write \(\left\{ 1, 2, \dots, m \right\} \) as a union of \(n\) non-empty subsets?
+  Distribute \(m\) distinct object in \(n\) identical container, leaving no container empty.\\
+  Or: In how many ways can we write \(\left\{ 1, 2, \dots, m \right\} \) as a union of \(n\) non-empty subsets?
 
-	\textbf{Solution:} If the containers are distinct, this is the same as counting the number of surjective functions from \(\left\{ 1, \dots, m \right\} → \left\{ 1, \dots, n \right\}\).\\
-	But we can rearrange the containers in \(n!\) ways, so the number we're looking for is
-	\begin{equation}
-		\label{eq:17}
-		\frac{1}{n!}\#\left(\text{surjections} \right) = \frac{1}{n!}∑_{k=0}^{n} (-1)^{k} \binom{n}{k}(n-k)^{m}
-	\end{equation}
-	These are called Stirling numbers (of the second kind) and denoted by
-	\begin{equation}
-		\label{eq:41}
-		S(m, n)= \left\{ \begin{array}{c} m \\ n  \end{array} \right\}.
-	\end{equation}
+  \textbf{Solution:} If the containers are distinct, this is the same as counting the number of surjective functions from \(\left\{ 1, \dots, m \right\} → \left\{ 1, \dots, n \right\}\).\\
+  But we can rearrange the containers in \(n!\) ways, so the number we're looking for is
+  \begin{equation}
+    \label{eq:17}
+    \frac{1}{n!}\#\left(\text{surjections} \right) = \frac{1}{n!}∑_{k=0}^{n} (-1)^{k} \binom{n}{k}(n-k)^{m}
+  \end{equation}
+  These are called Stirling numbers (of the second kind) and denoted by
+  \begin{equation}
+    \label{eq:41}
+    S(m, n)= \left\{ \begin{array}{c} m \\ n  \end{array} \right\}.
+  \end{equation}
 \end{proposition}
 
 \begin{example}{}{}
-	Exercise: Give a  combinatorial proof of
-	\begin{equation}
-		\label{eq:18}
-		S(m+1,n) = S(m, n-1) + n S(m,n)
-	\end{equation}
+  Exercise: Give a  combinatorial proof of
+  \begin{equation}
+    \label{eq:18}
+    S(m+1,n) = S(m, n-1) + n S(m,n)
+  \end{equation}
 \end{example}
 
 
@@ -352,9 +356,9 @@ As an exercise do the same thing, but start with a word, that has a repeat, or t
 
 Motivating example: In how many ways can we distribute 8 apples between three (distinct) people \(A, B, C\) such that:
 \begin{enumerate}
-	\item\label{item:4} \(A\) gets an odd number of apples
-	\item\label{item:5} \(B\) gets at least one apple
-	\item\label{item:6} \(C\) gets two or three apples
+  \item\label{item:4} \(A\) gets an odd number of apples
+  \item\label{item:5} \(B\) gets at least one apple
+  \item\label{item:6} \(C\) gets two or three apples
 \end{enumerate}
 
 \textbf{Solution 1:} Split into cases:\\
@@ -371,21 +375,21 @@ If you just multiply them as they are this just corresponds to counting all poss
 
 One example way to do this: Add the infinitely many terms:
 \begin{equation}
-	\label{eq:19}
-	B(x) = ∑_{k=1}^{∞}x^{k} = x⋅∑_{k=0}^{∞}x^{k}= \frac{x}{1-x}
+  \label{eq:19}
+  B(x) = ∑_{k=1}^{∞}x^{k} = x⋅∑_{k=0}^{∞}x^{k}= \frac{x}{1-x}
 \end{equation}
 \begin{equation}
-	\label{eq:20}
-	A(x) = ∑_{k=0}^{∞} x^{2k+1} = x⋅ ∑_{k=1}^{∞} (x²)^{k} = \frac{x}{1-x²}
+  \label{eq:20}
+  A(x) = ∑_{k=0}^{∞} x^{2k+1} = x⋅ ∑_{k=1}^{∞} (x²)^{k} = \frac{x}{1-x²}
 \end{equation}
 \begin{equation}
-	\label{eq:21}
-	C(x) = x²(1+x)
+  \label{eq:21}
+  C(x) = x²(1+x)
 \end{equation}
 So:
 \begin{equation}
-	\label{eq:22}
-	A(x)B(x)C(x) = \frac{x}{1-x²} \frac{x}{1-x} x² (1+x) = \frac{x⁴}{(1-x)²}
+  \label{eq:22}
+  A(x)B(x)C(x) = \frac{x}{1-x²} \frac{x}{1-x} x² (1+x) = \frac{x⁴}{(1-x)²}
 \end{equation}
 I want the \(x^{8}\) coefficient in the expansion of \(\frac{x^{4}}{(1-x)²}\) which is the same thing as the \(x^{4}\) coefficient in the expansion of \(\frac{1}{(1-x)²}\).
 
@@ -400,104 +404,104 @@ The answer to our problem is thus \(\frac{g^{(4)}(0)}{4!}= \frac{120}{24}=5\).
 \label{sec:terminology}
 
 \begin{definition}{}{}
-	The function (really formal power series)
-	\begin{equation}
-		\label{eq:23}
-		a_0 + a_1x + x_2x² + a_3x³ +\dots
-	\end{equation}
-	is called the \textbf{generating function} of the sequence \((a_0, a_1, a_2, \dots)\).
+  The function (really formal power series)
+  \begin{equation}
+    \label{eq:23}
+    a_0 + a_1x + x_2x² + a_3x³ +\dots
+  \end{equation}
+  is called the \textbf{generating function} of the sequence \((a_0, a_1, a_2, \dots)\).
 \end{definition}
 
 \begin{example}{}{}
-	Look at the series
-	\begin{equation}
-		\label{eq:24}
-		\binom{n}{0}, \binom{n}{1}, \binom{n}{2}, \dots, \binom{n}{n}, 0, 0, \dots
-	\end{equation}
+  Look at the series
+  \begin{equation}
+    \label{eq:24}
+    \binom{n}{0}, \binom{n}{1}, \binom{n}{2}, \dots, \binom{n}{n}, 0, 0, \dots
+  \end{equation}
 
-	Its generating function is
-	\begin{equation}
-		\label{eq:25}
-		\binom{n}{0} + \binom{n}{1}x + \binom{n}{2}x² + \dots + \binom{n}{n} x^{n} = (1+x)^{n}
-	\end{equation}
+  Its generating function is
+  \begin{equation}
+    \label{eq:25}
+    \binom{n}{0} + \binom{n}{1}x + \binom{n}{2}x² + \dots + \binom{n}{n} x^{n} = (1+x)^{n}
+  \end{equation}
 \end{example}
 \begin{example}{}{}
-	The generating function of the sequence \((1, 1, \dots )\) is
-	\begin{equation}
-		\label{eq:26}
-		∑_{k=1}^{∞} x^{k} = \frac{x}{1-x}
-	\end{equation}
+  The generating function of the sequence \((1, 1, \dots )\) is
+  \begin{equation}
+    \label{eq:26}
+    ∑_{k=1}^{∞} x^{k} = \frac{x}{1-x}
+  \end{equation}
 \end{example}
 \begin{example}{}{}
-	The generating function of the sequence \((\underbrace{1, \dots, 1}_{n \text{ times}}, 0, 0, \dots)\) is
-	\begin{equation}
-		\label{eq:27}
-		∑_{k=1}^{n} x^{k} =x ∑_{k=0}^{n-1} x^{k} = x \frac{1 - x^{n}}{1-x}
-	\end{equation}
+  The generating function of the sequence \((\underbrace{1, \dots, 1}_{n \text{ times}}, 0, 0, \dots)\) is
+  \begin{equation}
+    \label{eq:27}
+    ∑_{k=1}^{n} x^{k} =x ∑_{k=0}^{n-1} x^{k} = x \frac{1 - x^{n}}{1-x}
+  \end{equation}
 \end{example}
 \begin{definition}{Some useful operations, Shifting, Differentiation, Products}{}
-	\begin{enumerate}
-		\item\label{item:7} \textbf{Shifting:} If \((a_0, a_1, a_2, \dots) \leftrightarrow A(x)\),\\
-		then \((\underbrace{0, 0, \dots, 0}_{n \text{ zeros}}, a_0, a_1, \dots) \leftrightarrow x^{n} A(x)\)
-		\item\label{item:8} \textbf{Differentiation:} If \(a_0, a_1, \dots) \leftrightarrow A(x)\), then \\
-		\((a_1, 2a_2, 3a_3, \dots) \leftrightarrow A'(x)\)
-		\item\label{item:9} \textbf{Products:} If \((a_0, a_1, \dots)\leftrightarrow A(x), (b_0, b_1, \dots) \leftrightarrow B\left(x \right)  \), \\
-		then
-		\begin{align}
-			\label{eq:29}
-			A(x)B(x)
-			 & = a_0b_0 + (a_0b_1 + a_1b_0)x + (a_0b_2+a_1b_1+a_2b_0)x² + \dots \\
-			 & = ∑_{n=0}^{∞} \left(∑_{k=0}^{n} a_k b_{n-k} \right) x^{n}
-		\end{align}
-	\end{enumerate}
+  \begin{enumerate}
+    \item\label{item:7} \textbf{Shifting:} If \((a_0, a_1, a_2, \dots) \leftrightarrow A(x)\),\\
+    then \((\underbrace{0, 0, \dots, 0}_{n \text{ zeros}}, a_0, a_1, \dots) \leftrightarrow x^{n} A(x)\)
+    \item\label{item:8} \textbf{Differentiation:} If \(a_0, a_1, \dots) \leftrightarrow A(x)\), then \\
+    \((a_1, 2a_2, 3a_3, \dots) \leftrightarrow A'(x)\)
+    \item\label{item:9} \textbf{Products:} If \((a_0, a_1, \dots)\leftrightarrow A(x), (b_0, b_1, \dots) \leftrightarrow B\left(x \right)  \), \\
+    then
+    \begin{align}
+      \label{eq:29}
+      A(x)B(x)
+       & = a_0b_0 + (a_0b_1 + a_1b_0)x + (a_0b_2+a_1b_1+a_2b_0)x² + \dots \\
+       & = ∑_{n=0}^{∞} \left(∑_{k=0}^{n} a_k b_{n-k} \right) x^{n}
+    \end{align}
+  \end{enumerate}
 \end{definition}
 \begin{example}{Exercise}{}
-	Compute the g.f. (=generating function) for \(0²,1²,2²,3²,\dots\).\\
-	\textbf{Solution:}
-	It is
-	\begin{equation}
-		\label{eq:28}
-		∑_{k=0}^{∞} k² x^{k} = \dots
-	\end{equation}
-	My idea: Let  \(f(a, k) = ∑_{k=0}^{∞} e^{ak} x^{k} = \frac{1}{1-xe^{a}}\).
+  Compute the g.f. (=generating function) for \(0²,1²,2²,3²,\dots\).\\
+  \textbf{Solution:}
+  It is
+  \begin{equation}
+    \label{eq:28}
+    ∑_{k=0}^{∞} k² x^{k} = \dots
+  \end{equation}
+  My idea: Let  \(f(a, k) = ∑_{k=0}^{∞} e^{ak} x^{k} = \frac{1}{1-xe^{a}}\).
 
-	Then the solution is just \(∂_{a}²f\eval_{a=0}\).
+  Then the solution is just \(∂_{a}²f\eval_{a=0}\).
 \end{example}
 
 \begin{example}{}{}
-	In how many ways can we fill a bag with \(n\) fruits (apples, bananas, organges, pears) in such a way that
-	\begin{enumerate}
-		\item\label{item:10} The number of apples is even
-		\item\label{item:11} The number of bananas is a multiple of 5
-		\item\label{item:12} There are at most 4 oranges
-		\item\label{item:13} There is a most 1 pear
-	\end{enumerate}
-	Let
-	\begin{align}
-		\label{eq:30}
-		A(x)
-		 & = 1 + x² + x^{4} + x^{6} + \dots = ∑_{k=0}^{∞} (x²)^{k} = \frac{1}{1-x²} \\
-		B(x)
-		 & = 1 + x^{5} + x^{10} + \dots = \frac{1}{1-x^{5}}                         \\
-		O(x)
-		 & = 1 + x + x²+x³+x^{4} = \frac{1-x^{5}}{1-x}                              \\
-		P(x)
-		 & = 1 + x
-	\end{align}
-	Therefore
-	\begin{equation}
-		\label{eq:31}
-		\frac{1}{1-x²} \frac{1}{1-x^{5}} \frac{1-x^{5}}{1-x} 1+x = \frac{1}{(1-x)²}
-	\end{equation}
-	How to compute this?\\
-	Two Options to compute this: Option 1:
-	\begin{equation}
-		\label{eq:32}
-		\frac{1}{1-x} \frac{1}{1-x} (1+x+x²+\dots)(1+x+x²+\dots) = 1 + 2x + 3x² + \dots = ∑_{n=0}^{n} (n+1)x^{n+1}
-	\end{equation}
-	Hence there are \(n+1\) ways to fill the bag with \(n\) fruits!
+  In how many ways can we fill a bag with \(n\) fruits (apples, bananas, organges, pears) in such a way that
+  \begin{enumerate}
+    \item\label{item:10} The number of apples is even
+    \item\label{item:11} The number of bananas is a multiple of 5
+    \item\label{item:12} There are at most 4 oranges
+    \item\label{item:13} There is a most 1 pear
+  \end{enumerate}
+  Let
+  \begin{align}
+    \label{eq:30}
+    A(x)
+     & = 1 + x² + x^{4} + x^{6} + \dots = ∑_{k=0}^{∞} (x²)^{k} = \frac{1}{1-x²} \\
+    B(x)
+     & = 1 + x^{5} + x^{10} + \dots = \frac{1}{1-x^{5}}                         \\
+    O(x)
+     & = 1 + x + x²+x³+x^{4} = \frac{1-x^{5}}{1-x}                              \\
+    P(x)
+     & = 1 + x
+  \end{align}
+  Therefore
+  \begin{equation}
+    \label{eq:31}
+    \frac{1}{1-x²} \frac{1}{1-x^{5}} \frac{1-x^{5}}{1-x} 1+x = \frac{1}{(1-x)²}
+  \end{equation}
+  How to compute this?\\
+  Two Options to compute this: Option 1:
+  \begin{equation}
+    \label{eq:32}
+    \frac{1}{1-x} \frac{1}{1-x} (1+x+x²+\dots)(1+x+x²+\dots) = 1 + 2x + 3x² + \dots = ∑_{n=0}^{n} (n+1)x^{n+1}
+  \end{equation}
+  Hence there are \(n+1\) ways to fill the bag with \(n\) fruits!
 
-	The second option is to see that the derivative of \(\frac{1}{1-x} \) is \(\frac{1}{(1-x)²}\).
+  The second option is to see that the derivative of \(\frac{1}{1-x} \) is \(\frac{1}{(1-x)²}\).
 \end{example}
 
 This method is great if the conditions are weird but not too weird. Some regularities in the conditions are needed, for example if the number of apples has to be a prime number than the generating function won't give you a closed form!
@@ -508,76 +512,76 @@ This method is great if the conditions are weird but not too weird. Some regular
 
 If \(n∈ℕ\) then
 \begin{equation}
-	\label{eq:33}
-	(1+x)^{n} = ∑_{k=0}^{n} \binom{n}{k} x^{k} \arr[=]{If we define the Binomial coefficient to be zero outside of its usual range.} ∑_{k=0}^{∞} \binom{n}{k} x^{k}
+  \label{eq:33}
+  (1+x)^{n} = ∑_{k=0}^{n} \binom{n}{k} x^{k} \arr[=]{If we define the Binomial coefficient to be zero outside of its usual range.} ∑_{k=0}^{∞} \binom{n}{k} x^{k}
 \end{equation}
 
 Newtons version says that if \(𝛼∈ℝ\) then
 \begin{equation}
-	\label{eq:34}
-	(1+x)^{𝛼} = ∑_{k=0}^{∞} \binom{𝛼}{k} x^{k}, \quad \quad \abs{x}<1
+  \label{eq:34}
+  (1+x)^{𝛼} = ∑_{k=0}^{∞} \binom{𝛼}{k} x^{k}, \quad \quad \abs{x}<1
 \end{equation}
 
 What is the binomial coefficient?
 \begin{equation}
-	\label{eq:35}
-	\binom{𝛼}{k} = \frac{𝛼!}{(𝛼-k)!k!} = \frac{𝛼(𝛼-1)\dots(𝛼-k+1)}{k!}
+  \label{eq:35}
+  \binom{𝛼}{k} = \frac{𝛼!}{(𝛼-k)!k!} = \frac{𝛼(𝛼-1)\dots(𝛼-k+1)}{k!}
 \end{equation}
 
 \textbf{Note:} If \(n\) is a positive integer, then
 \begin{align}
-	\label{eq:36}
-	\binom{-n}{k}
-	 & = \frac{(-n)(-n-1)(-n-2)\dots(-n-k+1)}{k!}      \\
-	 & = (-1)^{k} \frac{n(n+1) (n+2)\dots (n+k-1)}{k!} \\
-	 & = (-1)^{k} \binom{n+k-1}{k}
+  \label{eq:36}
+  \binom{-n}{k}
+   & = \frac{(-n)(-n-1)(-n-2)\dots(-n-k+1)}{k!}      \\
+   & = (-1)^{k} \frac{n(n+1) (n+2)\dots (n+k-1)}{k!} \\
+   & = (-1)^{k} \binom{n+k-1}{k}
 \end{align}
 
 
 
 \begin{example}{}{}
-	Assume we have 12 identical cookies and want to distribute amonst three (distinct) children. In how many ways can we do this if
-	\begin{enumerate}[label=(\alph{*})]
-		\item\label{item:14} Each child gets at least two cookies
-		\item\label{item:15} Each child gets at least 2 and at most 5 cookies.
-	\end{enumerate}
+  Assume we have 12 identical cookies and want to distribute amonst three (distinct) children. In how many ways can we do this if
+  \begin{enumerate}[label=(\alph{*})]
+    \item\label{item:14} Each child gets at least two cookies
+    \item\label{item:15} Each child gets at least 2 and at most 5 cookies.
+  \end{enumerate}
 
-	Focus on one child. Generating function?
-	\begin{equation}
-		\label{eq:37}
-		A(x)=x²+x³+\dots+x^{12}(+x^{13}+\dots), \quad B(x), C(x) \text{ same }
-	\end{equation}
-	We want to extract the \(x^{12}\) coefficient in the expansion of
-	\begin{equation}
-		\label{eq:38}
-		A(x)³ = \left( \frac{x²}{1-x} \right)³ = \frac{x^{6}}{(1-x)³}
-	\end{equation}
-	or the \(x^{6}\) coefficient of
-	\begin{equation}
-		\label{eq:39}
-		\frac{1}{(1-x)³} = ∑_{k=0}^{∞} \binom{-3}{k} (-x)^{k} = ∑_{k=0}^{∞} (-1)^{k} \binom{-3}{k} x^{k} = ∑_{k=0}^{∞} (-1)^{k}(-1)^{k} \binom{3+k-1}{k} x^{k}
-	\end{equation}
-	So the number of solutions is
-	\begin{equation}
-		\label{eq:40}
-		\binom{3+6-1}{6}= \binom{8}{6}=\binom{8}{2}= 28
-	\end{equation}
+  Focus on one child. Generating function?
+  \begin{equation}
+    \label{eq:37}
+    A(x)=x²+x³+\dots+x^{12}(+x^{13}+\dots), \quad B(x), C(x) \text{ same }
+  \end{equation}
+  We want to extract the \(x^{12}\) coefficient in the expansion of
+  \begin{equation}
+    \label{eq:38}
+    A(x)³ = \left( \frac{x²}{1-x} \right)³ = \frac{x^{6}}{(1-x)³}
+  \end{equation}
+  or the \(x^{6}\) coefficient of
+  \begin{equation}
+    \label{eq:39}
+    \frac{1}{(1-x)³} = ∑_{k=0}^{∞} \binom{-3}{k} (-x)^{k} = ∑_{k=0}^{∞} (-1)^{k} \binom{-3}{k} x^{k} = ∑_{k=0}^{∞} (-1)^{k}(-1)^{k} \binom{3+k-1}{k} x^{k}
+  \end{equation}
+  So the number of solutions is
+  \begin{equation}
+    \label{eq:40}
+    \binom{3+6-1}{6}= \binom{8}{6}=\binom{8}{2}= 28
+  \end{equation}
 
-	The solution of (b) is an exercise and in the lecture notes.
+  The solution of (b) is an exercise and in the lecture notes.
 
 \end{example}
 
 \subsection{\enquote{Partitions} of integers}
 \begin{equation}
-	\label{eq:42}
-	4 = 4 = 3+1=2+2=2+2+1+1=1+1+1+1
+  \label{eq:42}
+  4 = 4 = 3+1=2+2=2+2+1+1=1+1+1+1
 \end{equation}
 How many partitions of \(n\) are there?
 \begin{align}
-	\label{eq:43}
-	 & \left(1+x+x²+x³+\dots \right) \left(1+x²+x⁴+\dots \right) \left(1+x³+x⁶+\dots \right) \left(1+x^{4}+x^{8}+\dots \right) \dots \\
-	 & = \frac{1}{1-x} \frac{1}{1-x²} \frac{1}{1-x³}\dots                                                                            \\
-	 & = \prod_{k=1}^{∞} \frac{1}{1-x^{k}}
+  \label{eq:43}
+   & \left(1+x+x²+x³+\dots \right) \left(1+x²+x⁴+\dots \right) \left(1+x³+x⁶+\dots \right) \left(1+x^{4}+x^{8}+\dots \right) \dots \\
+   & = \frac{1}{1-x} \frac{1}{1-x²} \frac{1}{1-x³}\dots                                                                            \\
+   & = \prod_{k=1}^{∞} \frac{1}{1-x^{k}}
 \end{align}
 We cannot simplify this expression.
 
@@ -585,10 +589,10 @@ But simplified versions an be solved by hand.
 
 For example: How many partitions of \(n\) are there, if we only allow 1's and 2's?
 \begin{align}
-	\label{eq:44}
-	 & = \frac{1}{1-x} \frac{1}{1-x²}                                                             \\
-	 & = \frac{1}{2} \frac{1}{(1-x)²} + \frac{1}{4} \frac{1}{1-x} + \frac{1}{4} \frac{1}{1+x}     \\
-	 & = ∑_{k=0}^{∞} \frac{1}{2} \binom{-2}{k} (-x)^{k} + \frac{1}{4} x^{k} + \frac{1}{4}(-x)^{k}
+  \label{eq:44}
+   & = \frac{1}{1-x} \frac{1}{1-x²}                                                             \\
+   & = \frac{1}{2} \frac{1}{(1-x)²} + \frac{1}{4} \frac{1}{1-x} + \frac{1}{4} \frac{1}{1+x}     \\
+   & = ∑_{k=0}^{∞} \frac{1}{2} \binom{-2}{k} (-x)^{k} + \frac{1}{4} x^{k} + \frac{1}{4}(-x)^{k}
 \end{align}
 Here we can fairly easily conpute the coefficient of \(x^{n}\).
 
@@ -599,76 +603,76 @@ Here we can fairly easily conpute the coefficient of \(x^{n}\).
 Good at solving counting problems where we want do distribute identical objects in distinct containers.
 
 \begin{example}{How many 4 letter \enquote{words} can we form out of AAABBC??}{}
-	If it where 6 letter word the answer would be \(\frac{6!}{3!2!}\).
+  If it where 6 letter word the answer would be \(\frac{6!}{3!2!}\).
 
-	But 4 letter words are more tricky because we then do not know, out of how many of which letters they consist of. One could try cases, but this is tedious and error prone, because there will be a lot of cases.
+  But 4 letter words are more tricky because we then do not know, out of how many of which letters they consist of. One could try cases, but this is tedious and error prone, because there will be a lot of cases.
 
-	One idea would be to solve \(a+b+c=4\), with \(0≤a≤3,0≤b≤2, 0≤c≤1\).\\
-	For each such solution, there are \(\frac{4!}{a!b!c!}\) possibilities. So sum over all solutions!
+  One idea would be to solve \(a+b+c=4\), with \(0≤a≤3,0≤b≤2, 0≤c≤1\).\\
+  For each such solution, there are \(\frac{4!}{a!b!c!}\) possibilities. So sum over all solutions!
 
-	Think of a generating function
-	\begin{equation}
-		\label{eq:45}
-		\left(1+ \frac{x}{1!} + \frac{x²}{2!} + \frac{x³}{3!} \right) \left(1+\frac{x}{1!} + \frac{x²}{2!} \right)  \left(1+ \frac{x}{1!} \right)
-	\end{equation}
+  Think of a generating function
+  \begin{equation}
+    \label{eq:45}
+    \left(1+ \frac{x}{1!} + \frac{x²}{2!} + \frac{x³}{3!} \right) \left(1+\frac{x}{1!} + \frac{x²}{2!} \right)  \left(1+ \frac{x}{1!} \right)
+  \end{equation}
 
-	The total number of 4 letter words is \(4!\) times the coefficient of \(x^{4}\) in the expansion.
+  The total number of 4 letter words is \(4!\) times the coefficient of \(x^{4}\) in the expansion.
 \end{example}
 
 \begin{example}{}{}
-	What is the exponential generating function of the sequence \(1, -2, 2², -2³,x⁴,-x⁵,\dots\)?\\
-	It is
-	\begin{equation}
-		\label{eq:46}
-		1+ \frac{(-2)}{1!}x + \frac{(-2)²}{2!}x² + \frac{(-2)³}{3!}x³+\dots=e^{-2x}
-	\end{equation}
+  What is the exponential generating function of the sequence \(1, -2, 2², -2³,x⁴,-x⁵,\dots\)?\\
+  It is
+  \begin{equation}
+    \label{eq:46}
+    1+ \frac{(-2)}{1!}x + \frac{(-2)²}{2!}x² + \frac{(-2)³}{3!}x³+\dots=e^{-2x}
+  \end{equation}
 \end{example}
 
 \begin{example}{}{}
-	Assume we have 48 flags: 12 red, 12 blue, 12 white, and 12 black.
+  Assume we have 48 flags: 12 red, 12 blue, 12 white, and 12 black.
 
-	How many signals can we send using 12 flags on a flagpole if
-	\begin{enumerate}[label=(\alph{*})]
-		\item\label{item:16} there are an even number of red flags
-		\item\label{item:17} there is at least one flag of each colour
-	\end{enumerate}
+  How many signals can we send using 12 flags on a flagpole if
+  \begin{enumerate}[label=(\alph{*})]
+    \item\label{item:16} there are an even number of red flags
+    \item\label{item:17} there is at least one flag of each colour
+  \end{enumerate}
 
-	a): The generating function of the red flags is
-	\begin{equation}
-		\label{eq:47}
-		\left(1+\frac{x²}{2} + \frac{x^{4}}{4!} + \dots + \frac{x^{12}}{12!} \right)
-	\end{equation}
-	But since if we had more than 12 red flags it wouldn't matter, because we are only using 12 flags in total, we can add the infinitely many terms for that to get an infinite series, which is much better for computation.\\
-	The same goes for the other colors. So the generating function of the whole problem is
-	\begin{align}
-		\label{eq:48}
-		f(x)
-		 & = \left(1+\frac{x²}{2} + \frac{x^{4}}{4!} + \dots + \frac{x^{12}}{12!} + \frac{x^{14}}{14!}+\dots \right) \left(1 + \frac{x^{1}}{1!}+\frac{x²}{2!}+\dots \right)³ \\
-		 & = \frac{e^{x}+e^{-x}}{2} e^{3x} = \frac{1}{2}\left(e^{4x}+e^{2x} \right)
-	\end{align}
-	The number we are looking for is \(12!\) times the \(x^{12}\)-coefficient in the expansion.
+  a): The generating function of the red flags is
+  \begin{equation}
+    \label{eq:47}
+    \left(1+\frac{x²}{2} + \frac{x^{4}}{4!} + \dots + \frac{x^{12}}{12!} \right)
+  \end{equation}
+  But since if we had more than 12 red flags it wouldn't matter, because we are only using 12 flags in total, we can add the infinitely many terms for that to get an infinite series, which is much better for computation.\\
+  The same goes for the other colors. So the generating function of the whole problem is
+  \begin{align}
+    \label{eq:48}
+    f(x)
+     & = \left(1+\frac{x²}{2} + \frac{x^{4}}{4!} + \dots + \frac{x^{12}}{12!} + \frac{x^{14}}{14!}+\dots \right) \left(1 + \frac{x^{1}}{1!}+\frac{x²}{2!}+\dots \right)³ \\
+     & = \frac{e^{x}+e^{-x}}{2} e^{3x} = \frac{1}{2}\left(e^{4x}+e^{2x} \right)
+  \end{align}
+  The number we are looking for is \(12!\) times the \(x^{12}\)-coefficient in the expansion.
 
-	\begin{equation}
-		\label{eq:49}
-		\frac{1}{2}(e^{4x}+e^{2x}) = \frac{1}{2} ∑_{k=0}^{∞} \frac{(4x)^{k}}{k!} + \frac{(2x)^{k}}{k!}
-	\end{equation}
-	so the \(x^{12}\) coefficient is \(\frac{1}{2}\left( \frac{4^{12}}{12!} + \frac{2^{12}}{12!}\right)\)
+  \begin{equation}
+    \label{eq:49}
+    \frac{1}{2}(e^{4x}+e^{2x}) = \frac{1}{2} ∑_{k=0}^{∞} \frac{(4x)^{k}}{k!} + \frac{(2x)^{k}}{k!}
+  \end{equation}
+  so the \(x^{12}\) coefficient is \(\frac{1}{2}\left( \frac{4^{12}}{12!} + \frac{2^{12}}{12!}\right)\)
 
-	So the number of signals is: \(\frac{1}{2} \left(4^{12}+2^{2} \right) \).
+  So the number of signals is: \(\frac{1}{2} \left(4^{12}+2^{2} \right) \).
 
-	b) The generating function is
-	\begin{align}
-		\label{eq:50}
-		\left(\frac{x}{1!} + \frac{x²}{2!}+ \frac{x³}{3!} + \dots \right)^{4}
-		 & = \left(e^{x}-1 \right)^{4} = e^{4x}-4e^{3x}+6e^{2x}-4e^{x}+1                                                            \\
-		 & = \left(∑_{k=0}^{∞} \frac{(4x)^{k}}{k!} - 4 \frac{(3x)^{k}}{k!} + 6 \frac{(2x)^{k}}{k!} - 4 \frac{x^{k}}{k!} \right) - 1
-	\end{align}
-	In particular, the \(x^{12}\) coefficient is
-	\begin{equation}
-		\label{eq:51}
-		\frac{4^{12}}{12!} - 4 \frac{3^{12}}{12!} + 6 \frac{2^{12}}{12!} - 4 \frac{1}{12!}
-	\end{equation}
-	So the number of signals is 12! times this, i.e. \(4^{12}-4 3^{12} + 6 2^{12} - 4\).
+  b) The generating function is
+  \begin{align}
+    \label{eq:50}
+    \left(\frac{x}{1!} + \frac{x²}{2!}+ \frac{x³}{3!} + \dots \right)^{4}
+     & = \left(e^{x}-1 \right)^{4} = e^{4x}-4e^{3x}+6e^{2x}-4e^{x}+1                                                            \\
+     & = \left(∑_{k=0}^{∞} \frac{(4x)^{k}}{k!} - 4 \frac{(3x)^{k}}{k!} + 6 \frac{(2x)^{k}}{k!} - 4 \frac{x^{k}}{k!} \right) - 1
+  \end{align}
+  In particular, the \(x^{12}\) coefficient is
+  \begin{equation}
+    \label{eq:51}
+    \frac{4^{12}}{12!} - 4 \frac{3^{12}}{12!} + 6 \frac{2^{12}}{12!} - 4 \frac{1}{12!}
+  \end{equation}
+  So the number of signals is 12! times this, i.e. \(4^{12}-4 3^{12} + 6 2^{12} - 4\).
 \end{example}
 
 \subsection{Summing a sequence}
@@ -676,58 +680,58 @@ Good at solving counting problems where we want do distribute identical objects 
 
 If \((a_0, a_1, a_2, \dots)\) has the ordinary generating function (ogf)
 \begin{equation}
-	\label{eq:52}
-	f(x) = a_0 + a_1x + a_2x²+\dots
+  \label{eq:52}
+  f(x) = a_0 + a_1x + a_2x²+\dots
 \end{equation}
 What is then the generating function for \(a_0, a_0+a_1, a_0+a_1+a_2, a_0+a_1+a_2+a_3\):
 
 \begin{equation}
-	\label{eq:53}
-	\left(a_0+a_1x+a_2x²+\dots\right) \underbrace{\left(1+x+x²+\dots \right) }_{= \frac{1}{1-x}} = a_0 + (a_0+a_1)x+ (a_0+a_1+a_2)x²+\dots
+  \label{eq:53}
+  \left(a_0+a_1x+a_2x²+\dots\right) \underbrace{\left(1+x+x²+\dots \right) }_{= \frac{1}{1-x}} = a_0 + (a_0+a_1)x+ (a_0+a_1+a_2)x²+\dots
 \end{equation}
 So the sequence of the partial sums has the generating function \(\frac{f(x)}{1-x}\)
 
 \begin{example}{}{}
-	What is \(0²+1²+2²+\dots+n²\)?\\
-	What is the generating function for \(0²,1²+2²+3²,\dots\)?\\
-	It is
-	\begin{equation}
-		\label{eq:55}
-		f(x)= \frac{x(x+1)}{(1-x)³}\quad \quad \text{(Exercise!)}
-	\end{equation}
-	The partial sums then have the generating function
-	\begin{equation}
-		\label{eq:56}
-		\frac{f(x)}{1-x} = \frac{x(1+x)}{(1-x)^{4}} = (x+x²)(1-x)^{-4}
-	\end{equation}
+  What is \(0²+1²+2²+\dots+n²\)?\\
+  What is the generating function for \(0²,1²+2²+3²,\dots\)?\\
+  It is
+  \begin{equation}
+    \label{eq:55}
+    f(x)= \frac{x(x+1)}{(1-x)³}\quad \quad \text{(Exercise!)}
+  \end{equation}
+  The partial sums then have the generating function
+  \begin{equation}
+    \label{eq:56}
+    \frac{f(x)}{1-x} = \frac{x(1+x)}{(1-x)^{4}} = (x+x²)(1-x)^{-4}
+  \end{equation}
 
-	We want the coefficient of \(x^{n}\) in the expansion of this!\\
-	\begin{equation}
-		\label{eq:57}
-		(x+x²) ∑_{k=0}^{∞} \binom{-4}{k} (-x)^{k}
-	\end{equation}
-	So the coefficient of \(x^{n}\) is
-	\begin{align}
-		\label{eq:58}
-		\binom{-4}{n-1} (-1)^{n-1} + \binom{-4}{n-2} (-1)^{n-2}
-		 & = \binom{n+2}{n-1} (-1)^{n-1}(-1)^{n-1} + \binom{n+1}{n-2} (-1)^{n-2} (-1)^{n-2} \\
-		 & = \binom{n+2}{3} + \binom{n+1}{3}                                                \\
-		 & \frac{(n+2)(n+1)n}{6} + \frac{(n+1)n(n-1)}{6}                                    \\
-		 & = \frac{1}{6} n(n+1)(2n+1)
-	\end{align}
+  We want the coefficient of \(x^{n}\) in the expansion of this!\\
+  \begin{equation}
+    \label{eq:57}
+    (x+x²) ∑_{k=0}^{∞} \binom{-4}{k} (-x)^{k}
+  \end{equation}
+  So the coefficient of \(x^{n}\) is
+  \begin{align}
+    \label{eq:58}
+    \binom{-4}{n-1} (-1)^{n-1} + \binom{-4}{n-2} (-1)^{n-2}
+     & = \binom{n+2}{n-1} (-1)^{n-1}(-1)^{n-1} + \binom{n+1}{n-2} (-1)^{n-2} (-1)^{n-2} \\
+     & = \binom{n+2}{3} + \binom{n+1}{3}                                                \\
+     & \frac{(n+2)(n+1)n}{6} + \frac{(n+1)n(n-1)}{6}                                    \\
+     & = \frac{1}{6} n(n+1)(2n+1)
+  \end{align}
 \end{example}
 
 
 \section{Recurrence relations}
 
 \begin{example}{}{}
-	\(1,1,2,3,5,8,13,...\) This is the fibonacci sequence where \(F_{n+2}=F_{n+1}+F_{n}, n≥1\) (or \(F_n=F_{n-1}+F_{n-2}, n≥3\).
+  \(1,1,2,3,5,8,13,...\) This is the fibonacci sequence where \(F_{n+2}=F_{n+1}+F_{n}, n≥1\) (or \(F_n=F_{n-1}+F_{n-2}, n≥3\).
 \end{example}
 The good thing with difference equations is that contrary to differential equations, it is at least obvious that there exists a solution.
 
 
 \begin{example}{}{}
-	\((n+1)! = (n+1)n!, 0!=1\)
+  \((n+1)! = (n+1)n!, 0!=1\)
 \end{example}
 
 We will mostly focus on linear recurrence relations (often of order 1 and 2).\\
@@ -741,29 +745,29 @@ There are at least three reasonable ways so solve such equations.
 \subsection{Method 1: Generating function}
 \label{sec:method-1:-generating}
 \begin{example}{}{}
-	\begin{equation}
-		\label{eq:59}
-		a_{n+2} - a_{n+1} - 2a_n = -4, \quad a_0=0, a_1=1
-	\end{equation}
-	Let \(f(x)=a_0+a_1x+a_2x²+\dots\). Multiply \cref{eq:59} by \(x^{n+2}\) and sum!
-	\begin{align}
-		\label{eq:54}
-		∑_{n=0}^{∞} \left( a_{n+2}x^{n+2} - a_{n+1} x^{n+2} - 2a_n x^{n+2} \right)
-		                                                                      & = ∑_{n=0}^{∞} -4 x^{n+2}
-		= \frac{-4x²}{1-x}                                                                               \\
-		\left(f(x) - a_0 - a_1x \right) - x\left(f(x) - a_0 \right) - 2x²f(x) & =
-	\end{align}
-	Solve for \(f(x)\)!
-	\begin{equation}
-		\label{eq:60}
-		f(x) \left(1-x-2x² \right)  - x = \frac{-4x²}{1-x}
-	\end{equation}
-	So
-	\begin{equation}
-		\label{eq:61}
-		f(x) = \frac{-5x²+x}{(1-x-2x²)(1-x)} \arr[=]{partial fraction} \frac{2}{1-x} - \frac{1}{x+1} - \frac{1}{1-2x} - \frac{1}{1-2x}
-	\end{equation}
-	this is the sum of three geometric series so it is easy to see the \(n\)th coefficient.
+  \begin{equation}
+    \label{eq:59}
+    a_{n+2} - a_{n+1} - 2a_n = -4, \quad a_0=0, a_1=1
+  \end{equation}
+  Let \(f(x)=a_0+a_1x+a_2x²+\dots\). Multiply \cref{eq:59} by \(x^{n+2}\) and sum!
+  \begin{align}
+    \label{eq:54}
+    ∑_{n=0}^{∞} \left( a_{n+2}x^{n+2} - a_{n+1} x^{n+2} - 2a_n x^{n+2} \right)
+                                                                          & = ∑_{n=0}^{∞} -4 x^{n+2}
+    = \frac{-4x²}{1-x}                                                                               \\
+    \left(f(x) - a_0 - a_1x \right) - x\left(f(x) - a_0 \right) - 2x²f(x) & =
+  \end{align}
+  Solve for \(f(x)\)!
+  \begin{equation}
+    \label{eq:60}
+    f(x) \left(1-x-2x² \right)  - x = \frac{-4x²}{1-x}
+  \end{equation}
+  So
+  \begin{equation}
+    \label{eq:61}
+    f(x) = \frac{-5x²+x}{(1-x-2x²)(1-x)} \arr[=]{partial fraction} \frac{2}{1-x} - \frac{1}{x+1} - \frac{1}{1-2x} - \frac{1}{1-2x}
+  \end{equation}
+  this is the sum of three geometric series so it is easy to see the \(n\)th coefficient.
 \end{example}
 
 \subsection{Method 2: Linear Algebra}
@@ -771,56 +775,56 @@ There are at least three reasonable ways so solve such equations.
 %\textbf{Method 2: Linear Algebra}\\
 Mostly useful for the homogeneous case (RHS=0).
 \begin{example}{}{}
-	\begin{equation}
-		\label{eq:62}
-		a_{n+2} - a_{n+1} - 2a_n = 0, \quad a_0=-2, a_1=-1
-	\end{equation}
-	Let
-	\begin{equation}
-		\label{eq:63}
-		X_{n}= \begin{pmatrix} a_{n+1} \\ a_n \end{pmatrix},
-	\end{equation}
-	then
-	\begin{align}
-		\label{eq:64}
-		X_{n+1}= \begin{pmatrix} a_{n+2} \\ a_{n+1} \end{pmatrix}
-		= \begin{pmatrix} a_{n+1} + 2a_n \\ a_{n+1} \end{pmatrix}
-		= \begin{pmatrix} 1  & 2 \\ 1  & 0 \end{pmatrix} \begin{pmatrix} a_{n+1} \\ a_n \end{pmatrix}
-		= A⋅X_{n}
-	\end{align}
-	So we know that \(X_{n}=A^{n}X_0\). If we can diagonalize \(A\), i.e. find matrices \(P, D\) s.t. \(A=PDP⁻¹\) where \(D\) is a diagonal matrix, then
-	\begin{equation}
-		\label{eq:65}
-		X_{n}= A^{n}X = (PDP⁻¹)^{n}X_0 = PDP⁻¹PDP⁻¹\dots PDP⁻¹ X_0 = P D^{n} P⁻¹ X_0
-	\end{equation}
-	where in fact \(D=\begin{pmatrix}
-		𝜆_{1} & 0     \\
-		0     & 𝜆_{2}
-	\end{pmatrix}\) and \(𝜆_{1}, 𝜆_{2}\) are eigenvalues and \(P = \begin{pmatrix}
-		\vec{u}_1 & \vec{u}_{2}
-	\end{pmatrix}\) where \(u_1, u_2\) are the corresponding eigenvectors.\\
+  \begin{equation}
+    \label{eq:62}
+    a_{n+2} - a_{n+1} - 2a_n = 0, \quad a_0=-2, a_1=-1
+  \end{equation}
+  Let
+  \begin{equation}
+    \label{eq:63}
+    X_{n}= \begin{pmatrix} a_{n+1} \\ a_n \end{pmatrix},
+  \end{equation}
+  then
+  \begin{align}
+    \label{eq:64}
+    X_{n+1}= \begin{pmatrix} a_{n+2} \\ a_{n+1} \end{pmatrix}
+    = \begin{pmatrix} a_{n+1} + 2a_n \\ a_{n+1} \end{pmatrix}
+    = \begin{pmatrix} 1  & 2 \\ 1  & 0 \end{pmatrix} \begin{pmatrix} a_{n+1} \\ a_n \end{pmatrix}
+    = A⋅X_{n}
+  \end{align}
+  So we know that \(X_{n}=A^{n}X_0\). If we can diagonalize \(A\), i.e. find matrices \(P, D\) s.t. \(A=PDP⁻¹\) where \(D\) is a diagonal matrix, then
+  \begin{equation}
+    \label{eq:65}
+    X_{n}= A^{n}X = (PDP⁻¹)^{n}X_0 = PDP⁻¹PDP⁻¹\dots PDP⁻¹ X_0 = P D^{n} P⁻¹ X_0
+  \end{equation}
+  where in fact \(D=\begin{pmatrix}
+    𝜆_{1} & 0     \\
+    0     & 𝜆_{2}
+  \end{pmatrix}\) and \(𝜆_{1}, 𝜆_{2}\) are eigenvalues and \(P = \begin{pmatrix}
+    \vec{u}_1 & \vec{u}_{2}
+  \end{pmatrix}\) where \(u_1, u_2\) are the corresponding eigenvectors.\\
 
-	In our example \(A=\begin{pmatrix} 1  & 2 \\ 1  & 0 \end{pmatrix}\), \(𝜆_{1}=2\), \(u_1= \begin{pmatrix}
-		2 \\ 1\end{pmatrix}\),
-	\(𝜆_{2}=-1\), \(u_2=\begin{pmatrix} -1&1\end{pmatrix}\)\\
-	So
-	\begin{equation}
-		\label{eq:66}
-		A = \begin{pmatrix} 2  & -1 \\ 1  & 1 \end{pmatrix}
-		\begin{pmatrix} 2  & 0 \\ 0  & -1 \end{pmatrix}
-		\begin{pmatrix} \frac{1}{3}  & \frac{1}{3} \\ -\frac{1}{3}  & \frac{2}{3} \end{pmatrix}
-	\end{equation}
-	thus
-	\begin{equation}
-		\label{eq:67}
-		X_{n}= PD^{n}P⁻¹ X_0 = \begin{pmatrix} 2  & -1 \\ 1  & 1 \end{pmatrix}
-		\begin{pmatrix} 2^{n}  & 0 \\ 0  & (-1)^{n} \end{pmatrix}
-		\begin{pmatrix} \frac{1}{3}  & \frac{1}{3} \\ -\frac{1}{3}  & \frac{2}{3} \end{pmatrix} \begin{pmatrix} -1 & -2 \end{pmatrix} = \dots =
-		\begin{pmatrix} -2⋅2^{n} + (-1)^{n} \\ -2^{n} - (-1)^{n} \end{pmatrix}
-	\end{equation}
-	Hence \(a_n=-2^{n}-(-1)^{n}\).
+  In our example \(A=\begin{pmatrix} 1  & 2 \\ 1  & 0 \end{pmatrix}\), \(𝜆_{1}=2\), \(u_1= \begin{pmatrix}
+    2 \\ 1\end{pmatrix}\),
+  \(𝜆_{2}=-1\), \(u_2=\begin{pmatrix} -1&1\end{pmatrix}\)\\
+  So
+  \begin{equation}
+    \label{eq:66}
+    A = \begin{pmatrix} 2  & -1 \\ 1  & 1 \end{pmatrix}
+    \begin{pmatrix} 2  & 0 \\ 0  & -1 \end{pmatrix}
+    \begin{pmatrix} \frac{1}{3}  & \frac{1}{3} \\ -\frac{1}{3}  & \frac{2}{3} \end{pmatrix}
+  \end{equation}
+  thus
+  \begin{equation}
+    \label{eq:67}
+    X_{n}= PD^{n}P⁻¹ X_0 = \begin{pmatrix} 2  & -1 \\ 1  & 1 \end{pmatrix}
+    \begin{pmatrix} 2^{n}  & 0 \\ 0  & (-1)^{n} \end{pmatrix}
+    \begin{pmatrix} \frac{1}{3}  & \frac{1}{3} \\ -\frac{1}{3}  & \frac{2}{3} \end{pmatrix} \begin{pmatrix} -1 & -2 \end{pmatrix} = \dots =
+    \begin{pmatrix} -2⋅2^{n} + (-1)^{n} \\ -2^{n} - (-1)^{n} \end{pmatrix}
+  \end{equation}
+  Hence \(a_n=-2^{n}-(-1)^{n}\).
 
-	In general we see that the solution will be of the form \(A 𝜆_{1}^{n}+B 𝜆_{2}^{n}\) (assuming \(𝜆_{1}≠𝜆_{2}\)).
+  In general we see that the solution will be of the form \(A 𝜆_{1}^{n}+B 𝜆_{2}^{n}\) (assuming \(𝜆_{1}≠𝜆_{2}\)).
 \end{example}
 
 \subsection{Method 3: The characteristic equation}
@@ -829,107 +833,107 @@ Mostly useful for the homogeneous case (RHS=0).
 In practice the quickest way to solve this is \enquote{{Method 3}}.
 
 \begin{example}{}{}
-	\begin{equation}
-		\label{eq:68}
-		a_{n+2}-5 a_{n+1} + 6 a_n = 0, \quad a_0=a_1=1
-	\end{equation}
-	We look for solutions of the type \(r^{n}\).\\
-	If \(a_n=r^{n}\) then \(a_{n+1}=r^{n+1}=r r^{n}, a_{n+2}=r^{n+2} = r² r^{n} \).
-	Hence
-	\begin{equation}
-		\label{eq:69}
-		r²⋅r^{n} - 5r r^{n} + 6r^{n} = 0 \quad r^{n}\underbrace{\left(r² - 5r + 6 \right)}_{\mathclap{\text{The characteristic equation}}}  = 0
-	\end{equation}
-	So
-	\begin{equation}
-		\label{eq:70}
-		r²-5r+6=(r-2)(r-3)=0, ⟹ r_1=2, r_2=3
-	\end{equation}
-	So \(a_n= C 2^{n} + D 3^{n}\) is a solution to the recurrence relation (for every choice of \(C, D\).). In fact every solution is of this form.
+  \begin{equation}
+    \label{eq:68}
+    a_{n+2}-5 a_{n+1} + 6 a_n = 0, \quad a_0=a_1=1
+  \end{equation}
+  We look for solutions of the type \(r^{n}\).\\
+  If \(a_n=r^{n}\) then \(a_{n+1}=r^{n+1}=r r^{n}, a_{n+2}=r^{n+2} = r² r^{n} \).
+  Hence
+  \begin{equation}
+    \label{eq:69}
+    r²⋅r^{n} - 5r r^{n} + 6r^{n} = 0 \quad r^{n}\underbrace{\left(r² - 5r + 6 \right)}_{\mathclap{\text{The characteristic equation}}}  = 0
+  \end{equation}
+  So
+  \begin{equation}
+    \label{eq:70}
+    r²-5r+6=(r-2)(r-3)=0, ⟹ r_1=2, r_2=3
+  \end{equation}
+  So \(a_n= C 2^{n} + D 3^{n}\) is a solution to the recurrence relation (for every choice of \(C, D\).). In fact every solution is of this form.
 
-	We also need to match the initial conditions: \(1=a_0=C+D, 1=a_1=2C+3D\), therefore \(C=2, D=-1\).
+  We also need to match the initial conditions: \(1=a_0=C+D, 1=a_1=2C+3D\), therefore \(C=2, D=-1\).
 
-	Our solution is
-	\begin{equation}
-		\label{eq:71}
-		a_n=2⋅2^{n} +(-1)3^{n}.
-	\end{equation}
+  Our solution is
+  \begin{equation}
+    \label{eq:71}
+    a_n=2⋅2^{n} +(-1)3^{n}.
+  \end{equation}
 \end{example}
 
 Now we want to generalize this method. There are three cases (also generalizations to higher order recurrence relations).
 
 The characteristic equation can have
 \begin{enumerate}[label=\arabic{*})]
-	\item\label{item:18} Two distinct real roots \(r_1, r_2\): Solution \(C r_1^{n}+Dr^{n}\)
-	\item\label{item:19} Two complex roots \(r_1, \overline{r_1}\): Solution \(C r_1^{n} + D \overline{r_1}^{n}\)\\
-	Sometimes we want \enquote{real} solutions. \(r_1=𝜌e^{i𝜃}\) (\(𝜌≥0, 0≤𝜃≤2𝜋\)), then \(r_2= \overline{r_1}= 𝜌 e^{-i𝜃}\).
-	So
-	\begin{align}
-		\label{eq:72}
-		a_n
-		 & = C\left(𝜌 e^{i𝜃} \right)^{n}+D\left(𝜌 e^{-i𝜃} \right)^{n}                                       \\
-		 & = C 𝜌^{n} e^{in𝜃}+D𝜌^{n}e^{-in𝜃}                                                                 \\
-		 & = C 𝜌^{n} \left(\cos(n𝜃)+i\sin(n𝜃) \right)  + D𝜌^{n}\left(\cos(n𝜃)-i\sin(n𝜃) \right)             \\
-		 & = \underbrace{(C+D)}_{\tilde{C}} 𝜌^{n} \cos(n𝜃) + \underbrace{i(C-D)}_{\tilde{D}} 𝜌^{n} \sin(n𝜃) \\
-		 & = \tilde{C} 𝜌^{n} \cos(n𝜃)+\tilde{D} 𝜌^{n} \sin(n𝜃)
-	\end{align}
+  \item\label{item:18} Two distinct real roots \(r_1, r_2\): Solution \(C r_1^{n}+Dr^{n}\)
+  \item\label{item:19} Two complex roots \(r_1, \overline{r_1}\): Solution \(C r_1^{n} + D \overline{r_1}^{n}\)\\
+  Sometimes we want \enquote{real} solutions. \(r_1=𝜌e^{i𝜃}\) (\(𝜌≥0, 0≤𝜃≤2𝜋\)), then \(r_2= \overline{r_1}= 𝜌 e^{-i𝜃}\).
+  So
+  \begin{align}
+    \label{eq:72}
+    a_n
+     & = C\left(𝜌 e^{i𝜃} \right)^{n}+D\left(𝜌 e^{-i𝜃} \right)^{n}                                       \\
+     & = C 𝜌^{n} e^{in𝜃}+D𝜌^{n}e^{-in𝜃}                                                                 \\
+     & = C 𝜌^{n} \left(\cos(n𝜃)+i\sin(n𝜃) \right)  + D𝜌^{n}\left(\cos(n𝜃)-i\sin(n𝜃) \right)             \\
+     & = \underbrace{(C+D)}_{\tilde{C}} 𝜌^{n} \cos(n𝜃) + \underbrace{i(C-D)}_{\tilde{D}} 𝜌^{n} \sin(n𝜃) \\
+     & = \tilde{C} 𝜌^{n} \cos(n𝜃)+\tilde{D} 𝜌^{n} \sin(n𝜃)
+  \end{align}
 
-	\item\label{item:20} Double root \(r\). One solution is \(r^{n}\). But we need a second \enquote{linearly independent} solution.
+  \item\label{item:20} Double root \(r\). One solution is \(r^{n}\). But we need a second \enquote{linearly independent} solution.
 \end{enumerate}
 
 \begin{example}{}{}
-	Exercise: Try solving
-	\begin{equation}
-		\label{eq:73}
-		a_{n+2}-2a_{n+1} + a_{n} = 0, \quad \quad a_0=0, a_1=1
-	\end{equation}
-	in a very naive way! (Compute the first terms by hand.)
+  Exercise: Try solving
+  \begin{equation}
+    \label{eq:73}
+    a_{n+2}-2a_{n+1} + a_{n} = 0, \quad \quad a_0=0, a_1=1
+  \end{equation}
+  in a very naive way! (Compute the first terms by hand.)
 \end{example}
 
 It turns out, that in case 3, a second solution is given by \(a_n=n r^{n}\). So look at
 \begin{equation}
-	\label{eq:74}
-	a_{n+2} + p a_{n+1} + q a_n = 0
+  \label{eq:74}
+  a_{n+2} + p a_{n+1} + q a_n = 0
 \end{equation}
 and
 \begin{equation}
-	\label{eq:75}
-	r²+pr+q=0
+  \label{eq:75}
+  r²+pr+q=0
 \end{equation}
 has a double root \(r_1\), i.e.
 \begin{equation}
-	\label{eq:76}
-	(r-r_1)² = r²+pr+\quad ⟹\quad -2r_1=p, \quad r_1²=q
+  \label{eq:76}
+  (r-r_1)² = r²+pr+\quad ⟹\quad -2r_1=p, \quad r_1²=q
 \end{equation}
 
 \textbf{Claim:} \(a_n=n r_1^{n}\) is a solution. Then \(a_{n+1}=(n+1)r_1^{n+1}= r_1 (n+1)r_1^{n}\), \(a_{n+2}=(n+2)r_1^{n+2}= r_1²(n+2)r_1^{n}\)
 
 Plug in
 \begin{align}
-	\label{eq:77}
-	r_1²(n+2)r_1^{n}+p r_1(n+1) r_1^{n} + qn r_1^{n}               \\
-	 & = r_1^{n}\left(n r_1² + n r_1p + qn + 2r_1² + p r_1 \right) \\
-	 & = r_1^{n}\left(n r_1² - 2n r_1² + r_1²n+2r_1²-2r_1² \right) \\
-	 & = 0
+  \label{eq:77}
+  r_1²(n+2)r_1^{n}+p r_1(n+1) r_1^{n} + qn r_1^{n}               \\
+   & = r_1^{n}\left(n r_1² + n r_1p + qn + 2r_1² + p r_1 \right) \\
+   & = r_1^{n}\left(n r_1² - 2n r_1² + r_1²n+2r_1²-2r_1² \right) \\
+   & = 0
 \end{align}
 So the general solution to this case is
 \begin{equation}
-	\label{eq:78}
-	C r_1^{n}+D n r_1^{n}
+  \label{eq:78}
+  C r_1^{n}+D n r_1^{n}
 \end{equation}
 
 How to generalize this to higher (or lower) orders?
 
 Higher (or lower) order linear recurrence relations with constant coefficients:
 \begin{equation}
-	\label{eq:79}
-	a_{n+k} + c_1 a_{n+k-1} + c_2 a_{n+k-2}+\dots+c_n a_n = 0
+  \label{eq:79}
+  a_{n+k} + c_1 a_{n+k-1} + c_2 a_{n+k-2}+\dots+c_n a_n = 0
 \end{equation}
 
 Looking for solutions \(r^{n}\) we get the characteristic equation
 \begin{equation}
-	\label{eq:80}
-	r^{k} + c_1 r^{k-1} + c_2 r^{k-2}+\dots + c_n = 0.
+  \label{eq:80}
+  r^{k} + c_1 r^{k-1} + c_2 r^{k-2}+\dots + c_n = 0.
 \end{equation}
 Every root (real or complex) gives a solution \(r^{n}\). If \(r\) is a root of multiplicity \(m>1\), we get solutions \(r^{n}, n r^{n}, n² r^{n}, \dots, n^{m-1} r^{n}\).
 
@@ -941,124 +945,124 @@ How about non-homogeneous recurrence relations?\\
 
 In general to solve
 \begin{equation}
-	\label{eq:81}
-	a_{n+2} + p a_{n+1} + q a_{n} = f(n),
+  \label{eq:81}
+  a_{n+2} + p a_{n+1} + q a_{n} = f(n),
 \end{equation}
 we do the following.\footnote{Similarly to differencial equations}
 \begin{enumerate}[label=\arabic{*})]
-	\item\label{item:21} Solve the corresponding homogeneous equation.
-	\item\label{item:22} Find one particular solution by judicious guessing.
-	\item\label{item:23} The general solution is then \ref{item:21} + \ref{item:22}.
-	\item\label{item:24} Match initial conditions
+  \item\label{item:21} Solve the corresponding homogeneous equation.
+  \item\label{item:22} Find one particular solution by judicious guessing.
+  \item\label{item:23} The general solution is then \ref{item:21} + \ref{item:22}.
+  \item\label{item:24} Match initial conditions
 \end{enumerate}
 
 Here are some general guesses for the particular solution \ref{item:22}.\\
 \begin{tabular}{rl}
-	\toprule
-	\(f(n)\)                                 & ansatz                                   \\
-	\midrule
-	constant                                 & constant                                 \\
-	poly of degree \(d\)                     & poly of degree \(d\)                     \\
-	\(S^{n}\)                                & constant \(⋅ S^{n}\)                     \\
-	(polynomial of degree \(d\)) \(⋅ S^{n}\) & (polynomial of degree \(d\)) \(⋅ S^{n}\) \\
-	\bottomrule
+  \toprule
+  \(f(n)\)                                 & ansatz                                   \\
+  \midrule
+  constant                                 & constant                                 \\
+  poly of degree \(d\)                     & poly of degree \(d\)                     \\
+  \(S^{n}\)                                & constant \(⋅ S^{n}\)                     \\
+  (polynomial of degree \(d\)) \(⋅ S^{n}\) & (polynomial of degree \(d\)) \(⋅ S^{n}\) \\
+  \bottomrule
 \end{tabular}
 
 \begin{example}{}{}
-	Solve:
-	\begin{enumerate}[label=\alph{*})]
-		\item\label{item:25} \(a_{n+2}-5 a_{n+1} + 6 a_n = 0\)
-		\item\label{item:26} \(a_{n+2}-5 a_{n+1} + 6 a_n = n\)
-		\item\label{item:28} \(a_{n+2}-5 a_{n+1} + 6 a_n = (-1)^{n}\)
-		\item\label{item:29} \(a_{n+2}-5 a_{n+1} + 6 a_n = 2^{n}\)
-	\end{enumerate}
-	\tcblower
-	\begin{enumerate}[label=Sol. \alph{*})]
-		\item Char equation:
-		      \begin{equation}
-			      \label{eq:83}
-			      r² - 5r + 6 = 0 = (r-2)(r-3)
-		      \end{equation}
-		      So
-		      \begin{equation}
-			      \label{eq:84}
-			      a_n=C 2^{n} + D 3^{n}
-		      \end{equation}
-		\item Natural ansatz is \(a_{n}^{P}= En +F\), hence
-		      \begin{equation}
-			      \label{eq:85}
-			      E(n+2)+F - 5 (E(n+1)+F)+6(En+F)  = n
-		      \end{equation}
-		      \begin{equation}
-			      \label{eq:86}
-			      2En + (-3E +2F) = n
-		      \end{equation}
-		      Therefore \(2E=1, -3E+2F=0\), so \(E= \frac{1}{2}, F= \frac{3}{4}\), thus \(a_{n}^{p}= \frac{1}{2}n + \frac{3}{4}\) is a particular solution.
-		      \item\label{item:30} Do it yorself. Ansatz: \(a^{p}_{n}= E (-1)^{n}\)
-		      \item\label{item:31} The natural ansatz would be \(a_n^{p}=E⋅2^{n}\).\\
-		      This can't work! (Since \(E⋅2^{n}\) solves the corresponding homogeneous equation!)
+  Solve:
+  \begin{enumerate}[label=\alph{*})]
+    \item\label{item:25} \(a_{n+2}-5 a_{n+1} + 6 a_n = 0\)
+    \item\label{item:26} \(a_{n+2}-5 a_{n+1} + 6 a_n = n\)
+    \item\label{item:28} \(a_{n+2}-5 a_{n+1} + 6 a_n = (-1)^{n}\)
+    \item\label{item:29} \(a_{n+2}-5 a_{n+1} + 6 a_n = 2^{n}\)
+  \end{enumerate}
+  \tcblower
+  \begin{enumerate}[label=Sol. \alph{*})]
+    \item Char equation:
+          \begin{equation}
+            \label{eq:83}
+            r² - 5r + 6 = 0 = (r-2)(r-3)
+          \end{equation}
+          So
+          \begin{equation}
+            \label{eq:84}
+            a_n=C 2^{n} + D 3^{n}
+          \end{equation}
+    \item Natural ansatz is \(a_{n}^{P}= En +F\), hence
+          \begin{equation}
+            \label{eq:85}
+            E(n+2)+F - 5 (E(n+1)+F)+6(En+F)  = n
+          \end{equation}
+          \begin{equation}
+            \label{eq:86}
+            2En + (-3E +2F) = n
+          \end{equation}
+          Therefore \(2E=1, -3E+2F=0\), so \(E= \frac{1}{2}, F= \frac{3}{4}\), thus \(a_{n}^{p}= \frac{1}{2}n + \frac{3}{4}\) is a particular solution.
+          \item\label{item:30} Do it yorself. Ansatz: \(a^{p}_{n}= E (-1)^{n}\)
+          \item\label{item:31} The natural ansatz would be \(a_n^{p}=E⋅2^{n}\).\\
+          This can't work! (Since \(E⋅2^{n}\) solves the corresponding homogeneous equation!)
 
-		      Maybe we can try \enquote{\(n\) times the natural ansatz}, \(a_n^{p}=En2^{n}\).
-		      \begin{align}
-			      \label{eq:87}
-			      4E(n+2)2^{n} - 10E(n+1)2^{n} + 6 E n 2^{n} = 2^{n} ⟺ -2E⋅2^{n} = 2^{n}
-		      \end{align}
-		      i.e. \(E=-½\), i.e. \(a_n^{p}=-½n 2^{n}\).
-	\end{enumerate}
+          Maybe we can try \enquote{\(n\) times the natural ansatz}, \(a_n^{p}=En2^{n}\).
+          \begin{align}
+            \label{eq:87}
+            4E(n+2)2^{n} - 10E(n+1)2^{n} + 6 E n 2^{n} = 2^{n} ⟺ -2E⋅2^{n} = 2^{n}
+          \end{align}
+          i.e. \(E=-½\), i.e. \(a_n^{p}=-½n 2^{n}\).
+  \end{enumerate}
 \end{example}
 
 
 \begin{example}{}{}
-	How many strings of length \(n\) using the symbols \(A, B, C\) are there with no consecutive \(A\)'s or \(B\)'s?
+  How many strings of length \(n\) using the symbols \(A, B, C\) are there with no consecutive \(A\)'s or \(B\)'s?
 
-	Let us denote by \(a_n\) the number of such strings.
+  Let us denote by \(a_n\) the number of such strings.
 
-	Let's also denote by \(b_n\) the number of such strings that end in \(A\) or \(B\), and by \(c_n\) the number of such strings that end with \(C\).
+  Let's also denote by \(b_n\) the number of such strings that end in \(A\) or \(B\), and by \(c_n\) the number of such strings that end with \(C\).
 
-	Of course \(a_n=b_n+c_n\).
+  Of course \(a_n=b_n+c_n\).
 
-	What is \(b_{n+1}, c_{n+1}\)?
+  What is \(b_{n+1}, c_{n+1}\)?
 
 
-	\begin{equation}
-		\label{eq:82}
-		b_{n+1}= b_n + 2c_n  \quad \quad c_{n+1} = b_n + c_n (=a_n)
-	\end{equation}
-	The right equation follows from the fact, that when one letter is fixed, then the rest of the word can be changed freely. The left equation from the fact, that if the string of length \(n\) starts with \(A\) or \(B\) then there is one possibility to make it to length \(n+1\) (add the other one) but if it starts with \(C\) then there are to possiblities to make it to length \(n+1\) (add A or B).
+  \begin{equation}
+    \label{eq:82}
+    b_{n+1}= b_n + 2c_n  \quad \quad c_{n+1} = b_n + c_n (=a_n)
+  \end{equation}
+  The right equation follows from the fact, that when one letter is fixed, then the rest of the word can be changed freely. The left equation from the fact, that if the string of length \(n\) starts with \(A\) or \(B\) then there is one possibility to make it to length \(n+1\) (add the other one) but if it starts with \(C\) then there are to possiblities to make it to length \(n+1\) (add A or B).
 
-	So:
-	\begin{equation}
-		\label{eq:88}
-		a_{n+1}= b_{n+1}+c_{n+1} = 2a_n+c_n = 2a_n+a_{n-1}
-	\end{equation}
-	Thus
-	\begin{equation}
-		\label{eq:89}
-		a_{n+1} - 2a_n - a_{n-1} = 0
-	\end{equation}
-	The characteristic equation is
-	\begin{equation}
-		\label{eq:90}
-		r²-2r -1 = 0 \quad ⟹ \quad  r = 1±\sqrt{2}
-	\end{equation}
-	So
-	\begin{equation}
-		\label{eq:91}
-		a_{n} = A(1+\sqrt{2})^{n} + B(1-\sqrt{2})^{n}
-	\end{equation}
-	We can work out the initial conditions from the question: \(a_0=1, a_1=3, (a_2=7)\). (\(a_0\) comes from the empty world.)
-	Therefore
-	\begin{equation}
-		\label{eq:92}
-		1=A+B\quad 3=A(1+\sqrt{2}) + B(1-\sqrt{2})= A+B + \sqrt{2}(A-B) = 1 + \sqrt{2}(A-B)
-	\end{equation}
-	Therefore \(A= \frac{1+\sqrt{2}}{2}, B= \frac{1-\sqrt{2}}{2}\).
+  So:
+  \begin{equation}
+    \label{eq:88}
+    a_{n+1}= b_{n+1}+c_{n+1} = 2a_n+c_n = 2a_n+a_{n-1}
+  \end{equation}
+  Thus
+  \begin{equation}
+    \label{eq:89}
+    a_{n+1} - 2a_n - a_{n-1} = 0
+  \end{equation}
+  The characteristic equation is
+  \begin{equation}
+    \label{eq:90}
+    r²-2r -1 = 0 \quad ⟹ \quad  r = 1±\sqrt{2}
+  \end{equation}
+  So
+  \begin{equation}
+    \label{eq:91}
+    a_{n} = A(1+\sqrt{2})^{n} + B(1-\sqrt{2})^{n}
+  \end{equation}
+  We can work out the initial conditions from the question: \(a_0=1, a_1=3, (a_2=7)\). (\(a_0\) comes from the empty world.)
+  Therefore
+  \begin{equation}
+    \label{eq:92}
+    1=A+B\quad 3=A(1+\sqrt{2}) + B(1-\sqrt{2})= A+B + \sqrt{2}(A-B) = 1 + \sqrt{2}(A-B)
+  \end{equation}
+  Therefore \(A= \frac{1+\sqrt{2}}{2}, B= \frac{1-\sqrt{2}}{2}\).
 
-	So the answer to our problem is
-	\begin{equation}
-		\label{eq:93}
-		a_n= \frac{1+\sqrt{2}}{2}\left(1+\sqrt{2} \right)^{n} + \frac{1-\sqrt{2}}{2} \left(1-\sqrt{2} \right)^{n}= ½\left( \left(1+\sqrt{2} \right)^{n+1} + \left(1-\sqrt{2} \right)^{n+1}  \right)
-	\end{equation}
+  So the answer to our problem is
+  \begin{equation}
+    \label{eq:93}
+    a_n= \frac{1+\sqrt{2}}{2}\left(1+\sqrt{2} \right)^{n} + \frac{1-\sqrt{2}}{2} \left(1-\sqrt{2} \right)^{n}= ½\left( \left(1+\sqrt{2} \right)^{n+1} + \left(1-\sqrt{2} \right)^{n+1}  \right)
+  \end{equation}
 \end{example}
 
 
@@ -1066,197 +1070,197 @@ Here are some general guesses for the particular solution \ref{item:22}.\\
 \label{sec:graph-theory}
 
 \begin{definition}{Graph}{}
-	A \textbf{Graph} \(G\) consists of a set of vertices \(V\) and a (multi-)set of edges \(E\) (which are 2-subsets of \(V\) or pairs for directed graphs).
+  A \textbf{Graph} \(G\) consists of a set of vertices \(V\) and a (multi-)set of edges \(E\) (which are 2-subsets of \(V\) or pairs for directed graphs).
 \end{definition}
 
 \begin{definition}{}{}
-	Let \(G\) be a graph and \(x, y\) vertices in \(G\) (\(x=y\) is allowed).
-	\begin{itemize}
-		\item A \textbf{walk} from \(x\) to \(y\) is a sequence
-		      \begin{equation}
-			      \label{eq:94}
-			      x= v_0,e_1,v_1,e_2,\dots, e_n, v_n=y
-		      \end{equation}
-		      alternating between vertices and edges, such that \(e_k\) is between \(v_k\) and \(v_{k-1}\).
-		\item A walk from \(x\) to \(y\) where \(x=y\) is called a \textbf{closed walk}.
-		\item A walk with no repeated edges is called a \textbf{trail}.
-		\item A closed trail is called a \textbf{circuit}.
-		\item A walk with no repeated vertices is called a \textbf{path}.
-		\item A circuit that is also a path, i.e. a closed walk with no repeated edges and no repeated vertices, is called a \textbf{cycle}.
-		\item A circuit, which visits every edge exactly once, is called an \textbf{Euler circuit.} % This is from me, TODO check that
-	\end{itemize}
+  Let \(G\) be a graph and \(x, y\) vertices in \(G\) (\(x=y\) is allowed).
+  \begin{itemize}
+    \item A \textbf{walk} from \(x\) to \(y\) is a sequence
+          \begin{equation}
+            \label{eq:94}
+            x= v_0,e_1,v_1,e_2,\dots, e_n, v_n=y
+          \end{equation}
+          alternating between vertices and edges, such that \(e_k\) is between \(v_k\) and \(v_{k-1}\).
+    \item A walk from \(x\) to \(y\) where \(x=y\) is called a \textbf{closed walk}.
+    \item A walk with no repeated edges is called a \textbf{trail}.
+    \item A closed trail is called a \textbf{circuit}.
+    \item A walk with no repeated vertices is called a \textbf{path}.
+    \item A circuit that is also a path, i.e. a closed walk with no repeated edges and no repeated vertices, is called a \textbf{cycle}.
+    \item A circuit, which visits every edge exactly once, is called an \textbf{Euler circuit.} % This is from me, TODO check that
+  \end{itemize}
 \end{definition}
 
 \begin{definition}{connectivity}{}
-	An undirected graph \(G\) is called \textbf{connected} if each pair of vertices is connected with a walk.
+  An undirected graph \(G\) is called \textbf{connected} if each pair of vertices is connected with a walk.
 \end{definition}
 
 \begin{definition}{Subgraph}{}
-	\textbf{Subgraph}: \enquote{obvious} definition.
-	preferences? And is it okay with you if pic
-	A subgraph is called \textbf{spanning} if it has the same verties as the original graph.
+  \textbf{Subgraph}: \enquote{obvious} definition.
+  preferences? And is it okay with you if pic
+  A subgraph is called \textbf{spanning} if it has the same verties as the original graph.
 \end{definition}
 
 \begin{definition}{Subtraction of vertices}{}
-	If \(v\) is a vertex in \(G\), then \(G-v\) is the graph I obtain by removing \(v\) and all connected edges.
+  If \(v\) is a vertex in \(G\), then \(G-v\) is the graph I obtain by removing \(v\) and all connected edges.
 \end{definition}
 
 \begin{definition}{Completeness}{}
-	A \textbf{complete} graph on \(n\) vertices is a graph where every pair of vertices has an edge.
+  A \textbf{complete} graph on \(n\) vertices is a graph where every pair of vertices has an edge.
 \end{definition}
 
 \begin{definition}{Isomorphy}{}
-	Two graphs, \(G=(V,E)\) and \(\tilde{G}=(\tilde{V}, \tilde{E})\) are called \textbf{isomorphic} if there is a bijective \(f:V→\tilde{V}\) such that \(e∈\left\{ a, b \right\} ∈ E ⟺ \left\{ f(a), f(b) \right\} ∈ \tilde{E}\).
+  Two graphs, \(G=(V,E)\) and \(\tilde{G}=(\tilde{V}, \tilde{E})\) are called \textbf{isomorphic} if there is a bijective \(f:V→\tilde{V}\) such that \(e∈\left\{ a, b \right\} ∈ E ⟺ \left\{ f(a), f(b) \right\} ∈ \tilde{E}\).
 \end{definition}
 
 \begin{definition}{Degree of a vertex}{}
-	If \(v\) is a vertex in \(G\), then the \textbf{degree} of \(v\), \(d(v)\) or \(\deg(v)\) is the number of edges connected to \(v\).
+  If \(v\) is a vertex in \(G\), then the \textbf{degree} of \(v\), \(d(v)\) or \(\deg(v)\) is the number of edges connected to \(v\).
 \end{definition}
 
 \begin{lemma}{The handshaking Lemma}{}
-	\begin{equation}
-		\label{eq:95}
-		∑_{v∈V} d(v) = 2 \abs{E}
-	\end{equation}
+  \begin{equation}
+    \label{eq:95}
+    ∑_{v∈V} d(v) = 2 \abs{E}
+  \end{equation}
 \end{lemma}
 Is there a graph of \(6\) vertices with degree sequence, \(4,4,4,3,2,2\)? No, because the sum of all these is 19 which is not even.
 
 \begin{theorem}{Existence of Euler circuits}{}
-	Let \(G=(V,E)\) be an undirected (multi-)graph. \tcblower
-	The \(G\) has an Euler circuit iff
-	\begin{itemize}
-		\item \(G\) is connected
-		\item Every vertex of \(G\) has even degree
-	\end{itemize}
+  Let \(G=(V,E)\) be an undirected (multi-)graph. \tcblower
+  The \(G\) has an Euler circuit iff
+  \begin{itemize}
+    \item \(G\) is connected
+    \item Every vertex of \(G\) has even degree
+  \end{itemize}
 \end{theorem}
 \begin{proof}
-	\(⟹\) If \(G\) has an Euler circuit, clearly \(G\) is connected.\\
-	Traverse the circuit. Each vertex that we enter, we want to leave again. So when we come back to the starting point, we've goe through an even number of edges at every vertex.
+  \(⟹\) If \(G\) has an Euler circuit, clearly \(G\) is connected.\\
+  Traverse the circuit. Each vertex that we enter, we want to leave again. So when we come back to the starting point, we've goe through an even number of edges at every vertex.
 
-	\(\Longleftarrow\) Induction on the number of edges.\\
-	It clearly is true for a graph with \(\abs{E}=0\) and \(\abs{E}=1\).\\
-	Assume true for all graphs with \(<n\) edges. We want to show that it is true for \(n\) edges. Take any connected graph \(G\) where all vertices have an even degree. Take any vertex \(v\), and look at the (longest) trail in \(G\) starting at \(v\). Walk along new edges until we're stuck. Then \(v_k=v\), because to be stuck before an odd number of edges must have been removed which is only the case for the starting vertex. So we have found a circuit. Look at \(G-\underbrace{\left\{ e_1, \dots, e_k \right\}}_{\mathclap{\text{the circuit we found}}} = H\). Then \(H\) is a union of connected graphs where all vertices have even degree, so by the inductive hypothesis, each such component has an Euler circuit, which can be \enquote{spliced in} to give an Euler circuit for \(G\).
+  \(\Longleftarrow\) Induction on the number of edges.\\
+  It clearly is true for a graph with \(\abs{E}=0\) and \(\abs{E}=1\).\\
+  Assume true for all graphs with \(<n\) edges. We want to show that it is true for \(n\) edges. Take any connected graph \(G\) where all vertices have an even degree. Take any vertex \(v\), and look at the (longest) trail in \(G\) starting at \(v\). Walk along new edges until we're stuck. Then \(v_k=v\), because to be stuck before an odd number of edges must have been removed which is only the case for the starting vertex. So we have found a circuit. Look at \(G-\underbrace{\left\{ e_1, \dots, e_k \right\}}_{\mathclap{\text{the circuit we found}}} = H\). Then \(H\) is a union of connected graphs where all vertices have even degree, so by the inductive hypothesis, each such component has an Euler circuit, which can be \enquote{spliced in} to give an Euler circuit for \(G\).
 \end{proof}
 
 \begin{corollary}{}{}
-	\(K_n\) has an Euler circuit iff \(n\) is odd.
+  \(K_n\) has an Euler circuit iff \(n\) is odd.
 \end{corollary}
 
 \begin{corollary}{}{}
-	\(G\) has an Euler trail iff \(G\) is connected and all vertices except at most two have an even degree.
+  \(G\) has an Euler trail iff \(G\) is connected and all vertices except at most two have an even degree.
 \end{corollary}
 
 \begin{definition}{Hamilton cyles}{}
-	Let \(G=(V,E)\) be an undirected (multi-)graph. A Hamilton cycle in \(G\) is a cycle containing every vertex.
+  Let \(G=(V,E)\) be an undirected (multi-)graph. A Hamilton cycle in \(G\) is a cycle containing every vertex.
 \end{definition}
 
 However in graphs with \enquote{lots of edges} we can guarantee the existance of Hamilton paths/cycles.
 
 \begin{theorem}{}{}
-	Let \(G=(V,E)\) be a loop-free undirected graph with \(\abs{V}=n≥2\).
-	\tcblower
-	If
-	\begin{equation}
-		\label{eq:97}
-		d(x)+d(y)≥n-1
-	\end{equation}
-	for all \(x,y\) (\(x≠y\)) then \(G\) has a Hamilton path.
+  Let \(G=(V,E)\) be a loop-free undirected graph with \(\abs{V}=n≥2\).
+  \tcblower
+  If
+  \begin{equation}
+    \label{eq:97}
+    d(x)+d(y)≥n-1
+  \end{equation}
+  for all \(x,y\) (\(x≠y\)) then \(G\) has a Hamilton path.
 \end{theorem}
 \begin{proof}
-	\begin{enumerate}
-		\item\label{item:27} We first show that \(G\) is connected.
-		\begin{enumerate}
-			\item\label{item:32} If its not connected, then we can split the graph in a way that there are no edges between the two parts \(G_1, G_2\).
-			\item\label{item:33} Then for \(x∈V_1, y∈V_2\) we know that \(d(x)≤\abs{V_1}-1\), \(d(y)≤\abs{V_2}-1\) so
-			\begin{equation}
-				\label{eq:96}
-				d(x)+d(y) ≤ \abs{V_1}-1 + \abs{V_2} - 1 = n-2
-			\end{equation}
-		\end{enumerate}
-		\item\label{item:34} Take (one of) the longest path in \(G\).
-		\begin{equation}
-			\label{eq:98}
-			v_1→v_2→v_3→\dots→v_k
-		\end{equation}
-		\item\label{item:44} If \(k=n\), we have a Hamilton path. So assume \(k<n\).
-		\item\label{item:43} In fact I claim that these vertices are one a cycle of length \(k\).
-		\begin{enumerate}
-			\item\label{item:35} If \(v_k\) is adjacent to \(v_1\) (\(v_k \sim v_1\)) this is definitely true.
-			\item\label{item:36} Otherwise \(v_k\not{\sim} v_1\).
-			\item\label{item:37} Note that all edges from \(v_1\) and \(v_k\) go to other vertices in the path (otherwise there is a longer path!).
-			\item\label{item:38} If \(v_1 \sim v_{m}\) and \(v_k\sim v_{m-1}\) for any \(m\) we have a cycle. (Go \(v_1 \sim v_2 \sim \dots\sim v_{m-1} \sim v_{k} \sim v_{k-1} \sim v_{k-2}\sim\dots \sim v_{m} \sim v_1\).)
-			\item\label{item:39} If this is not the case \(d(v_k)≤ k-1 - d(v_1)\). (every edge from \(v_1\) prevents one edge from \(v_k\) and it can't be connected to anything outside of the path, because then the graph would be longer.) So \(d(v_1)+d(v_k)≤k-1<n-1\)\\
-			Contradiction!
-			\item\label{item:41} So: We have a cycle
-		\end{enumerate}
-		\item\label{item:40} But since \(k<n\), we have extra vertices and they are connected to the cycle which would give us a longer path.
-		\item\label{item:42} Again this is a contradiction, so \(k=n\).
-	\end{enumerate}
+  \begin{enumerate}
+    \item\label{item:27} We first show that \(G\) is connected.
+    \begin{enumerate}
+      \item\label{item:32} If its not connected, then we can split the graph in a way that there are no edges between the two parts \(G_1, G_2\).
+      \item\label{item:33} Then for \(x∈V_1, y∈V_2\) we know that \(d(x)≤\abs{V_1}-1\), \(d(y)≤\abs{V_2}-1\) so
+      \begin{equation}
+        \label{eq:96}
+        d(x)+d(y) ≤ \abs{V_1}-1 + \abs{V_2} - 1 = n-2
+      \end{equation}
+    \end{enumerate}
+    \item\label{item:34} Take (one of) the longest path in \(G\).
+    \begin{equation}
+      \label{eq:98}
+      v_1→v_2→v_3→\dots→v_k
+    \end{equation}
+    \item\label{item:44} If \(k=n\), we have a Hamilton path. So assume \(k<n\).
+    \item\label{item:43} In fact I claim that these vertices are one a cycle of length \(k\).
+    \begin{enumerate}
+      \item\label{item:35} If \(v_k\) is adjacent to \(v_1\) (\(v_k \sim v_1\)) this is definitely true.
+      \item\label{item:36} Otherwise \(v_k\not{\sim} v_1\).
+      \item\label{item:37} Note that all edges from \(v_1\) and \(v_k\) go to other vertices in the path (otherwise there is a longer path!).
+      \item\label{item:38} If \(v_1 \sim v_{m}\) and \(v_k\sim v_{m-1}\) for any \(m\) we have a cycle. (Go \(v_1 \sim v_2 \sim \dots\sim v_{m-1} \sim v_{k} \sim v_{k-1} \sim v_{k-2}\sim\dots \sim v_{m} \sim v_1\).)
+      \item\label{item:39} If this is not the case \(d(v_k)≤ k-1 - d(v_1)\). (every edge from \(v_1\) prevents one edge from \(v_k\) and it can't be connected to anything outside of the path, because then the graph would be longer.) So \(d(v_1)+d(v_k)≤k-1<n-1\)\\
+      Contradiction!
+      \item\label{item:41} So: We have a cycle
+    \end{enumerate}
+    \item\label{item:40} But since \(k<n\), we have extra vertices and they are connected to the cycle which would give us a longer path.
+    \item\label{item:42} Again this is a contradiction, so \(k=n\).
+  \end{enumerate}
 \end{proof}
 
 How about Hamiltonian cyles?
 \begin{theorem}{Ore, 1960}{}
-	If \(G=(V,E)\) is an undirected loop-free graph satisfying
-	\begin{equation}
-		\label{eq:99}
-		d(x)+d(y)≥n
-	\end{equation}
-	for every pair \(x,y\) (\(x\sim y\)). Then \(G\) has a Hamilton cycle.
+  If \(G=(V,E)\) is an undirected loop-free graph satisfying
+  \begin{equation}
+    \label{eq:99}
+    d(x)+d(y)≥n
+  \end{equation}
+  for every pair \(x,y\) (\(x\sim y\)). Then \(G\) has a Hamilton cycle.
 \end{theorem}
 
 How about Hamilton paths in directed graphs?
 \begin{definition}{Tournament}{}
-	A tournament on \(n\) vertices \((K_n^{*})\) is \enquote{a directed version of the complete graph \(K_n\)}.
+  A tournament on \(n\) vertices \((K_n^{*})\) is \enquote{a directed version of the complete graph \(K_n\)}.
 \end{definition}
 
 \begin{theorem}{}{}
-	Every tournament has a (directed) Hamiltonian path.
+  Every tournament has a (directed) Hamiltonian path.
 \end{theorem}
 \begin{proof}
-	Let \(v_1→v_2→\dots→v_k\) be (one of) the longest directed paths in \(K_{n}^{*}\). If \(k=n\), then we have a Hamilton path.
+  Let \(v_1→v_2→\dots→v_k\) be (one of) the longest directed paths in \(K_{n}^{*}\). If \(k=n\), then we have a Hamilton path.
 
-	Look at an vertex \(v\) not in the path. We know that \(v→v_1\) is not allowed (longer path) so \(v_1→v\). Now \(v→v_2\) is not allowed (\(v_1→v→v_2→\dots\) would be a longer path), so \(v_2→v\). Analogously \(v→v_3\) is not allowed (\(v_1→v_2→v→v_3→\dots\) longer path) and so on. For last edge both \(v→v_k\) is not allowed (same argument as before), and also \(v_k→v\) (also longer path). Either way we have a contradiction!
+  Look at an vertex \(v\) not in the path. We know that \(v→v_1\) is not allowed (longer path) so \(v_1→v\). Now \(v→v_2\) is not allowed (\(v_1→v→v_2→\dots\) would be a longer path), so \(v_2→v\). Analogously \(v→v_3\) is not allowed (\(v_1→v_2→v→v_3→\dots\) longer path) and so on. For last edge both \(v→v_k\) is not allowed (same argument as before), and also \(v_k→v\) (also longer path). Either way we have a contradiction!
 
-	So \(k=n\).
+  So \(k=n\).
 \end{proof}
 
 \section{Rings and Fields}
 \label{sec:rings-fields}
 
 \begin{definition}{Ring}{}
-	A \textbf{ring} is a set \(R\) equipped with two binary operations \(+:R×R→R\) and \(⋅:R×R→R\) satisfying the ring axioms:\\
-	For all \(a, b∈R:\)
-	\begin{enumerate}[label=(A\arabic{*})]
-		\item\label{item:45} \(a+b∈R\)
-		\item\label{item:46} \((a+b)+c=a+(b+c)\)
-		\item\label{item:47} \(a+b=b=a\)
-		\item\label{item:48} \(∃0∈R:a+0=a\)
-		\item\label{item:49} \(∀a∈R∃-a: a+(-a)=0\)
-	\end{enumerate}
-	\begin{enumerate}[label=(M\arabic{*})]
-		\item\label{item:50} \(a⋅b∈R\)
-		\item\label{item:51} \((a⋅b)⋅c=a⋅(b⋅c)\)
-	\end{enumerate}
-	\begin{enumerate}[label=(D)]
-		\item\label{item:52} \(a⋅(b+c)=a⋅b+a⋅c\)
-	\end{enumerate}
+  A \textbf{ring} is a set \(R\) equipped with two binary operations \(+:R×R→R\) and \(⋅:R×R→R\) satisfying the ring axioms:\\
+  For all \(a, b∈R:\)
+  \begin{enumerate}[label=(A\arabic{*})]
+    \item\label{item:45} \(a+b∈R\)
+    \item\label{item:46} \((a+b)+c=a+(b+c)\)
+    \item\label{item:47} \(a+b=b=a\)
+    \item\label{item:48} \(∃0∈R:a+0=a\)
+    \item\label{item:49} \(∀a∈R∃-a: a+(-a)=0\)
+  \end{enumerate}
+  \begin{enumerate}[label=(M\arabic{*})]
+    \item\label{item:50} \(a⋅b∈R\)
+    \item\label{item:51} \((a⋅b)⋅c=a⋅(b⋅c)\)
+  \end{enumerate}
+  \begin{enumerate}[label=(D)]
+    \item\label{item:52} \(a⋅(b+c)=a⋅b+a⋅c\)
+  \end{enumerate}
 \end{definition}
 
 \begin{example}{}{}
-	\begin{enumerate}
-		\item\label{item:53} \(ℤ, ℚ, ℝ, ℂ, M_{n}(ℝ), ℝ[x], \left\{ f: A→R \right\}, 2ℤ, ⟨2^{A}, 𝛥, n⟩ \)
-	\end{enumerate}
+  \begin{enumerate}
+    \item\label{item:53} \(ℤ, ℚ, ℝ, ℂ, M_{n}(ℝ), ℝ[x], \left\{ f: A→R \right\}, 2ℤ, ⟨2^{A}, 𝛥, n⟩ \)
+  \end{enumerate}
 \end{example}
 \begin{remark}{}{}
-	Many Rings have extra structure:
-	\begin{enumerate}
-		\item\label{item:54}[(M3)] \(a⋅b=b⋅a\)
-		\item\label{item:55}[(M4)] \(∃1∈R: 1⋅a=a⋅1=a\) (\enquote{unity})
-	\end{enumerate}
+  Many Rings have extra structure:
+  \begin{enumerate}
+    \item\label{item:54}[(M3)] \(a⋅b=b⋅a\)
+    \item\label{item:55}[(M4)] \(∃1∈R: 1⋅a=a⋅1=a\) (\enquote{unity})
+  \end{enumerate}
 \end{remark}
 
 \begin{definition}{}{}
-	If \(R\) is a commutative ring with unity such that \(∀a∈R\setminus\left\{0\right\}∃a⁻¹: a⋅a⁻¹=1 \) is called a \textbf{field}.
+  If \(R\) is a commutative ring with unity such that \(∀a∈R\setminus\left\{0\right\}∃a⁻¹: a⋅a⁻¹=1 \) is called a \textbf{field}.
 \end{definition}
 
 \subsection{The ring \(ℤ_n\)}
@@ -1264,96 +1268,96 @@ How about Hamilton paths in directed graphs?
 
 Let \(n≥2\), define an equivalence relation on \(ℤ, \sim\) by
 \begin{equation}
-	\label{eq:100}
-	a \sim b ⟺ a \mid a-b
+  \label{eq:100}
+  a \sim b ⟺ a \mid a-b
 \end{equation}
 So we get equivalence classes:
 \begin{align*}
-	\label{eq:101}
-	[0]         & =\left\{ \dots, -2n, -n, 0, n, 2n, 3n, \dots \right\}      \\
-	[1]         & =\left\{ \dots, -n+1, 1, n+1, 2n+1, \dots \right\}         \\
-	\vdots \;\; & =\quad  \vdots                                             \\
-	[n-1]       & = \left\{ \dots, -n-1, -1, n-1, 2n-1, 3n-1, \dots \right\}
+  \label{eq:101}
+  [0]         & =\left\{ \dots, -2n, -n, 0, n, 2n, 3n, \dots \right\}      \\
+  [1]         & =\left\{ \dots, -n+1, 1, n+1, 2n+1, \dots \right\}         \\
+  \vdots \;\; & =\quad  \vdots                                             \\
+  [n-1]       & = \left\{ \dots, -n-1, -1, n-1, 2n-1, 3n-1, \dots \right\}
 \end{align*}
 
 We will make a ring out of
 \begin{equation}
-	\label{eq:104}
-	ℤ_{n}=\left\{ [0], [1], \dots, [n-1] \right\}.
+  \label{eq:104}
+  ℤ_{n}=\left\{ [0], [1], \dots, [n-1] \right\}.
 \end{equation}
 
 We define addition and multiplication by
 \begin{equation}
-	\label{eq:102}
-	[a]+[b]=[a+b]\quad \quad [a]⋅[b]=[a⋅b].
+  \label{eq:102}
+  [a]+[b]=[a+b]\quad \quad [a]⋅[b]=[a⋅b].
 \end{equation}
 We need to check that this is well defined, i.e. if \(a\sim a'\), \(b\sim b'\) (i.e. \(a=a'+kn, b=b'+ln\)):
 \begin{equation}
-	\label{eq:103}
-	[a] + [b]= [a+b] = [a'+kn+b'+ln]=[a'+b'+(k+l)n]=[a'+b']=[a']+[b']
+  \label{eq:103}
+  [a] + [b]= [a+b] = [a'+kn+b'+ln]=[a'+b'+(k+l)n]=[a'+b']=[a']+[b']
 \end{equation}
 same for multiplication.
 
 \begin{example}{}{}
-	In \(ℤ₁₂\) we have \([2]+[7]=[9], [6][6]=[0], [3][8]=[0]\).
+  In \(ℤ₁₂\) we have \([2]+[7]=[9], [6][6]=[0], [3][8]=[0]\).
 
-	Wo \(ℤ₁₂\) has zero divisors. Is it possible to find a multiplicative inverse of \([3]\) in \(ℤ₁₂\)?\\
-	Because we \([3][8]=[0]\) we know that if \([3]⁻¹\) exists, then \([3]⁻¹[3][8]=[3]⁻¹[0]\), i.e. \([8]=[0]\) which is a contradiction. So \(ℤ₁₂\) is \textbf{not} a field.
+  Wo \(ℤ₁₂\) has zero divisors. Is it possible to find a multiplicative inverse of \([3]\) in \(ℤ₁₂\)?\\
+  Because we \([3][8]=[0]\) we know that if \([3]⁻¹\) exists, then \([3]⁻¹[3][8]=[3]⁻¹[0]\), i.e. \([8]=[0]\) which is a contradiction. So \(ℤ₁₂\) is \textbf{not} a field.
 
-	But in \(ℤ_{5}\), \([1][1]=[1], [2][3]=1, [4][4]=1\) so all non-zero numbers in \(ℤ_{5}\) have multiplicative inverses, i.e. \(ℤ_{5}\) is a field!
+  But in \(ℤ_{5}\), \([1][1]=[1], [2][3]=1, [4][4]=1\) so all non-zero numbers in \(ℤ_{5}\) have multiplicative inverses, i.e. \(ℤ_{5}\) is a field!
 \end{example}
 
 
 \begin{theorem}{}{}
-	\([a]∈ℤ_{n}\) has a multiplicative inverse iff \(\gcd(a, n)=1\).
+  \([a]∈ℤ_{n}\) has a multiplicative inverse iff \(\gcd(a, n)=1\).
 \end{theorem}
 \begin{proof}
-	\(⟹\): Assume \(d=\gcd(a,n)>1\) then \(a=da', n=dn'\), then \(a=da', n=dn'\)
-	\begin{equation}
-		\label{eq:105}
-		[a][n']=[da'n']=[a'n]=[0]
-	\end{equation}
-	so \([a]\) can't have  multiplicative inverse.
+  \(⟹\): Assume \(d=\gcd(a,n)>1\) then \(a=da', n=dn'\), then \(a=da', n=dn'\)
+  \begin{equation}
+    \label{eq:105}
+    [a][n']=[da'n']=[a'n]=[0]
+  \end{equation}
+  so \([a]\) can't have  multiplicative inverse.
 
-	\(\impliedby\): Look at the diophantine equation
-	\begin{equation}
-		\label{eq:106}
-		ax+ny=1
-	\end{equation}
-	has a solution (Bezcuit's theorem) if \(\gcd(a,n)=1\). Then \(ax=1-ny\), i.e. \([a][x]=[1-ny]=[1]\).
+  \(\impliedby\): Look at the diophantine equation
+  \begin{equation}
+    \label{eq:106}
+    ax+ny=1
+  \end{equation}
+  has a solution (Bezcuit's theorem) if \(\gcd(a,n)=1\). Then \(ax=1-ny\), i.e. \([a][x]=[1-ny]=[1]\).
 \end{proof}
 
 \begin{example}{}{}
-	Find the multiplicative inverse of \([7]\) in \(ℤ_{30}\).
+  Find the multiplicative inverse of \([7]\) in \(ℤ_{30}\).
 
-	\(30=4⋅7+2⟹7=3⋅2-1\)
+  \(30=4⋅7+2⟹7=3⋅2-1\)
 
-	Backwards \(1=7-3⋅2=7- 3⋅(30-4⋅7)=13⋅7 - 3⋅30\).
+  Backwards \(1=7-3⋅2=7- 3⋅(30-4⋅7)=13⋅7 - 3⋅30\).
 
-	Thus modulo 30: \([1]=[13][7]\) or \([7]⁻¹=[13]\).
+  Thus modulo 30: \([1]=[13][7]\) or \([7]⁻¹=[13]\).
 \end{example}
 \begin{example}{}{}
-	Solve \(7x≡5\) (mod 30).\\
-	Multiply bu \([7]⁻¹=13\), \(x=13⋅7x≡13⋅5=65≡5\).
+  Solve \(7x≡5\) (mod 30).\\
+  Multiply bu \([7]⁻¹=13\), \(x=13⋅7x≡13⋅5=65≡5\).
 \end{example}
 
 \begin{corollary}{}{}
-	\(ℤ_{n}\) is a field iff \(n\) is prime.
+  \(ℤ_{n}\) is a field iff \(n\) is prime.
 \end{corollary}
 
 \begin{definition}{Ideal}{}
-	Assume \(R\) is a commutative ring (with 1).
-	Then an \textbf{ideal} \(I\) in \(R\) is a subset such that:
-	\begin{equation}
-		\label{eq:107}
-		a,b∈I⟹a+b∈I, \quad r∈R,a∈I⟹ra∈I
-	\end{equation}
+  Assume \(R\) is a commutative ring (with 1).
+  Then an \textbf{ideal} \(I\) in \(R\) is a subset such that:
+  \begin{equation}
+    \label{eq:107}
+    a,b∈I⟹a+b∈I, \quad r∈R,a∈I⟹ra∈I
+  \end{equation}
 \end{definition}
 \begin{example}{}{}
-	\begin{enumerate}
-		\item\label{item:56} \(nℤ=\left\{ na: a∈ℤ \right\} \) is an ideal in \(ℤ\).
-		\item\label{item:57} \(⟨x²+1⟩=\left\{ (x²+1)p(x): p∈ℝ[x] \right\} \) is an ideal in \(ℝ[x]\).
-	\end{enumerate}
+  \begin{enumerate}
+    \item\label{item:56} \(nℤ=\left\{ na: a∈ℤ \right\} \) is an ideal in \(ℤ\).
+    \item\label{item:57} \(⟨x²+1⟩=\left\{ (x²+1)p(x): p∈ℝ[x] \right\} \) is an ideal in \(ℝ[x]\).
+  \end{enumerate}
 \end{example}
 
 As in the construction of \(ℤ_{n}\) if \(I \) is an ideal in \(R\), we can define an equivalence relation on \(R\) by \(a\sim b ⟺ a-b∈I\).
@@ -1361,15 +1365,15 @@ As in the construction of \(ℤ_{n}\) if \(I \) is an ideal in \(R\), we can def
 We can make \(R/I=\) the set of equivalence classes into a ring by defining \([a]+[b]=[a+b], [a]⋅[b]\).
 
 \begin{example}{}{}
-	\(ℤ / nℤ = ℤ_{n}\).\\
+  \(ℤ / nℤ = ℤ_{n}\).\\
 
-	What is \(ℝ[x] / ⟨x²+1⟩\)?
+  What is \(ℝ[x] / ⟨x²+1⟩\)?
 
-	Take any \(p(x)∈ℝ[x]\), \(p(x)=(x²+1)q(x) + r(x)\), so \([p(x)]\sim [r(x)]\).\\
-	We can think of elements in \(ℝ[x] / ⟨x²+1⟩\) as degree 1 polynomials \(a+bx\).\\
-	e.g. \((1+x)(2+x)=2+3x+x²=1+3x\)
+  Take any \(p(x)∈ℝ[x]\), \(p(x)=(x²+1)q(x) + r(x)\), so \([p(x)]\sim [r(x)]\).\\
+  We can think of elements in \(ℝ[x] / ⟨x²+1⟩\) as degree 1 polynomials \(a+bx\).\\
+  e.g. \((1+x)(2+x)=2+3x+x²=1+3x\)
 
-	Note \([0]=[x²+1]⟺[x²]=[-1]\) in other words \(x²=-1\), i.e. \(ℝ[x] / ⟨x²+1⟩\) is actually \(ℂ\) (or at least \enquote{isomorphic} to \(ℂ\)).
+  Note \([0]=[x²+1]⟺[x²]=[-1]\) in other words \(x²=-1\), i.e. \(ℝ[x] / ⟨x²+1⟩\) is actually \(ℂ\) (or at least \enquote{isomorphic} to \(ℂ\)).
 \end{example}
 
 %TODO: look up latex factor rings
@@ -1380,35 +1384,35 @@ We can make \(R/I=\) the set of equivalence classes into a ring by defining \([a
 
 Let \(⟨R,+_{R},⋅_{R}⟩, ⟨S,+_{S}, ⋅_{S} ⟩\) be rings. A homomorphism is a map \(f:R→S\) such that
 \begin{equation}
-	\label{eq:108}
-	f(a+_{R}b) = f(a) +_{S} f(b)\quad \quad f(a⋅_{R}b)=f(a)⋅_{S}f(b)
+  \label{eq:108}
+  f(a+_{R}b) = f(a) +_{S} f(b)\quad \quad f(a⋅_{R}b)=f(a)⋅_{S}f(b)
 \end{equation}
 and if \(R,S\) have unity \(f(1_{R})=1_{S}\).
 
 A bijective homomorphism is called an isomorphism.
 
 \begin{example}{}{}
-	Let \(𝜎:ℂ→ℂ\), where \(𝜎(z)=\overline{z}\). Then
-	\begin{equation}
-		\label{eq:109}
-		𝜎(z+w)= \overline{z+w} = \overline{z}+\overline{w}=𝜎(z)+𝜎(w), \quad 𝜎(z⋅w)= \overline{z⋅w} = \overline{z}⋅ \overline{w} = 𝜎(z)⋅𝜎(w), 𝜎\left(1 \right) = \overline{1}= 1.
-	\end{equation}
-	\(𝜎⁻¹=𝜎\) (so \(𝜎\) is an isomorphism)
+  Let \(𝜎:ℂ→ℂ\), where \(𝜎(z)=\overline{z}\). Then
+  \begin{equation}
+    \label{eq:109}
+    𝜎(z+w)= \overline{z+w} = \overline{z}+\overline{w}=𝜎(z)+𝜎(w), \quad 𝜎(z⋅w)= \overline{z⋅w} = \overline{z}⋅ \overline{w} = 𝜎(z)⋅𝜎(w), 𝜎\left(1 \right) = \overline{1}= 1.
+  \end{equation}
+  \(𝜎⁻¹=𝜎\) (so \(𝜎\) is an isomorphism)
 \end{example}
 \begin{example}{}{}
-	Let \(M= \left\{ \begin{pmatrix} a  & -b \\ b  & a \end{pmatrix}, a, b∈ℝ \right\} \). Check that this is a ring!
+  Let \(M= \left\{ \begin{pmatrix} a  & -b \\ b  & a \end{pmatrix}, a, b∈ℝ \right\} \). Check that this is a ring!
 
-	Define \(f:M→ℂ\), \(f( \begin{pmatrix} a  & -b \\ b  & a \end{pmatrix}) = a +bi\).
+  Define \(f:M→ℂ\), \(f( \begin{pmatrix} a  & -b \\ b  & a \end{pmatrix}) = a +bi\).
 
-	This is a homomorphism!
+  This is a homomorphism!
 
-	Fairly easy to see that \(f\) is a bijection, i.e. \(f\) is an isomorphism.
+  Fairly easy to see that \(f\) is a bijection, i.e. \(f\) is an isomorphism.
 \end{example}
 \begin{example}{}{}
-	Nonexample: \(f:ℤ→2ℤ\), where \(f(a)=2a\) because \(f(ab)=2ab≠2a 2b = f(a)f(b)\).
+  Nonexample: \(f:ℤ→2ℤ\), where \(f(a)=2a\) because \(f(ab)=2ab≠2a 2b = f(a)f(b)\).
 \end{example}
 \begin{example}{}{}
-	Exercise: Determine all the ring homomorphisms \(ℤ→ℤ_{n}\).
+  Exercise: Determine all the ring homomorphisms \(ℤ→ℤ_{n}\).
 \end{example}
 
 \subsection{Fermat's little Theorem}
@@ -1417,95 +1421,95 @@ A bijective homomorphism is called an isomorphism.
 If \(R\) is a (commutative) ring, we let \(R^{*}\) be the set of invertible elements in \(R\). Note that if \(F\) if a field, then \(F^{*}=F\setminus\left\{ 0 \right\} \).
 
 \begin{theorem}{Fermat's little theorem}{}
-	If \(F\) is a finite field with \(q\) elements, and \(a∈F, a≠0\), then
-	\begin{equation}
-		\label{eq:110}
-		a^{q-1}=1.
-	\end{equation}
+  If \(F\) is a finite field with \(q\) elements, and \(a∈F, a≠0\), then
+  \begin{equation}
+    \label{eq:110}
+    a^{q-1}=1.
+  \end{equation}
 \end{theorem}
 \begin{proof}
-	\(F^{*}=\left\{ x_1, x_2, \dots, x_{q-1} \right\} \), define \(F^{*}→F^{*}\) by \(f(x)=a⋅x\).
-	\begin{enumerate}
-		\item\label{item:58} \(ax∈F^{*}\), \(x⁻¹a⁻¹(ax)=1\)
-		\item\label{item:59} \(f\) is injective: \(ax=ay⟹a⁻¹ax=a⁻¹ax⟹x=y\).
-		\item\label{item:60} \(f\) is surjective: If \(x∈F^{*}\) is there a \(y:f(y)=x\)? Yes, \(y=a⁻¹x\) is this.
-	\end{enumerate}
-	In other words \(f\) is bijection, so a permutation of the elements, but also
-	\begin{equation}
-		\label{eq:111}
-		f(x_1)⋅ f(x_2)⋅ \dots ⋅ f(x_{q-1})=(ax₁)(ax₂)\dots(ax_{q-1})=a^{q-1} x₁x₂\dots x_{q-1} \arr[\overset{!}{=}]{permutation} x₁x₂\dots x_{q-1}
-	\end{equation}
-	Therefore \(a^{q-1}=1\).
+  \(F^{*}=\left\{ x_1, x_2, \dots, x_{q-1} \right\} \), define \(F^{*}→F^{*}\) by \(f(x)=a⋅x\).
+  \begin{enumerate}
+    \item\label{item:58} \(ax∈F^{*}\), \(x⁻¹a⁻¹(ax)=1\)
+    \item\label{item:59} \(f\) is injective: \(ax=ay⟹a⁻¹ax=a⁻¹ax⟹x=y\).
+    \item\label{item:60} \(f\) is surjective: If \(x∈F^{*}\) is there a \(y:f(y)=x\)? Yes, \(y=a⁻¹x\) is this.
+  \end{enumerate}
+  In other words \(f\) is bijection, so a permutation of the elements, but also
+  \begin{equation}
+    \label{eq:111}
+    f(x_1)⋅ f(x_2)⋅ \dots ⋅ f(x_{q-1})=(ax₁)(ax₂)\dots(ax_{q-1})=a^{q-1} x₁x₂\dots x_{q-1} \arr[\overset{!}{=}]{permutation} x₁x₂\dots x_{q-1}
+  \end{equation}
+  Therefore \(a^{q-1}=1\).
 \end{proof}
 In particular \(ℤ_{p}\) is a field if \(p\) is prime, so if \(p \not{\mid}a\) then \(a^{p-1}≡1 \mod p\)
 \begin{example}{}{}
-	Compute \(19^{122} \mod 13\). We know \(19^{12}≡1\mod 13\) by Fermat.
-	\begin{equation}
-		\label{eq:112}
-		19^{122}=(19^{12})^{10} 19² = 19² =6²=36=10 \mod 13
-	\end{equation}
+  Compute \(19^{122} \mod 13\). We know \(19^{12}≡1\mod 13\) by Fermat.
+  \begin{equation}
+    \label{eq:112}
+    19^{122}=(19^{12})^{10} 19² = 19² =6²=36=10 \mod 13
+  \end{equation}
 \end{example}
 
 We can generalize Fermat's little theorem. If \(n∈ℤ\), let \(𝛷(n)=\) the number of Integers between \(1\) and \(n\) that have no common factor with \(n\) (\(\gcd(a,n)=1\)), so the number of invertible elements in \(ℤ_{n}\) is \(𝛷(n)\).
 
 \begin{example}{}{}
-	If \(p\) is a prime, that \(𝛷(p)=p-1\).\\
-	If \(p_1, p_2\) are primes, then \(𝛷(p_1 p_2)=pq-q-p+1=(p-1)(q-1)\). \\
+  If \(p\) is a prime, that \(𝛷(p)=p-1\).\\
+  If \(p_1, p_2\) are primes, then \(𝛷(p_1 p_2)=pq-q-p+1=(p-1)(q-1)\). \\
 \end{example}
 
 \begin{theorem}{Euler}{}
-	Let \(R\) be a finite commutative ring. If \(a∈R\) is invertible then \\
-	\begin{equation}
-		\label{eq:113}
-		a^{\# \text{invertible elements}}≡1\mod n
-	\end{equation}.
+  Let \(R\) be a finite commutative ring. If \(a∈R\) is invertible then \\
+  \begin{equation}
+    \label{eq:113}
+    a^{\# \text{invertible elements}}≡1\mod n
+  \end{equation}.
 
-	In particular if \(R\) is \(ℤ_{n}\) then it holds that
-	if \(\gcd(a, n)=1\), then
-	\begin{equation}
-		\label{eq:113}
-		a^{𝛷(n)}≡1\mod n
-	\end{equation}.
+  In particular if \(R\) is \(ℤ_{n}\) then it holds that
+  if \(\gcd(a, n)=1\), then
+  \begin{equation}
+    \label{eq:113}
+    a^{𝛷(n)}≡1\mod n
+  \end{equation}.
 \end{theorem}
 \begin{proof}
-	The same as Fermat's little theorem.
+  The same as Fermat's little theorem.
 \end{proof}
 In particular if \(p\) is prime then
 \begin{equation}
-	\label{eq:114}
-	a^{p} ≡ a \mod p
+  \label{eq:114}
+  a^{p} ≡ a \mod p
 \end{equation}
 for all \(a\). Similarly, if \(p, q\) prime, then if \(\gcd(a, pq)=1\)
 \begin{equation}
-	\label{eq:115}
-	a^{(p-1)(q-1)} ≡ a^{𝛷(pq)}≡1 \mod pq
+  \label{eq:115}
+  a^{(p-1)(q-1)} ≡ a^{𝛷(pq)}≡1 \mod pq
 \end{equation}
 Therefore
 \begin{equation}
-	\label{eq:116}
-	a^{(p-1)(q-1)m}=1 \mod pq
+  \label{eq:116}
+  a^{(p-1)(q-1)m}=1 \mod pq
 \end{equation}
 Therefore
 \begin{equation}
-	\label{eq:117}
-	a^{(p-1)(q-1)m + 1} ≡ a \mod pq
+  \label{eq:117}
+  a^{(p-1)(q-1)m + 1} ≡ a \mod pq
 \end{equation}
 even if \(a\) happens to be divisible by \(p\) or \(q\). (Fill in the details.)
 
 This observation is in fact the key idea behind RSA.\\
 \begin{enumerate}
-	\item\label{item:61}
-	Take two (large) primes \(p, q\) and choose \(d\) s.t. \(\gcd(d, (p-1)(q-1))=1\).
-	\item\label{item:62} Compute \(n=pq\), and \(e=d⁻¹\) (in \(ℤ_{(p-1)(q-1)}\))
-	\item\label{item:63} Make \(n\) and \(e\) public, but keep \(p, q, d\) secret.
-	\item\label{item:64} Assume you want to send me a message i.e. a secret number \(C\). (\(1≤C≤n-1\))
-	\\% \item\label{item:65}
-	Do this by computing and sending \(D=C^{e} \mod n\) as a message.
-	\item\label{item:66} How do I recreate \(C\)? \\
-	\begin{equation}
-		\label{eq:118}
-		D^{d}=(C^{e})^{d} = C^{ed}=C^{(p-1)(q-1)m+1}\arr[≡]{Euler}C \mod pq.
-	\end{equation}
+  \item\label{item:61}
+  Take two (large) primes \(p, q\) and choose \(d\) s.t. \(\gcd(d, (p-1)(q-1))=1\).
+  \item\label{item:62} Compute \(n=pq\), and \(e=d⁻¹\) (in \(ℤ_{(p-1)(q-1)}\))
+  \item\label{item:63} Make \(n\) and \(e\) public, but keep \(p, q, d\) secret.
+  \item\label{item:64} Assume you want to send me a message i.e. a secret number \(C\). (\(1≤C≤n-1\))
+  \\% \item\label{item:65}
+  Do this by computing and sending \(D=C^{e} \mod n\) as a message.
+  \item\label{item:66} How do I recreate \(C\)? \\
+  \begin{equation}
+    \label{eq:118}
+    D^{d}=(C^{e})^{d} = C^{ed}=C^{(p-1)(q-1)m+1}\arr[≡]{Euler}C \mod pq.
+  \end{equation}
 \end{enumerate}
 
 \subsection{The Chinese remainder theorem}
@@ -1515,82 +1519,82 @@ How do we solve a system of congruences (with respect to different moduli)?
 
 For example
 \begin{equation}
-	\label{eq:119}
-	x≡3 \mod 5, \quad\quad  x≡1 \mod 7, \quad\quad x≡2 \mod 11
+  \label{eq:119}
+  x≡3 \mod 5, \quad\quad  x≡1 \mod 7, \quad\quad x≡2 \mod 11
 \end{equation}
 
 \begin{theorem}{}{}
-	Let \(n_1,n_2, \dots, n_k∈ℤ\) be pairwise relatively prime. Then the system
-	\begin{equation}
-		\label{eq:120}
-		x≡a_1\mod n_1, \quad \quad x≡a_2 \mod n_2\quad  \dots\quad x≡a_k \mod n_k
-	\end{equation}
-	has a unique solution mod \(n_1n_2\dots n_k\).
+  Let \(n_1,n_2, \dots, n_k∈ℤ\) be pairwise relatively prime. Then the system
+  \begin{equation}
+    \label{eq:120}
+    x≡a_1\mod n_1, \quad \quad x≡a_2 \mod n_2\quad  \dots\quad x≡a_k \mod n_k
+  \end{equation}
+  has a unique solution mod \(n_1n_2\dots n_k\).
 \end{theorem}
 \begin{proof}
-	Let \(N=n_1 n_2 \dots n_k\), \(N_j=\frac{N}{n_j}\).
+  Let \(N=n_1 n_2 \dots n_k\), \(N_j=\frac{N}{n_j}\).
 
-	Start with uniqueness.
-	\begin{enumerate}
-		\item\label{item:67} Assume \(x, \tilde{x}\) are solutions mod \(N\). Then \(x-\tilde{x}≡a_1-a_1 ≡0 \mod n_1\), so \(n_1 \mid x-\tilde{x}\).
-		\item\label{item:68} Same holds for the other \(n\)s, so \(n_j \mid x-\tilde{x}\) for \(j∈\left\{ 1, \dots, k \right\} \).
-		\item\label{item:69} Since these are relatively prime, that means that \(N \mid x - \tilde{x}\). This is equivalent to \(x≡\tilde{x} \mod N\).
-	\end{enumerate}
+  Start with uniqueness.
+  \begin{enumerate}
+    \item\label{item:67} Assume \(x, \tilde{x}\) are solutions mod \(N\). Then \(x-\tilde{x}≡a_1-a_1 ≡0 \mod n_1\), so \(n_1 \mid x-\tilde{x}\).
+    \item\label{item:68} Same holds for the other \(n\)s, so \(n_j \mid x-\tilde{x}\) for \(j∈\left\{ 1, \dots, k \right\} \).
+    \item\label{item:69} Since these are relatively prime, that means that \(N \mid x - \tilde{x}\). This is equivalent to \(x≡\tilde{x} \mod N\).
+  \end{enumerate}
 
-	Now to the existance of a solution
-	\begin{enumerate}
-		\item\label{item:70} From the definitions it follows, that \(\gcd(N_j, n_j)=1\)
-		\item\label{item:71} So
-		\begin{equation}
-			\label{eq:121}
-			s_j N_j + t_j n_j = 1
-		\end{equation}
-		is solvable (for \(s_j, t_j\)).\footnote{We will see an example soon.}
-		\item\label{item:72} Multiply by \(a_j\):
-		\begin{equation}
-			\label{eq:122}
-			a_j s_j N_j + a_j t_j n_j = a_j
-		\end{equation}
-		So
-		\begin{equation}
-			\label{eq:123}
-			a_j s_j N_j = a_j - a_j t_j n_j
-		\end{equation}
-		\item\label{item:73} Look at this \(\mod n_l\)
-		\begin{equation}
-			\label{eq:124}
-			a_j s_j N_j ≡
-			\begin{cases}
-				0 \mod n_{l} & l≠j \\ a_j \mod n_j & l=j
-			\end{cases}
-		\end{equation}
-		\item\label{item:74} Let \(x=a_1s_1N_1+a_2s_2N_2+\dots+a_k s_k N_k\). \\
-		This is our solution!
-	\end{enumerate}
+  Now to the existance of a solution
+  \begin{enumerate}
+    \item\label{item:70} From the definitions it follows, that \(\gcd(N_j, n_j)=1\)
+    \item\label{item:71} So
+    \begin{equation}
+      \label{eq:121}
+      s_j N_j + t_j n_j = 1
+    \end{equation}
+    is solvable (for \(s_j, t_j\)).\footnote{We will see an example soon.}
+    \item\label{item:72} Multiply by \(a_j\):
+    \begin{equation}
+      \label{eq:122}
+      a_j s_j N_j + a_j t_j n_j = a_j
+    \end{equation}
+    So
+    \begin{equation}
+      \label{eq:123}
+      a_j s_j N_j = a_j - a_j t_j n_j
+    \end{equation}
+    \item\label{item:73} Look at this \(\mod n_l\)
+    \begin{equation}
+      \label{eq:124}
+      a_j s_j N_j ≡
+      \begin{cases}
+        0 \mod n_{l} & l≠j \\ a_j \mod n_j & l=j
+      \end{cases}
+    \end{equation}
+    \item\label{item:74} Let \(x=a_1s_1N_1+a_2s_2N_2+\dots+a_k s_k N_k\). \\
+    This is our solution!
+  \end{enumerate}
 \end{proof}
 
 \begin{example}{}{}
-	\begin{equation}
-		\label{eq:119}
-		x≡3 \mod 5, \quad\quad  x≡1 \mod 7, \quad\quad x≡2 \mod 11
-	\end{equation}
-	Here \(N=5⋅7⋅11=385\), \(N_1=77, N_2=55, N_3=35\). So we need t solve:
-	\begin{equation}
-		\label{eq:125}
-		s_1⋅77+t_1⋅5=1,\quad\quad s_2⋅55+t_2⋅7=1, \qquad s_3⋅35+t_3⋅11=1
-	\end{equation}
-	So \(77=15⋅5+2\), \(5=2⋅2+1\), therefore
-	\begin{equation}
-		\label{eq:126}
-		1= 5 - 2⋅2= 5-2⋅(77-15⋅5)= - 2⋅77+31⋅5
-	\end{equation}
-	so \(a_1s_1N_1=3⋅(-2)⋅77=-462\).
+  \begin{equation}
+    \label{eq:119}
+    x≡3 \mod 5, \quad\quad  x≡1 \mod 7, \quad\quad x≡2 \mod 11
+  \end{equation}
+  Here \(N=5⋅7⋅11=385\), \(N_1=77, N_2=55, N_3=35\). So we need t solve:
+  \begin{equation}
+    \label{eq:125}
+    s_1⋅77+t_1⋅5=1,\quad\quad s_2⋅55+t_2⋅7=1, \qquad s_3⋅35+t_3⋅11=1
+  \end{equation}
+  So \(77=15⋅5+2\), \(5=2⋅2+1\), therefore
+  \begin{equation}
+    \label{eq:126}
+    1= 5 - 2⋅2= 5-2⋅(77-15⋅5)= - 2⋅77+31⋅5
+  \end{equation}
+  so \(a_1s_1N_1=3⋅(-2)⋅77=-462\).
 
-	Do the same for the other equations:
-	\begin{equation*}
-		a_2s_2N_2=1⋅(-1)⋅55=-55 \quad \quad a_3s_3N_3 = 2⋅(-5)⋅35 = -350
-	\end{equation*}
-	Therefore \(x=-462-55-350 ≡ \dots ≡ -97 \mod 385 ≡ 288 \mod 385\).
+  Do the same for the other equations:
+  \begin{equation*}
+    a_2s_2N_2=1⋅(-1)⋅55=-55 \quad \quad a_3s_3N_3 = 2⋅(-5)⋅35 = -350
+  \end{equation*}
+  Therefore \(x=-462-55-350 ≡ \dots ≡ -97 \mod 385 ≡ 288 \mod 385\).
 \end{example}
 
 
@@ -1600,10 +1604,10 @@ For example
 We can do linear algebra over any field. A \textbf{vector space} \(V\) over a field \(F\) with an operation (vector addition) \(+:V×V→V\) and an operation (multiplication by scalar) \(⋅:F×V→V\) that fullfill certain axioms.
 
 \begin{example}{}{}
-	Assume that \(F\) is a field and \(K⊆F\) is a subfield. Then we can view \(F\) as a vector space over \(K\).
+  Assume that \(F\) is a field and \(K⊆F\) is a subfield. Then we can view \(F\) as a vector space over \(K\).
 \end{example}
 \begin{example}{}{}
-	For example viewing \(ℂ\) as a vector space over \(ℝ\) then \(1, i\) would be a basis. Viewing \(ℝ\) as a vector space over \(ℚ\) a basis cannot be easily written down, because it is an (uncountable) infinite dimensional vector space.
+  For example viewing \(ℂ\) as a vector space over \(ℝ\) then \(1, i\) would be a basis. Viewing \(ℝ\) as a vector space over \(ℚ\) a basis cannot be easily written down, because it is an (uncountable) infinite dimensional vector space.
 \end{example}
 
 In particular if \(F\) is finite, then \(F\) is a finite dimensional vector space over \(K\). There is a basis \(e_1,e_2,\dots, e_n∈F\) s.t. every \(x∈F\) can be written uniquely as \(x=𝛼_{1}e_1+𝛼₂e_2+\dots+𝛼_{n}e_n\) where \(𝛼_{j}∈K\).
@@ -1614,8 +1618,8 @@ We can do better!
 
 Start with any finite field \(F\) and let
 \begin{equation}
-	\label{eq:127}
-	K=\left\{ 1, 1+1, 1+1+1, \dots \right\} = \left\{ 1⋅1, 2⋅1, 3⋅1, \dots \right\}  ⊆F
+  \label{eq:127}
+  K=\left\{ 1, 1+1, 1+1+1, \dots \right\} = \left\{ 1⋅1, 2⋅1, 3⋅1, \dots \right\}  ⊆F
 \end{equation}
 Since \(K\) is finite, \(r⋅1=s⋅1\) for some \(r<s\). So \((s-r)⋅1=0\).
 
@@ -1630,24 +1634,24 @@ We are not going to prove this in full generality, but the idea is to do like we
 Let us do a concrete example.
 
 \begin{example}{}{}
-	Let \(R=ℤ_{5}[x]/⟨x²+2⟩\), then \(F\) is a commutative ring with unity but in fact \(F\) is a field!
+  Let \(R=ℤ_{5}[x]/⟨x²+2⟩\), then \(F\) is a commutative ring with unity but in fact \(F\) is a field!
 
-	The elements in \(F\) can be identified with degree \(≤1\) polynomials \(a+bx\) where \(a,b∈ℤ_{5}\), and
-	\begin{equation}
-		\label{eq:128}
-		(a+bx)(c+dx)=ac + (bc+ad)x + bdx² = ac - 2bd + (bc+ad)x
-	\end{equation}
+  The elements in \(F\) can be identified with degree \(≤1\) polynomials \(a+bx\) where \(a,b∈ℤ_{5}\), and
+  \begin{equation}
+    \label{eq:128}
+    (a+bx)(c+dx)=ac + (bc+ad)x + bdx² = ac - 2bd + (bc+ad)x
+  \end{equation}
 
-	And if \(a+bx\) is not the zero polynomial in \(F\) (i.e. not both of \(a\) and \(b\) are zero) then we can solve
-	\begin{equation}
-		\label{eq:129}
-		ac-2bd = 1, \quad bc+ad=0
-	\end{equation}
-	since \(\det \begin{pmatrix} a  & -2b \\ b  & a \end{pmatrix} = a²+2b²≠0 \).
+  And if \(a+bx\) is not the zero polynomial in \(F\) (i.e. not both of \(a\) and \(b\) are zero) then we can solve
+  \begin{equation}
+    \label{eq:129}
+    ac-2bd = 1, \quad bc+ad=0
+  \end{equation}
+  since \(\det \begin{pmatrix} a  & -2b \\ b  & a \end{pmatrix} = a²+2b²≠0 \).
 
-	This shows that \(F\) is a field and clearly \(\abs{F}=5²=25\).
+  This shows that \(F\) is a field and clearly \(\abs{F}=5²=25\).
 
-	(The reason this construction works is actually that \(x²+2\) is \textbf{irreducible} over \(ℤ_{5}\), i.e. cannot be written as a product of lower degree polynomials.)
+  (The reason this construction works is actually that \(x²+2\) is \textbf{irreducible} over \(ℤ_{5}\), i.e. cannot be written as a product of lower degree polynomials.)
 \end{example}
 
 \section{Introduction to Coding theory}
@@ -1655,118 +1659,118 @@ Let us do a concrete example.
 
 Generally \textbf{coding} means representing information in different forms. Examples:
 \begin{itemize}
-	\item turning speech into written text
-	\item digital representation of images (e.g. jpeg)
-	\item More code
-	\item Translation into a different language
-	\item Turning an algorithm into a computer program
+  \item turning speech into written text
+  \item digital representation of images (e.g. jpeg)
+  \item More code
+  \item Translation into a different language
+  \item Turning an algorithm into a computer program
 \end{itemize}
 
 From a mathematical perspective probably the most important types of codes are
 \begin{itemize}
-	\item data compression codes: \\
-	      \enquote{shrinking a message to some storage space or transmission time}. Usually with a loss of information.
-	\item Cryptographic codes:\\ turning information into a form that only the intendent recipient can recreate. (Variang: digital signatures)
-	\item Error-detecting and error correcting codes:\\
-	      Adding redundant information which allows recovery from some transmission errrors.
+  \item data compression codes: \\
+        \enquote{shrinking a message to some storage space or transmission time}. Usually with a loss of information.
+  \item Cryptographic codes:\\ turning information into a form that only the intendent recipient can recreate. (Variang: digital signatures)
+  \item Error-detecting and error correcting codes:\\
+        Adding redundant information which allows recovery from some transmission errrors.
 \end{itemize}
 We will in this course focus on the third kind.
 
 \begin{example}{Control digits}{}
-	For example Swedish personal identification number are error detecting, at least in the sense that swpping consecutive digits make the pin invalid.
+  For example Swedish personal identification number are error detecting, at least in the sense that swpping consecutive digits make the pin invalid.
 
-	How does this work?
+  How does this work?
 
-	For example, look at (the valid) PIN 941208-6390 and do the following:
-	Take the digits, multiply alternatively by 2 and 1 and replace the product with sum of digits.
+  For example, look at (the valid) PIN 941208-6390 and do the following:
+  Take the digits, multiply alternatively by 2 and 1 and replace the product with sum of digits.
 
-	\texttt{941208639x}\\
-	\texttt{2121212121}\\\\
-	\texttt{942208339x}
+  \texttt{941208639x}\\
+  \texttt{2121212121}\\\\
+  \texttt{942208339x}
 
-	Now sum: 9+4+2+2+0+8+3+3+9+x=40+x.
+  Now sum: 9+4+2+2+0+8+3+3+9+x=40+x.
 
-	x should be choses to make this sum equal to 0 (mod 10), here x=0, so the original pin was valid.
+  x should be choses to make this sum equal to 0 (mod 10), here x=0, so the original pin was valid.
 
-	You can check that swapping two consecutive digits in a valid PIN makes it invalid (with one exception, swapping 09 goes unnoticed.)
+  You can check that swapping two consecutive digits in a valid PIN makes it invalid (with one exception, swapping 09 goes unnoticed.)
 
-	This is an example of a code that can detect one error (of a particular type). But if we swap more than two numbers or make other errors, they may go unnoticed. There is also no way to see exactly which two digits were swapped (unless we create a non-valid date).
+  This is an example of a code that can detect one error (of a particular type). But if we swap more than two numbers or make other errors, they may go unnoticed. There is also no way to see exactly which two digits were swapped (unless we create a non-valid date).
 \end{example}
 
 \subsection{Some definitions}
 \label{sec:some-definitions}
 
 \begin{definition}{}{}
-	In most general context, a \textbf{coding function} is an injective function \(f:F^{m}→F^{n}\) for some field \(F\) and \(m>n\). The image
+  In most general context, a \textbf{coding function} is an injective function \(f:F^{m}→F^{n}\) for some field \(F\) and \(m>n\). The image
 
-	\begin{equation}
-		\label{eq:130}
-		C=f(F^{m}) = \left\{ y∈F^{n}: y=f(x) \text{ for some } x \right\}
-	\end{equation}
-	is called a \textbf{code}.
+  \begin{equation}
+    \label{eq:130}
+    C=f(F^{m}) = \left\{ y∈F^{n}: y=f(x) \text{ for some } x \right\}
+  \end{equation}
+  is called a \textbf{code}.
 \end{definition}
 
 \begin{example}{}{}
-	\(F=ℤ_{7}, f: ℤ_{7}³→ℤ_{7}^{4}\) where \(f(x_1,x_2,x_3)=(x_1,x_2,x_3,x_1+x_2+x_3)\) is a (linear) code and \(C=f(ℤ³_{7}\) containes \(7³=343\) words.
+  \(F=ℤ_{7}, f: ℤ_{7}³→ℤ_{7}^{4}\) where \(f(x_1,x_2,x_3)=(x_1,x_2,x_3,x_1+x_2+x_3)\) is a (linear) code and \(C=f(ℤ³_{7}\) containes \(7³=343\) words.
 
-	For example \(f(2,3,4)=(2,3,4,2)\) is a code word, but \((2,3,4,5)\) is not.
+  For example \(f(2,3,4)=(2,3,4,2)\) is a code word, but \((2,3,4,5)\) is not.
 \end{example}
 
 \begin{example}{}{}
-	\(F=ℤ₂[x]/⟨x²+x+1⟩\) is a field of four elements. Define \(f:F²→F³\) by \(f(p_1, p_2)=p_2, xp₁, p_1-p_2\) is a code. Verify injectivity!
+  \(F=ℤ₂[x]/⟨x²+x+1⟩\) is a field of four elements. Define \(f:F²→F³\) by \(f(p_1, p_2)=p_2, xp₁, p_1-p_2\) is a code. Verify injectivity!
 \end{example}
 
 In order to study error-detection and error-correction systematically, we neet to measure the \enquote{distance} between code words.
 
 \begin{definition}{Hamming distance}{}
-	The \textbf{Hamming distance}, \(d(x,y)\) between \(x=(x_1, \dots, x_n)\) and \(y=(y_1, \dots, y_n)\), \(x,y∈F^{n}\) is the number of indices \(j\) such that \(x_j≠y_j\).
+  The \textbf{Hamming distance}, \(d(x,y)\) between \(x=(x_1, \dots, x_n)\) and \(y=(y_1, \dots, y_n)\), \(x,y∈F^{n}\) is the number of indices \(j\) such that \(x_j≠y_j\).
 \end{definition}
 
 \begin{example}{}{}
-	In \(ℤ_{7}^{4}\), \(d\left((2,3,4,2), (2,1,5,1) \right) = 3\).
+  In \(ℤ_{7}^{4}\), \(d\left((2,3,4,2), (2,1,5,1) \right) = 3\).
 \end{example}
 
 \begin{definition}{Separation of a code}{}
-	Let \(C\) be a code in \(F^{n}\). The \textbf{separation} of \(C\), \(d(C)\) is defined by
-	\begin{equation}
-		\label{eq:131}
-		d(C)=\min\left\{ d(x,y): x,y∈C, x≠y \right\}.
-	\end{equation}
+  Let \(C\) be a code in \(F^{n}\). The \textbf{separation} of \(C\), \(d(C)\) is defined by
+  \begin{equation}
+    \label{eq:131}
+    d(C)=\min\left\{ d(x,y): x,y∈C, x≠y \right\}.
+  \end{equation}
 \end{definition}
 
 \begin{example}{}{}
-	In \(ℤ_{2}³\), what is the largest possible separation of a code containing (exactly) two code words? Three words?
+  In \(ℤ_{2}³\), what is the largest possible separation of a code containing (exactly) two code words? Three words?
 
-	For \(\abs{C}=2\), we can take \(C=\left\{ 000, 111 \right\} \) and this is obviously optimal. (\(d(C)=3\))
+  For \(\abs{C}=2\), we can take \(C=\left\{ 000, 111 \right\} \) and this is obviously optimal. (\(d(C)=3\))
 
-	For \(\abs{C}=3, \) \(d(C)=3\) is impossible. (why?) Can we have \(d(C)=2\)?
+  For \(\abs{C}=3, \) \(d(C)=3\) is impossible. (why?) Can we have \(d(C)=2\)?
 
-	Yes, for example, \(C=\left\{ 000, 110, 101 \right\} \). In fact, we can even have \(\abs{C}=4\) with \(d(C)=2: C=\left\{ 000, 110, 101, 011 \right\} \).
+  Yes, for example, \(C=\left\{ 000, 110, 101 \right\} \). In fact, we can even have \(\abs{C}=4\) with \(d(C)=2: C=\left\{ 000, 110, 101, 011 \right\} \).
 
-	Now this \(C\) is an example of a code that can detect some error.
+  Now this \(C\) is an example of a code that can detect some error.
 
-	For example, if we receive the signal 010, we know its not a code word (unless the transmission had more than one mistake). Similarly, if we receive 000, we can be sure, it's correct (or has more than one mistake).
+  For example, if we receive the signal 010, we know its not a code word (unless the transmission had more than one mistake). Similarly, if we receive 000, we can be sure, it's correct (or has more than one mistake).
 
-	If we do the same for the code \(C=\left\{ 000, 111 \right\} \) where \(d(C)=3\) we get a code that can correct one error. If we receive \(010\), it contains an error, but the only valid code word at distance 1 is 000.
+  If we do the same for the code \(C=\left\{ 000, 111 \right\} \) where \(d(C)=3\) we get a code that can correct one error. If we receive \(010\), it contains an error, but the only valid code word at distance 1 is 000.
 \end{example}
 
 Similarly we get the following result
 \begin{theorem}{}{}
-	Let \(C\) be a code with separation \(d(C)\).
-	\begin{enumerate}
-		\item\label{item:88} If \(d(C)≥k+1\) then \(C\) can detect up to \(k\) errors.
-		\item\label{item:89} If \(d(C)≥2k+1\), then \(C\) can correct up to \(k\) errors.
-	\end{enumerate}
+  Let \(C\) be a code with separation \(d(C)\).
+  \begin{enumerate}
+    \item\label{item:88} If \(d(C)≥k+1\) then \(C\) can detect up to \(k\) errors.
+    \item\label{item:89} If \(d(C)≥2k+1\), then \(C\) can correct up to \(k\) errors.
+  \end{enumerate}
 \end{theorem}
 \begin{proof}
-	\ref{item:88} if \(c∈C\) and changed into \(c'\), s.t. we've made at most \(k\) changes, i.e. \(d(c, c')≤k\), then \(c'∉C\) since \(d(C)=k+1\).
+  \ref{item:88} if \(c∈C\) and changed into \(c'\), s.t. we've made at most \(k\) changes, i.e. \(d(c, c')≤k\), then \(c'∉C\) since \(d(C)=k+1\).
 
-	\ref{item:89} If \(c∈C\) is changed into \(c'\), \(d(c,c')≤k\), then \(c\) is the only code word in \(C\) with distance \(≤k\) from it, since, if \(\tilde{c}\) was another such word, then
-	\begin{equation}
-		\label{eq:132}
-		d(c, \tilde{c}) ≤ d(c, c')+d(c', \tilde{c}) ≤ k+k=2k.
-	\end{equation}
-	which contradicts the assumption, that the separation of \(C\) is \(2k+1\). (This uses the triangular inequality, which holds, since the Hamming distance is a metric.)
+  \ref{item:89} If \(c∈C\) is changed into \(c'\), \(d(c,c')≤k\), then \(c\) is the only code word in \(C\) with distance \(≤k\) from it, since, if \(\tilde{c}\) was another such word, then
+  \begin{equation}
+    \label{eq:132}
+    d(c, \tilde{c}) ≤ d(c, c')+d(c', \tilde{c}) ≤ k+k=2k.
+  \end{equation}
+  which contradicts the assumption, that the separation of \(C\) is \(2k+1\). (This uses the triangular inequality, which holds, since the Hamming distance is a metric.)
 \end{proof}
 
 \subsection{Perfect codes}
@@ -1776,227 +1780,227 @@ Let \(F\) be a finite field with \(q\) elements. Assume that we want a code \(C=
 
 Note that if \(x∈C\), then the \enquote{ball}
 \begin{equation}
-	\label{eq:133}
-	B(x,k)=\left\{ y∈F^{n}: d(x,y)≤k \right\}
+  \label{eq:133}
+  B(x,k)=\left\{ y∈F^{n}: d(x,y)≤k \right\}
 \end{equation}
 cannot contain any other code words from \(C\) (other than \(x\)). How many elements are there in \(B(x,k)\)?
 \begin{equation}
-	\label{eq:134}
-	\abs{B(x,k)}= ∑_{j=0}^{k} \binom{n}{j}(q-1)^{j}
+  \label{eq:134}
+  \abs{B(x,k)}= ∑_{j=0}^{k} \binom{n}{j}(q-1)^{j}
 \end{equation}
 (Why?)
 
 Hence we have the following estimate on the number of possible code words in \(C\).
 
 \begin{theorem}{}{}
-	If \(F\) has \(q \) elements and \(C⊆F^{n}\) contains \(M\) words, and \(d(C)=2k+1\), then
-	\begin{equation}
-		\label{eq:135}
-		M⋅ \left( ∑_{j=0}^{k} \binom{n}{j}(q-1)^{j} \right) ≤ q^{n}.
-	\end{equation}
+  If \(F\) has \(q \) elements and \(C⊆F^{n}\) contains \(M\) words, and \(d(C)=2k+1\), then
+  \begin{equation}
+    \label{eq:135}
+    M⋅ \left( ∑_{j=0}^{k} \binom{n}{j}(q-1)^{j} \right) ≤ q^{n}.
+  \end{equation}
 \end{theorem}
 
 
 \begin{example}{}{}
-	Let \(C=\left\{ 0000, 0112, 0221, 1011, 1120, 1202, 2022, 2101, 2210 \right\} ⊆ ℤ_{3}^{4}\). We can check that \(d(C)=3\), so each \(x∈C\) has a ball \(B(x,1)\) not containing additional elements from \(C\).
-	\begin{equation}
-		\label{eq:136}
-		\abs{B(x,1)}= \binom{4}{0} + \binom{4}{1}(3-1)=9.
-	\end{equation}
-	Hence the nine code words in \(C\), together with these \enquote{forbidden balls} comprise \(9⋅9=81\) elements in \(ℤ_{4}^{3}\). But \(\abs{ℤ_{4}³}=3^{4}=81\), so every element in \(ℤ_{4}³\) is accounted for!
+  Let \(C=\left\{ 0000, 0112, 0221, 1011, 1120, 1202, 2022, 2101, 2210 \right\} ⊆ ℤ_{3}^{4}\). We can check that \(d(C)=3\), so each \(x∈C\) has a ball \(B(x,1)\) not containing additional elements from \(C\).
+  \begin{equation}
+    \label{eq:136}
+    \abs{B(x,1)}= \binom{4}{0} + \binom{4}{1}(3-1)=9.
+  \end{equation}
+  Hence the nine code words in \(C\), together with these \enquote{forbidden balls} comprise \(9⋅9=81\) elements in \(ℤ_{4}^{3}\). But \(\abs{ℤ_{4}³}=3^{4}=81\), so every element in \(ℤ_{4}³\) is accounted for!
 \end{example}
 
 \begin{definition}{perfect codes}{}
-	Such codes, i.e. codes where the estimate in the last theorem is sharp (i.e. \(≤\) is in fact \(=\)) are called \textbf{perfect codes}.
+  Such codes, i.e. codes where the estimate in the last theorem is sharp (i.e. \(≤\) is in fact \(=\)) are called \textbf{perfect codes}.
 \end{definition}
 
 \begin{example}{}{}
-	Is there a perfect code of separation \(5\) in \(ℤ_{7}^{4}\)?\\
-	By the above (\(q=7, n=4, k=2\)) such a code satisfies
-	\begin{equation}
-		\label{eq:137}
-		M⋅\left(\binom{4}{0}+ \binom{4}{1}6+\binom{4}{2}6² \right) ≤ 7^{4} ,
-	\end{equation}
-	where \(M=\abs{C}\). Hence \(M≤ \frac{7^{4}}{241}≤9.96\), so there is no such perfect code!\\
-	And any separation \(5\) code in \(ℤ_{7}^{4}\) can have no more than 9 elements.
+  Is there a perfect code of separation \(5\) in \(ℤ_{7}^{4}\)?\\
+  By the above (\(q=7, n=4, k=2\)) such a code satisfies
+  \begin{equation}
+    \label{eq:137}
+    M⋅\left(\binom{4}{0}+ \binom{4}{1}6+\binom{4}{2}6² \right) ≤ 7^{4} ,
+  \end{equation}
+  where \(M=\abs{C}\). Hence \(M≤ \frac{7^{4}}{241}≤9.96\), so there is no such perfect code!\\
+  And any separation \(5\) code in \(ℤ_{7}^{4}\) can have no more than 9 elements.
 \end{example}
 
 \subsection{Linear codes}
 \label{sec:linear-codes}
 
 \begin{definition}{Linear code}{}
-	A code \(C⊆F^{n}\) is called \textbf{linear} if it is a linear subspace of \(F^{n}\) (recall that \(F^{n}\) is a vector space over \(F\), i.e. with scalars in \(F\))
+  A code \(C⊆F^{n}\) is called \textbf{linear} if it is a linear subspace of \(F^{n}\) (recall that \(F^{n}\) is a vector space over \(F\), i.e. with scalars in \(F\))
 
-	If \(\dim(C)=m\), then \(C\) is called an \([n, m]\) code.
+  If \(\dim(C)=m\), then \(C\) is called an \([n, m]\) code.
 \end{definition}
 
 \begin{example}{}{}
-	The code \(C=\left\{ 0000, 0112, 0221, 1011, 1120, 1202, 2022, 2101, 2212 \right\} ⊆ ℤ₃⁴\) (which we saw above) is a linear code generated by \((1011)\) and \((0112)\), i.e. a linear \([4,2]\) code.
+  The code \(C=\left\{ 0000, 0112, 0221, 1011, 1120, 1202, 2022, 2101, 2212 \right\} ⊆ ℤ₃⁴\) (which we saw above) is a linear code generated by \((1011)\) and \((0112)\), i.e. a linear \([4,2]\) code.
 \end{example}
 
 For linear codes it is easy to compute their separation.
 
 \begin{definition}{}{}
-	The \textbf{weight} of code word \(x∈F^{n}\) is the number \(w(x)\) of non-zero coordinates. Similarly, the weight of a (linear) code \(C\) is
-	\begin{equation}
-		\label{eq:138}
-		w(C) = \min\left\{ w(x): x∈C, x≠0 \right\}
-	\end{equation}
+  The \textbf{weight} of code word \(x∈F^{n}\) is the number \(w(x)\) of non-zero coordinates. Similarly, the weight of a (linear) code \(C\) is
+  \begin{equation}
+    \label{eq:138}
+    w(C) = \min\left\{ w(x): x∈C, x≠0 \right\}
+  \end{equation}
 \end{definition}
 \begin{theorem}{}{}
-	For a linear code, \(d(C)=w(C)\)
+  For a linear code, \(d(C)=w(C)\)
 \end{theorem}
 \begin{proof}
-	If \(x,y∈C\), then \(x-y∈C\) (by linearity) and \(d(x,y)=w(x-y)\).
+  If \(x,y∈C\), then \(x-y∈C\) (by linearity) and \(d(x,y)=w(x-y)\).
 \end{proof}
 
 \begin{example}{}{}
-	The linear code in \(ℤ₃⁴\) generated by \((1011)\) and \((0112)\) consists of all elements of the form \(a(1011)+b(0112)\), where \(a,b∈ℤ₃\), i.e.\\
-	\begin{tabular}{c|ccc}
-		\toprule
-		\(a \backslash b\) & 0    & 1    & 2    \\
-		\midrule
-		0                  & 0000 & 0112 & 0221 \\
-		1                  & 1011 & 1120 & 1202 \\
-		2                  & 2022 & 2101 & 2210 \\
-		\bottomrule
-	\end{tabular}
-	Note that all the non-zero elements in \(C\) have weight 3, so \(d(C)=3\).
+  The linear code in \(ℤ₃⁴\) generated by \((1011)\) and \((0112)\) consists of all elements of the form \(a(1011)+b(0112)\), where \(a,b∈ℤ₃\), i.e.\\
+  \begin{tabular}{c|ccc}
+    \toprule
+    \(a \backslash b\) & 0    & 1    & 2    \\
+    \midrule
+    0                  & 0000 & 0112 & 0221 \\
+    1                  & 1011 & 1120 & 1202 \\
+    2                  & 2022 & 2101 & 2210 \\
+    \bottomrule
+  \end{tabular}
+  Note that all the non-zero elements in \(C\) have weight 3, so \(d(C)=3\).
 \end{example}
 
 \begin{definition}{generator matrix}{}
-	A \textbf{generator matrix} for a linear \([n,m]\) code in \(F^{n}\) is an \(m×n\) matrix whose rows for a basis for \(C\).
+  A \textbf{generator matrix} for a linear \([n,m]\) code in \(F^{n}\) is an \(m×n\) matrix whose rows for a basis for \(C\).
 \end{definition}
 
 \begin{example}{}{}
-	The \([4,2]\) code above has a generator matrix \(\begin{pmatrix}
-		1 & 0 & 1 & 1 \\
-		0 & 1 & 1 & 2
-	\end{pmatrix}\)
+  The \([4,2]\) code above has a generator matrix \(\begin{pmatrix}
+    1 & 0 & 1 & 1 \\
+    0 & 1 & 1 & 2
+  \end{pmatrix}\)
 \end{example}
 \begin{remark}{}{}
-	Performing elementary row operations on a generator matrix does not change the code it generates.
+  Performing elementary row operations on a generator matrix does not change the code it generates.
 \end{remark}
 Therefore after a sequence of row operations we can assume that generator matrices are of \textbf{normal form}, i.e. of the form
 \begin{equation}
-	\label{eq:139}
-	\left[𝟙_{m} | A\right]
+  \label{eq:139}
+  \left[𝟙_{m} | A\right]
 \end{equation}
 as above. (Possibly column swaps may be necessary, which corresponds to a permutation of the code letters.
 
 For linear codes there are efficient algorithms for detecting and correcting errors. For a description of how this works we need te concept of the \emph{dual code}.
 
 \begin{definition}{}{}
-	Let \(C\) be a linear code in \(F^{n}\). The \textbf{dual code} of \(C\), \(C^{⟂}\) is the linear code
-	\begin{equation}
-		\label{eq:140}
-		C^{⟂}=\left\{ y∈F^{n}: x⋅y=0, ∀x∈C \right\}
-	\end{equation}
-	where \(x⋅y\) is the standard scalar product on \(F^{n}\).
+  Let \(C\) be a linear code in \(F^{n}\). The \textbf{dual code} of \(C\), \(C^{⟂}\) is the linear code
+  \begin{equation}
+    \label{eq:140}
+    C^{⟂}=\left\{ y∈F^{n}: x⋅y=0, ∀x∈C \right\}
+  \end{equation}
+  where \(x⋅y\) is the standard scalar product on \(F^{n}\).
 \end{definition}
 
 \begin{remark}{}{}
-	If \(G\) is a generator matrix for \(C\) then \(C^{⟂}\) is the nullspace of \(G\). (and \(C\) is the row space.)
+  If \(G\) is a generator matrix for \(C\) then \(C^{⟂}\) is the nullspace of \(G\). (and \(C\) is the row space.)
 
-	By the dimension theorem from linear algebra, \(\dim C^{⟂}=n-\dim =n-mC\).
+  By the dimension theorem from linear algebra, \(\dim C^{⟂}=n-\dim =n-mC\).
 
-	If \(C=C^{⟂}\), the code \(C\) is called \textbf{self-dual}. One example is given by
-	\begin{equation}
-		\label{eq:141}
-		G=\begin{pmatrix}
-			2 & 0 & 2 & 0 \\
-			0 & 2 & 0 & 1
-		\end{pmatrix}
-	\end{equation} in \(ℤ_{5}^{4}\)
+  If \(C=C^{⟂}\), the code \(C\) is called \textbf{self-dual}. One example is given by
+  \begin{equation}
+    \label{eq:141}
+    G=\begin{pmatrix}
+      2 & 0 & 2 & 0 \\
+      0 & 2 & 0 & 1
+    \end{pmatrix}
+  \end{equation} in \(ℤ_{5}^{4}\)
 \end{remark}
 
 \begin{definition}{}{}
-	A generator matrix for \(C^{⟂}\) is called a \textbf{control matrix} for \(C\).
+  A generator matrix for \(C^{⟂}\) is called a \textbf{control matrix} for \(C\).
 \end{definition}
 
 \begin{remark}{}{}
-	If \(H\) is a control matrix for \(C\), then \(x∈C⟺xH^{T}=0\).
+  If \(H\) is a control matrix for \(C\), then \(x∈C⟺xH^{T}=0\).
 
-	This gives us an efficient way to detect errors!
+  This gives us an efficient way to detect errors!
 \end{remark}
 
 \begin{theorem}{}{}
-	If \(G=[𝟙_{m}|A]\) is a generator matrix (of normal form) for the \([n, m]\) linear code \(C\), then
-	\begin{equation}
-		\label{eq:142}
-		H= \left[ -A^{T}| 𝟙_{n-m} \right]
-	\end{equation}
-	is a control matrix for \(G\).
+  If \(G=[𝟙_{m}|A]\) is a generator matrix (of normal form) for the \([n, m]\) linear code \(C\), then
+  \begin{equation}
+    \label{eq:142}
+    H= \left[ -A^{T}| 𝟙_{n-m} \right]
+  \end{equation}
+  is a control matrix for \(G\).
 \end{theorem}
 \begin{proof}
-	Since \(\dim C^{⟂}=n-m\), the matrix \(H\) should be an \((n-m)×n\) matrix. Also any matrix \(\tilde{H}\) of this size with linearly independent rows satisfying \(G\tilde{H}^{T}=0\) must be a control matrix for \(C\). (Since it has \(n-m\) linearly independent rows, that are orthogonal to the row space of \(G\), i.e. in \(C^{⟂}\).)
+  Since \(\dim C^{⟂}=n-m\), the matrix \(H\) should be an \((n-m)×n\) matrix. Also any matrix \(\tilde{H}\) of this size with linearly independent rows satisfying \(G\tilde{H}^{T}=0\) must be a control matrix for \(C\). (Since it has \(n-m\) linearly independent rows, that are orthogonal to the row space of \(G\), i.e. in \(C^{⟂}\).)
 
-	Clearly \(H=[-A^{T}|𝟙_{n-m}]\) has the correct size, and
-	\begin{equation}
-		\label{eq:143}
-		GH^{T}=[𝟙_{m}|A]⋅ \begin{bmatrix} -A \\ 𝟙_{n-m} \end{bmatrix} = -𝟙_{m}A+A𝟙_{n-m}=-A+A=0.
-	\end{equation}
+  Clearly \(H=[-A^{T}|𝟙_{n-m}]\) has the correct size, and
+  \begin{equation}
+    \label{eq:143}
+    GH^{T}=[𝟙_{m}|A]⋅ \begin{bmatrix} -A \\ 𝟙_{n-m} \end{bmatrix} = -𝟙_{m}A+A𝟙_{n-m}=-A+A=0.
+  \end{equation}
 \end{proof}
 
 \begin{example}{}{}
-	Our favorite (perfect) code in \(ℤ₃⁴\) whose generator matrix is
+  Our favorite (perfect) code in \(ℤ₃⁴\) whose generator matrix is
 
-	\begin{equation}
-		\label{eq:144}
-		G= \begin{pmatrix}
-			1 & 0 & 1 & 1 \\
-			0 & 1 & 1 & 2
-		\end{pmatrix}
-	\end{equation}
-	has a control matrix
-	\begin{equation}
-		\label{eq:145}
-		H = \begin{pmatrix} -1&-1&1&0\\-1&-2&0&1 \end{pmatrix}
-		= \begin{pmatrix}
-			2 & 2 & 1 & 0 \\
-			2 & 1 & 0 & 1
-		\end{pmatrix}
-	\end{equation}
+  \begin{equation}
+    \label{eq:144}
+    G= \begin{pmatrix}
+      1 & 0 & 1 & 1 \\
+      0 & 1 & 1 & 2
+    \end{pmatrix}
+  \end{equation}
+  has a control matrix
+  \begin{equation}
+    \label{eq:145}
+    H = \begin{pmatrix} -1&-1&1&0\\-1&-2&0&1 \end{pmatrix}
+    = \begin{pmatrix}
+      2 & 2 & 1 & 0 \\
+      2 & 1 & 0 & 1
+    \end{pmatrix}
+  \end{equation}
 \end{example}
 
 \subsection{Finding the separation from the control matrix}
 \label{sec:find-separ-from}
 
 \begin{theorem}{}{}
-	A linear code \(C\) with control matrix \(H\) has separation \(s\) iff there are \(s\) linearly dependent columns in \(H\), but any \(s-1\) columns are linearly independent.
+  A linear code \(C\) with control matrix \(H\) has separation \(s\) iff there are \(s\) linearly dependent columns in \(H\), but any \(s-1\) columns are linearly independent.
 \end{theorem}
 \begin{proof}
-	Every word \(x∈C\) satisfies \(xH^{T}=0⟹Hx^{T}=0\), i.e. every code word \(x\) corresponds the the coefficients in a linear dependence of the columns in \(H\).
+  Every word \(x∈C\) satisfies \(xH^{T}=0⟹Hx^{T}=0\), i.e. every code word \(x\) corresponds the the coefficients in a linear dependence of the columns in \(H\).
 
-	If \(x\) is a word of minimal weight \(s\), then exactly \(s\) of the coefficients in this depedence are non-zero. And if there were \(s-1\) linearly dependent column vectors in \(H\), there would be a code word of weight \(s-1\), contradicting our choice of \(x\).
+  If \(x\) is a word of minimal weight \(s\), then exactly \(s\) of the coefficients in this depedence are non-zero. And if there were \(s-1\) linearly dependent column vectors in \(H\), there would be a code word of weight \(s-1\), contradicting our choice of \(x\).
 \end{proof}
 \begin{example}{}{}
-	Let \(G\) be a generator matrix in \(ℤ₂⁵\),
-	\begin{equation}
-		\label{eq:146}
-		G = \begin{pmatrix}
-			1 & 0 & 1 & 0 & 1 \\
-			0 & 1 & 0 & 1 & 1
-		\end{pmatrix}
-	\end{equation}
-	The related control matrix \(H\) is given by
-	\begin{equation}
-		\label{eq:147}
-		H = \begin{pmatrix}
-			-1 & -0 & 1 & 0 & 0 \\
-			-0 & -1 & 0 & 1 & 0 \\
-			-1 & -1 & 0 & 0 & 1
-		\end{pmatrix}
-		= \begin{pmatrix}
-			1 & 0 & 1 & 0 & 0 \\
-			0 & 1 & 0 & 1 & 0 \\
-			1 & 1 & 0 & 0 & 1
-		\end{pmatrix}
-	\end{equation}
-	Here \(c_2+c_4+c_5=0\) (corresponding to the code word \((01011)∈C\). But it's not hard to see that any pair of columns are linearly independent, so the separation of \(C\) is \(3\).
+  Let \(G\) be a generator matrix in \(ℤ₂⁵\),
+  \begin{equation}
+    \label{eq:146}
+    G = \begin{pmatrix}
+      1 & 0 & 1 & 0 & 1 \\
+      0 & 1 & 0 & 1 & 1
+    \end{pmatrix}
+  \end{equation}
+  The related control matrix \(H\) is given by
+  \begin{equation}
+    \label{eq:147}
+    H = \begin{pmatrix}
+      -1 & -0 & 1 & 0 & 0 \\
+      -0 & -1 & 0 & 1 & 0 \\
+      -1 & -1 & 0 & 0 & 1
+    \end{pmatrix}
+    = \begin{pmatrix}
+      1 & 0 & 1 & 0 & 0 \\
+      0 & 1 & 0 & 1 & 0 \\
+      1 & 1 & 0 & 0 & 1
+    \end{pmatrix}
+  \end{equation}
+  Here \(c_2+c_4+c_5=0\) (corresponding to the code word \((01011)∈C\). But it's not hard to see that any pair of columns are linearly independent, so the separation of \(C\) is \(3\).
 \end{example}
 \begin{example}{}{}
-	Exercise: Find a code word in \(C\) of weight 3.
+  Exercise: Find a code word in \(C\) of weight 3.
 \end{example}
 
 \subsection{Detection and correction of linear codes}
@@ -2019,50 +2023,50 @@ We want to alter \(x\) as little as possible so we look for the \(y\) with lowes
 Finally, we replace \(x\) by (the code word) \(x-y\) which is then the code word closest to \(x\)!
 
 \begin{example}{}{}
-	In our perfect \([4,2]\) code over \(ℤ₃⁴\), generated by \((1011)\) and \((0112)\), we know that a control matrix is given by
+  In our perfect \([4,2]\) code over \(ℤ₃⁴\), generated by \((1011)\) and \((0112)\), we know that a control matrix is given by
 
-	\begin{equation}
-		\label{eq:148}
-		H=\begin{pmatrix}
-			2 & 2 & 1 & 0 \\
-			2 & 1 & 0 & 1
-		\end{pmatrix}
-	\end{equation}
-	Since every word in \(ℤ₃⁴\) is within distance one from a code word (because this is a perfect code with separation 3), it is enough to look at the columns in \(H\) to find the coset leaders.
+  \begin{equation}
+    \label{eq:148}
+    H=\begin{pmatrix}
+      2 & 2 & 1 & 0 \\
+      2 & 1 & 0 & 1
+    \end{pmatrix}
+  \end{equation}
+  Since every word in \(ℤ₃⁴\) is within distance one from a code word (because this is a perfect code with separation 3), it is enough to look at the columns in \(H\) to find the coset leaders.
 
-	For example the syndrome (10) has the coset leader (0010) corresponding to the third column of \(H\).
+  For example the syndrome (10) has the coset leader (0010) corresponding to the third column of \(H\).
 
 
-	We get the full table of syndroms by
-	\begin{tabular}{rccccccccc}
-		syndrome     & 00   & 01   & 02   & 10   & 11   & 12   & 20   & 21   & 22   \\
-		coset leader & 0000 & 0001 & 0002 & 0010 & 2000 & 0200 & 0020 & 0100 & 1000 \\
-	\end{tabular}
+  We get the full table of syndroms by
+  \begin{tabular}{rccccccccc}
+    syndrome     & 00   & 01   & 02   & 10   & 11   & 12   & 20   & 21   & 22   \\
+    coset leader & 0000 & 0001 & 0002 & 0010 & 2000 & 0200 & 0020 & 0100 & 1000 \\
+  \end{tabular}
 
-	Note that all the coset leaders have weight 1 (which is what we expect!)
+  Note that all the coset leaders have weight 1 (which is what we expect!)
 
-	In particular if we receive the words (0110), (0221), (1111) what was the intended message? (of course assuming that each word contains at most one error)
+  In particular if we receive the words (0110), (0221), (1111) what was the intended message? (of course assuming that each word contains at most one error)
 
-	The syndroms are (01), (00), (21).\footnote{For example \((0,1,1,0) \begin{pmatrix}
-			2 & 2 \\
-			2 & 1 \\
-			1 & 0 \\
-			0 & 1
-		\end{pmatrix}= (0 1)\).}
+  The syndroms are (01), (00), (21).\footnote{For example \((0,1,1,0) \begin{pmatrix}
+      2 & 2 \\
+      2 & 1 \\
+      1 & 0 \\
+      0 & 1
+    \end{pmatrix}= (0 1)\).}
 
-	The corresponding coset leaders are (0001), (0000), (0100), so the indented message was (0112), (0221), (1011).
+  The corresponding coset leaders are (0001), (0000), (0100), so the indented message was (0112), (0221), (1011).
 \end{example}
 \begin{remark}{}{}
-	If the code is not perfect, it might happen that a syndrome doesn't have a unique coset leader.
+  If the code is not perfect, it might happen that a syndrome doesn't have a unique coset leader.
 
-	For example, in a non-perfect code with separation 3, some words with 2 errors may still be possible to correct (if the syndrome has a unique coset leader) but others may not.
+  For example, in a non-perfect code with separation 3, some words with 2 errors may still be possible to correct (if the syndrome has a unique coset leader) but others may not.
 \end{remark}
 
 \subsection{Hamming codes}
 \label{sec:hamming-codes}
 
 \begin{definition}{}{}
-	A \textbf{Hamming code } is a perfect code of separation 3.
+  A \textbf{Hamming code } is a perfect code of separation 3.
 \end{definition}
 (For example our favorite example.)
 
@@ -2073,64 +2077,64 @@ As in the example, it follows that the control matrix \(H\) contains multiples o
 In particular, over \(ℤ₂ \), the control matrix must have some columns containing all possible nonzero words of length \(n-m\)!
 
 \begin{example}{}{}
-	For example, let
+  For example, let
 
-	\begin{equation}
-		\label{eq:149}
-		H= \begin{pmatrix}
-			1 & 0 & 1 & 1 & 1 & 0 & 0 \\
-			1 & 1 & 1 & 0 & 0 & 1 & 0 \\
-			1 & 1 & 0 & 1 & 0 & 0 & 1
-		\end{pmatrix}
-	\end{equation}
-	where the columns are all non-zero words in \(ℤ₂³\). (Note that for convenience, I chose the order so \(H=[A|𝟙₃]\)!)
+  \begin{equation}
+    \label{eq:149}
+    H= \begin{pmatrix}
+      1 & 0 & 1 & 1 & 1 & 0 & 0 \\
+      1 & 1 & 1 & 0 & 0 & 1 & 0 \\
+      1 & 1 & 0 & 1 & 0 & 0 & 1
+    \end{pmatrix}
+  \end{equation}
+  where the columns are all non-zero words in \(ℤ₂³\). (Note that for convenience, I chose the order so \(H=[A|𝟙₃]\)!)
 
-	This is the control matrix for a perfect \([7,4]\) code whose generator matrix is given by
-	\begin{equation}
-		\label{eq:150}
-		G = [𝟙_{4} | -A^{T}] \arr[=]{since \(-x=x\) in \(ℤ₂\)} [𝟙_{4}|A^{T}] =
-		\begin{pmatrix}
-			1 & 0 & 0 & 0 & 1 & 1 & 1 \\
-			0 & 1 & 0 & 0 & 0 & 1 & 1 \\
-			0 & 0 & 1 & 0 & 1 & 1 & 0 \\
-			0 & 0 & 0 & 1 & 1 & 0 & 1
-		\end{pmatrix}.
-	\end{equation}
+  This is the control matrix for a perfect \([7,4]\) code whose generator matrix is given by
+  \begin{equation}
+    \label{eq:150}
+    G = [𝟙_{4} | -A^{T}] \arr[=]{since \(-x=x\) in \(ℤ₂\)} [𝟙_{4}|A^{T}] =
+    \begin{pmatrix}
+      1 & 0 & 0 & 0 & 1 & 1 & 1 \\
+      0 & 1 & 0 & 0 & 0 & 1 & 1 \\
+      0 & 0 & 1 & 0 & 1 & 1 & 0 \\
+      0 & 0 & 0 & 1 & 1 & 0 & 1
+    \end{pmatrix}.
+  \end{equation}
 \end{example}
 
 \begin{example}{}{}
-	Correct the word (1010111) in this code (assuming \(≤1\) error).
+  Correct the word (1010111) in this code (assuming \(≤1\) error).
 
-	\begin{equation}
-		\label{eq:151}
-		[1010111] ⋅H^{T} = \begin{bmatrix}
-			1 \\
-			1 \\
-			0
-		\end{bmatrix}
-	\end{equation}
-	which is the third column in \(H\), so the error is in the third coordinate and (1000111) is the intended message.
+  \begin{equation}
+    \label{eq:151}
+    [1010111] ⋅H^{T} = \begin{bmatrix}
+      1 \\
+      1 \\
+      0
+    \end{bmatrix}
+  \end{equation}
+  which is the third column in \(H\), so the error is in the third coordinate and (1000111) is the intended message.
 \end{example}
 
 We can do the same for syndroms of arbitrary length. Look at an \([n, m]\) code over \(ℤ₂\). Then
 \begin{align}
-	\label{eq:152}
-	n & = \# \text{ of columns in } H       \\
-	  & = \# \text{ of possible syndromes}  \\
-	  & = 2^{\text{length of syndrome}} - 1 \\
-	  & = 2^{n-m} - 1
+  \label{eq:152}
+  n & = \# \text{ of columns in } H       \\
+    & = \# \text{ of possible syndromes}  \\
+    & = 2^{\text{length of syndrome}} - 1 \\
+    & = 2^{n-m} - 1
 \end{align}
 (the length of a syndrome is the number of rows in \(H\), i.e. \(n-m\).)
 
 So with \(r=n-m\) (the codimension of the code, or the length of the syndromes if you prefer), then
 \begin{equation}
-	\label{eq:153}
-	n=2^{r}-1, \quad m = n-r = 2^{r}-1 -r
+  \label{eq:153}
+  n=2^{r}-1, \quad m = n-r = 2^{r}-1 -r
 \end{equation}
 i.e. this gives us a perfect (why?) \([2^{r}-1, 2^{r}-1-r]\) code over \(ℤ₂\).
 
 \begin{remark}{}{}
-	We can construct Hamming codes over any finite field in  a similar way by choosing \(H\) so its columns contain multiples of every possible syndrome.
+  We can construct Hamming codes over any finite field in  a similar way by choosing \(H\) so its columns contain multiples of every possible syndrome.
 \end{remark}
 
 \subsection{Reed-Solomon codes}
@@ -2144,13 +2148,13 @@ To do this, we want a control matrix \(H\) with the property that every choice o
 
 One way to do this, is to choose distinct values \(𝛽₁, 𝛽₂, \dots, 𝛽_{n}∈F∖\left\{0 \right\}\) (for \(n≥𝜎\)) and let
 \begin{equation}
-	\label{eq:154}
-	H = \begin{pmatrix}
-		1        & 1        & \dots  & 1           \\
-		𝛽₁       & 𝛽₂       & \dots  & 𝛽_{n}       \\
-		\vdots   & \vdots   & \ddots & \vdots      \\
-		𝛽₁^{𝜎-2} & 𝛽₂^{𝜎-2} & \dots  & 𝛽_{n}^{𝜎-2}
-	\end{pmatrix}
+  \label{eq:154}
+  H = \begin{pmatrix}
+    1        & 1        & \dots  & 1           \\
+    𝛽₁       & 𝛽₂       & \dots  & 𝛽_{n}       \\
+    \vdots   & \vdots   & \ddots & \vdots      \\
+    𝛽₁^{𝜎-2} & 𝛽₂^{𝜎-2} & \dots  & 𝛽_{n}^{𝜎-2}
+  \end{pmatrix}
 \end{equation}
 (note that it has size \((𝜎-1)×n\)) and take this as our control matrix.
 
@@ -2158,69 +2162,69 @@ Clearly, if we take \(𝜎\) columns, they must be linearly dependent because al
 
 Now choose any \(𝜎-1\) columns, which gives us a square matrix
 \begin{equation}
-	\label{eq:155}
-	\begin{pmatrix}
-		1             & \dots  & 1                 \\
-		𝛽_{i_1}       & \dots  & 𝛽_{i_{𝜎-1}}       \\
-		𝛽_{i_1}²      & \dots  & 𝛽_{i_{𝜎-1}}²      \\
-		\vdots        & \ddots & \vdots            \\
-		𝛽_{i_1}^{𝜎-2} & \dots  & 𝛽_{i_{𝜎-1}}^{𝜎-2}
-	\end{pmatrix}
+  \label{eq:155}
+  \begin{pmatrix}
+    1             & \dots  & 1                 \\
+    𝛽_{i_1}       & \dots  & 𝛽_{i_{𝜎-1}}       \\
+    𝛽_{i_1}²      & \dots  & 𝛽_{i_{𝜎-1}}²      \\
+    \vdots        & \ddots & \vdots            \\
+    𝛽_{i_1}^{𝜎-2} & \dots  & 𝛽_{i_{𝜎-1}}^{𝜎-2}
+  \end{pmatrix}
 \end{equation}
 
 If the columns are linearly dependent, then so are the rows, i..e we could find scalars \(c_1, \dots, c_{𝜎-1}∈F\), not all equal to \(0\) such that
 \begin{equation}
-	\label{eq:156}
-	∑_{k=0}^{𝜎-2} c_k (𝛽_{i_1}^{k}, \dots, 𝛽_{i_{𝜎-1}}^{k}) = \vec{0}
+  \label{eq:156}
+  ∑_{k=0}^{𝜎-2} c_k (𝛽_{i_1}^{k}, \dots, 𝛽_{i_{𝜎-1}}^{k}) = \vec{0}
 \end{equation}
 i.e. each \(𝛽_{i_{n}}\) solves the equation
 \begin{equation}
-	\label{eq:157}
-	∑_{k=0}^{𝜎-2} c_{k} x^{k} = 0
+  \label{eq:157}
+  ∑_{k=0}^{𝜎-2} c_{k} x^{k} = 0
 \end{equation}
 which means we have \(𝜎-1\) different solution to a polynomial equation of degree \(𝜎-2\), which is a contradiction! (over any field! why?)
 
 Hence \(H\) as constructed above is the control matrix of a linear code of separation \(𝜎\).
 
 \begin{example}{}{}
-	Take \(𝜎=3\), \(F=ℤ_{7}\) and \(n\) as large as possible:
+  Take \(𝜎=3\), \(F=ℤ_{7}\) and \(n\) as large as possible:
 
-	\begin{equation}
-		\label{eq:158}
-		H = \begin{pmatrix}
-			1 & 1 & 1 & 1 & 1 & 1 \\
-			1 & 2 & 3 & 4 & 5 & 6
-		\end{pmatrix}
-	\end{equation}
-	which is the control matrix of a linear [6,4] code (codimension \(𝜎-1=2\)) which can correct one error.
+  \begin{equation}
+    \label{eq:158}
+    H = \begin{pmatrix}
+      1 & 1 & 1 & 1 & 1 & 1 \\
+      1 & 2 & 3 & 4 & 5 & 6
+    \end{pmatrix}
+  \end{equation}
+  which is the control matrix of a linear [6,4] code (codimension \(𝜎-1=2\)) which can correct one error.
 
-	The error correction algorithm is simple!
+  The error correction algorithm is simple!
 
-	If we want to send \(x=(x₁, \dots, x_6)\) but \(w=(x_1, \dots, x_k+e_k, \dots, x_6)\) is received instead, then the syndrome is
-	\begin{equation}
-		\label{eq:159}
-		wH^{T} = xH^{T} + (0, \dots, e_k, \dots, 0)H^{T} = \begin{pmatrix}
-			e \\
-			ke
-		\end{pmatrix}
-	\end{equation}
-	where \(e\) is the error and \(k\) is the position of the error! (\(xH^{T}=\vec{0}\)).
+  If we want to send \(x=(x₁, \dots, x_6)\) but \(w=(x_1, \dots, x_k+e_k, \dots, x_6)\) is received instead, then the syndrome is
+  \begin{equation}
+    \label{eq:159}
+    wH^{T} = xH^{T} + (0, \dots, e_k, \dots, 0)H^{T} = \begin{pmatrix}
+      e \\
+      ke
+    \end{pmatrix}
+  \end{equation}
+  where \(e\) is the error and \(k\) is the position of the error! (\(xH^{T}=\vec{0}\)).
 
-	For example, if we receive \(w=(210504)\) we can compute the syndrome \(wH^{T}= (12, 48)= (5, 6)\) in \(ℤ_{7}\), i.e. \(e=5, ke=6\) therefore \(k=5⁻¹⋅6=3⋅6=4\).
+  For example, if we receive \(w=(210504)\) we can compute the syndrome \(wH^{T}= (12, 48)= (5, 6)\) in \(ℤ_{7}\), i.e. \(e=5, ke=6\) therefore \(k=5⁻¹⋅6=3⋅6=4\).
 
-	So what we received was \(x+ (0005000) = (210504)\) and the intended message thus was \(x=(210004)\).
+  So what we received was \(x+ (0005000) = (210504)\) and the intended message thus was \(x=(210004)\).
 
-	If we want to correct two errors, we need \(𝜎=6\) and \(H\) has two more rows
-	\begin{equation}
-		\label{eq:160}
-		H= \begin{pmatrix}
-			1  & 1  & 1  & 1  & 1  & 1  \\
-			1  & 2  & 3  & 4  & 5  & 6  \\
-			1² & 2² & 3² & 4² & 5² & 6² \\
-			1³ & 2³ & 3³ & 4³ & 5³ & 6³
-		\end{pmatrix}
-	\end{equation}
-	which gives us a \([6,2]\) code of separation 5.
+  If we want to correct two errors, we need \(𝜎=6\) and \(H\) has two more rows
+  \begin{equation}
+    \label{eq:160}
+    H= \begin{pmatrix}
+      1  & 1  & 1  & 1  & 1  & 1  \\
+      1  & 2  & 3  & 4  & 5  & 6  \\
+      1² & 2² & 3² & 4² & 5² & 6² \\
+      1³ & 2³ & 3³ & 4³ & 5³ & 6³
+    \end{pmatrix}
+  \end{equation}
+  which gives us a \([6,2]\) code of separation 5.
 \end{example}
 These Reed-Solomon codes are, for example, used in CD and DVD records! Two dimensional bar codes (QR codes for example) also use a Reed-Solomon code.
 
@@ -2231,39 +2235,39 @@ These Reed-Solomon codes are, for example, used in CD and DVD records! Two dimen
 
 
 \begin{theorem}{}{}
-	If \(C_1\) and \(C_2\) are linear \(\left[ n, m_1 \right]\) and \([n, m_2]\)  codes of separation \(𝜎₁\) and \(𝜎₂\), then \(C= \left\{ (x, x+y)∈F^{2n}; x∈C_1, y∈C_2 \right\} \) is a linear \([2n, m₁+m₂]\) and separation \(\min(2𝜎₁, 𝜎₂)\).
+  If \(C_1\) and \(C_2\) are linear \(\left[ n, m_1 \right]\) and \([n, m_2]\)  codes of separation \(𝜎₁\) and \(𝜎₂\), then \(C= \left\{ (x, x+y)∈F^{2n}; x∈C_1, y∈C_2 \right\} \) is a linear \([2n, m₁+m₂]\) and separation \(\min(2𝜎₁, 𝜎₂)\).
 \end{theorem}
 \begin{proof}
-	\begin{enumerate}
-		\item\label{item:79} That \(C\) is linear is clear.
-		\item\label{item:80} Dimension: Let \(\left\{ e_1, \dots, e_{m₁} \right\} \) and \(\left\{ f_1, \dots, f_{m₂} \right\} \) be bases for \(C_1\) and \(C_2\). Then \(\left\{ (e_1, e_1), (e_2,e_2), \dots, (e_{m₁}, e_{m₁}), (0, f_1), (0, f_2) \dots, (0, f_{m₂}) \right\} \) is a basis for \(C\). So the dimension is \(m₁+m₂\).
+  \begin{enumerate}
+    \item\label{item:79} That \(C\) is linear is clear.
+    \item\label{item:80} Dimension: Let \(\left\{ e_1, \dots, e_{m₁} \right\} \) and \(\left\{ f_1, \dots, f_{m₂} \right\} \) be bases for \(C_1\) and \(C_2\). Then \(\left\{ (e_1, e_1), (e_2,e_2), \dots, (e_{m₁}, e_{m₁}), (0, f_1), (0, f_2) \dots, (0, f_{m₂}) \right\} \) is a basis for \(C\). So the dimension is \(m₁+m₂\).
 
-		\item\label{item:81}   As for the separation (=weight) we can look at the words in \(C\).
-		\begin{enumerate}
-			\item\label{item:75} If \(a=(x,x)∈C\), then \(w(a)=2w(x)\) (in \(C_1)\).
-			\item\label{item:76} If \(a=(x,x+y), y≠0\) then \(w(a)≥w(y)\). Because if \(y_i≠0\) then either \(x_i≠0\) or \(x_i+y_i≠0\).
-			\item\label{item:78} And in fact the smallest possible weight of such a word is \(𝜎(y_2)\), because we can take \(x=0\), and \(y∈C_2\) of minimal weight.
-		\end{enumerate}
-	\end{enumerate}
+    \item\label{item:81}   As for the separation (=weight) we can look at the words in \(C\).
+    \begin{enumerate}
+      \item\label{item:75} If \(a=(x,x)∈C\), then \(w(a)=2w(x)\) (in \(C_1)\).
+      \item\label{item:76} If \(a=(x,x+y), y≠0\) then \(w(a)≥w(y)\). Because if \(y_i≠0\) then either \(x_i≠0\) or \(x_i+y_i≠0\).
+      \item\label{item:78} And in fact the smallest possible weight of such a word is \(𝜎(y_2)\), because we can take \(x=0\), and \(y∈C_2\) of minimal weight.
+    \end{enumerate}
+  \end{enumerate}
 \end{proof}
 \begin{remark}{}{}
-	This setup can be used to construct \enquote{big codes}. (Reed-Muller codes)
+  This setup can be used to construct \enquote{big codes}. (Reed-Muller codes)
 
-	\begin{enumerate}
-		\item\label{item:82} Start with \(C_1\) generated by (10) and (01) in \(ℤ₂²\) (This is the \enquote{trivial code}.!), i.e. a \([2,2]\) code of separation 1. And \(C_2\) generated by \((11)\) which is a \([2,1]\) code of separation 2.
-		\item\label{item:83} Combine as in the theorem!
-		\item\label{item:84} We get \(C'⊆ℤ⁴₂\) generated by \(\left\{ (1010), (0101),(0011) \right\} \) which is a \([4,3]\) code of separation \(\min(2⋅1, 2)=2\).
-		\item\label{item:85} Repeat! Combine \(C'\) with the \([4,1]\) code generated by \((1111)\).
-		\item\label{item:86} We get \(C''⊆ℤ⁸₂\) generated by \(\left\{ (10101010), (01010101), (00110011), (00001111) \right\} \), i.e. an \([8,4]\) code of separation 4.
-		\item\label{item:87} Next step \([16,5]\) code of separation 8, then \([32, 6]\) code of separation 16...
-	\end{enumerate}
+  \begin{enumerate}
+    \item\label{item:82} Start with \(C_1\) generated by (10) and (01) in \(ℤ₂²\) (This is the \enquote{trivial code}.!), i.e. a \([2,2]\) code of separation 1. And \(C_2\) generated by \((11)\) which is a \([2,1]\) code of separation 2.
+    \item\label{item:83} Combine as in the theorem!
+    \item\label{item:84} We get \(C'⊆ℤ⁴₂\) generated by \(\left\{ (1010), (0101),(0011) \right\} \) which is a \([4,3]\) code of separation \(\min(2⋅1, 2)=2\).
+    \item\label{item:85} Repeat! Combine \(C'\) with the \([4,1]\) code generated by \((1111)\).
+    \item\label{item:86} We get \(C''⊆ℤ⁸₂\) generated by \(\left\{ (10101010), (01010101), (00110011), (00001111) \right\} \), i.e. an \([8,4]\) code of separation 4.
+    \item\label{item:87} Next step \([16,5]\) code of separation 8, then \([32, 6]\) code of separation 16...
+  \end{enumerate}
 \end{remark}
 \begin{remark}{Perfect codes}{}
-	We know that there are lots of perfect codes of separation 3 over any finite field (the Hamming codes). Are there perfect codes capable of correcting more than one error?
+  We know that there are lots of perfect codes of separation 3 over any finite field (the Hamming codes). Are there perfect codes capable of correcting more than one error?
 
-	In 1949, Golay constructed a perfect \([11,6]\) code over \(ℤ₃\) and \([23,12]\) codes over \(ℤ₂\) with separation 7.
+  In 1949, Golay constructed a perfect \([11,6]\) code over \(ℤ₃\) and \([23,12]\) codes over \(ℤ₂\) with separation 7.
 
-	In 1973 it was shown that these are the only ones!
+  In 1973 it was shown that these are the only ones!
 \end{remark}
 
 

@@ -1,40 +1,40 @@
 \babel@toc {english}{}\relax 
-\contentsline {section}{\numberline {1}Overview}{3}{section.1}%
-\contentsline {section}{\numberline {2}Basic Combinatorics}{3}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Two basic principles}{3}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Permutations}{4}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Combinatorics}{4}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Pigeonhole principle}{5}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}Counting relations and functions}{6}{subsection.2.5}%
-\contentsline {subsubsection}{\numberline {2.5.1}Injective functions}{7}{subsubsection.2.5.1}%
-\contentsline {subsubsection}{\numberline {2.5.2}The principle of exclusion/inclusion}{7}{subsubsection.2.5.2}%
-\contentsline {subsubsection}{\numberline {2.5.3}Counting surjective functions}{9}{subsubsection.2.5.3}%
-\contentsline {section}{\numberline {3}Generating functions}{11}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Motivating example}{11}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Terminology and basic methods}{12}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Newton's Binomial Theorem}{14}{subsection.3.3}%
-\contentsline {subsection}{\numberline {3.4}\enquote {Partitions} of integers}{15}{subsection.3.4}%
-\contentsline {subsection}{\numberline {3.5}Exponential generating functions}{16}{subsection.3.5}%
-\contentsline {subsection}{\numberline {3.6}Summing a sequence}{18}{subsection.3.6}%
-\contentsline {section}{\numberline {4}Recurrence relations}{19}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Method 1: Generating function}{19}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Method 2: Linear Algebra}{19}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Method 3: The characteristic equation}{20}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Non-homogeneous recurrence relations}{23}{subsection.4.4}%
-\contentsline {section}{\numberline {5}Graph Theory}{25}{section.5}%
-\contentsline {section}{\numberline {6}Rings and Fields}{29}{section.6}%
-\contentsline {subsection}{\numberline {6.1}The ring \(ℤ_n\)}{30}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Homomorphisms and Isomorphisms of rings}{32}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Fermat's little Theorem}{33}{subsection.6.3}%
-\contentsline {subsection}{\numberline {6.4}The Chinese remainder theorem}{35}{subsection.6.4}%
-\contentsline {subsection}{\numberline {6.5}Fields and vector spaces}{36}{subsection.6.5}%
-\contentsline {section}{\numberline {7}Introduction to Coding theory}{38}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Some definitions}{39}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Perfect codes}{40}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}Linear codes}{42}{subsection.7.3}%
-\contentsline {subsection}{\numberline {7.4}Finding the separation from the control matrix}{45}{subsection.7.4}%
-\contentsline {subsection}{\numberline {7.5}Detection and correction of linear codes}{45}{subsection.7.5}%
-\contentsline {subsection}{\numberline {7.6}Hamming codes}{47}{subsection.7.6}%
-\contentsline {subsection}{\numberline {7.7}Reed-Solomon codes}{48}{subsection.7.7}%
-\contentsline {subsection}{\numberline {7.8}Reed-Muller codes}{50}{subsection.7.8}%
+\contentsline {section}{\numberline {1}Overview}{4}{section.1}%
+\contentsline {section}{\numberline {2}Basic Combinatorics}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Two basic principles}{4}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Permutations}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Combinatorics}{5}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Pigeonhole principle}{6}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Counting relations and functions}{7}{subsection.2.5}%
+\contentsline {subsubsection}{\numberline {2.5.1}Injective functions}{8}{subsubsection.2.5.1}%
+\contentsline {subsubsection}{\numberline {2.5.2}The principle of exclusion/inclusion}{8}{subsubsection.2.5.2}%
+\contentsline {subsubsection}{\numberline {2.5.3}Counting surjective functions}{10}{subsubsection.2.5.3}%
+\contentsline {section}{\numberline {3}Generating functions}{12}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Motivating example}{12}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Terminology and basic methods}{13}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Newton's Binomial Theorem}{15}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}\enquote {Partitions} of integers}{16}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Exponential generating functions}{17}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Summing a sequence}{19}{subsection.3.6}%
+\contentsline {section}{\numberline {4}Recurrence relations}{20}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Method 1: Generating function}{20}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Method 2: Linear Algebra}{20}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Method 3: The characteristic equation}{21}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Non-homogeneous recurrence relations}{24}{subsection.4.4}%
+\contentsline {section}{\numberline {5}Graph Theory}{26}{section.5}%
+\contentsline {section}{\numberline {6}Rings and Fields}{30}{section.6}%
+\contentsline {subsection}{\numberline {6.1}The ring \(ℤ_n\)}{31}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Homomorphisms and Isomorphisms of rings}{33}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Fermat's little Theorem}{34}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}The Chinese remainder theorem}{36}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Fields and vector spaces}{37}{subsection.6.5}%
+\contentsline {section}{\numberline {7}Introduction to Coding theory}{39}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Some definitions}{40}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Perfect codes}{41}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Linear codes}{43}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Finding the separation from the control matrix}{46}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Detection and correction of linear codes}{46}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.6}Hamming codes}{48}{subsection.7.6}%
+\contentsline {subsection}{\numberline {7.7}Reed-Solomon codes}{49}{subsection.7.7}%
+\contentsline {subsection}{\numberline {7.8}Reed-Muller codes}{51}{subsection.7.8}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

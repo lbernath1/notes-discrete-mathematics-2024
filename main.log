@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2024.3.14)  24 MAR 2024 18:15
+This is LuaHBTeX, Version 1.17.0 (TeX Live 2023)  (format=lualatex 2024.3.14)  29 MAR 2024 13:06
  restricted system commands enabled.
  file:line:error style messages enabled.
 **main.tex
@@ -2926,15 +2926,18 @@ Package microtype Info: Character `textgreater ' is missing
 (microtype)             Ignoring protrusion settings for this character.
 Package tocbasic Info: character protrusion at toc deactivated on input line 6.
 
- (./main.toc)
-\tf@toc=\write7
-
-\openout7 = main.toc
-Package cleveref Info: loaded `english' language definitions on input line 9.
+ (./main.toc
+Package cleveref Info: loaded `english' language definitions on input line 1.
+Package cleveref Info: loaded `english' language definitions on input line 39.
  [2
 
 
-]
+])
+\tf@toc=\write7
+
+\openout7 = main.toc
+Package cleveref Info: loaded `english' language definitions on input line 13.
+ [3]
 Package microtype Info: Character `textless ' is missing
 (microtype)             in font `TU/NewCMSans10-Book.otf(0)/b/n/14.4'.
 (microtype)             Ignoring protrusion settings for this character.
@@ -2942,298 +2945,298 @@ Package microtype Info: Character `textgreater ' is missing
 (microtype)             in font `TU/NewCMSans10-Book.otf(0)/b/n/14.4'.
 (microtype)             Ignoring protrusion settings for this character.
 LaTeX Font Info:    Font shape `TU/NewCMMath-Book.otf(2)/m/n' will be
-(Font)              scaled to size 10.00107pt on input line 39.
+(Font)              scaled to size 10.00107pt on input line 43.
 LaTeX Font Info:    Font shape `TU/NewCMMath-Book.otf(2)/m/n' will be
-(Font)              scaled to size 7.00075pt on input line 39.
+(Font)              scaled to size 7.00075pt on input line 43.
 LaTeX Font Info:    Font shape `TU/NewCMMath-Book.otf(2)/m/n' will be
-(Font)              scaled to size 5.00053pt on input line 39.
+(Font)              scaled to size 5.00053pt on input line 43.
 LaTeX Font Info:    Font shape `TU/NewCMMath-Book.otf(3)/m/n' will be
-(Font)              scaled to size 9.99893pt on input line 39.
+(Font)              scaled to size 9.99893pt on input line 43.
 LaTeX Font Info:    Font shape `TU/NewCMMath-Book.otf(3)/m/n' will be
-(Font)              scaled to size 6.99925pt on input line 39.
+(Font)              scaled to size 6.99925pt on input line 43.
 LaTeX Font Info:    Font shape `TU/NewCMMath-Book.otf(3)/m/n' will be
-(Font)              scaled to size 4.99947pt on input line 39.
-Package cleveref Info: loaded `english' language definitions on input line 50.
- [3]
-Package hyperref Info: bookmark level for unknown tcolorbox defaults to 0 on in
-put line 68.
-Package cleveref Info: loaded `english' language definitions on input line 95.
+(Font)              scaled to size 4.99947pt on input line 43.
+Package cleveref Info: loaded `english' language definitions on input line 54.
  [4]
-Package cleveref Info: loaded `english' language definitions on input line 141.
-
+Package hyperref Info: bookmark level for unknown tcolorbox defaults to 0 on in
+put line 72.
+Package cleveref Info: loaded `english' language definitions on input line 99.
  [5]
-Package cleveref Info: loaded `english' language definitions on input line 174.
+Package cleveref Info: loaded `english' language definitions on input line 145.
 
  [6]
-Underfull \hbox (badness 10000) in paragraph at lines 189--191
+Package cleveref Info: loaded `english' language definitions on input line 178.
+
+ [7]
+Underfull \hbox (badness 10000) in paragraph at lines 193--195
 
  []
 
-Package cleveref Info: loaded `english' language definitions on input line 223.
+Package cleveref Info: loaded `english' language definitions on input line 227.
 
-[7]
-Underfull \hbox (badness 10000) in paragraph at lines 241--245
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 246--250
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 245--249
 
  []
 
 
-Overfull \hbox (36.41338pt too wide) detected at line 275
+Underfull \hbox (badness 10000) in paragraph at lines 250--254
+
+ []
+
+
+Overfull \hbox (36.41338pt too wide) detected at line 279
 [][][][]\TU/NewCMMath-Book.otf(1)/m/n/12 (𝑛 − 1) − [](𝑛 − 2)! + [](
 𝑛 − 3)! − ⋯ = 𝑛! − [] + [] − ⋯ = 𝑛! []
  []
 
-Package cleveref Info: loaded `english' language definitions on input line 282.
+Package cleveref Info: loaded `english' language definitions on input line 286.
 
-[8]
-Overfull \hbox (11.99709pt too wide) detected at line 318
+[9]
+Overfull \hbox (11.99709pt too wide) detected at line 322
 [][][][]\TU/NewCMMath-Book.otf(1)/m/n/12 𝑛[] − [](𝑛 − 1)[] + [](𝑛 
 − 2)[] − [](𝑛 − 3)[] + ⋯ = [](−1)[][](𝑛 − 𝑘)[]
  []
 
-Package cleveref Info: loaded `english' language definitions on input line 319.
+Package cleveref Info: loaded `english' language definitions on input line 323.
 
-[9]
-Package cleveref Info: loaded `english' language definitions on input line 355.
-
- [10]
-Package cleveref Info: loaded `english' language definitions on input line 396.
+[10]
+Package cleveref Info: loaded `english' language definitions on input line 359.
 
  [11]
-Overfull \hbox (0.25122pt too wide) in paragraph at lines 438--438
+Package cleveref Info: loaded `english' language definitions on input line 400.
+
+ [12]
+Overfull \hbox (0.25122pt too wide) in paragraph at lines 442--442
 [][]\TU/NewCM10-Book.otf(0)/b/n/12 (Some use-ful op-er-a-tions, Shift-ing, Dif-f
 er-en-ti-a-tion, Prod-
  []
 
-Package cleveref Info: loaded `english' language definitions on input line 453.
+Package cleveref Info: loaded `english' language definitions on input line 457.
 
-[12]
-Package cleveref Info: loaded `english' language definitions on input line 501.
+[13]
+Package cleveref Info: loaded `english' language definitions on input line 505.
 
- [13]
-Overfull \hbox (0.89523pt too wide) detected at line 559
+ [14]
+Overfull \hbox (0.89523pt too wide) detected at line 563
 [][][][] \TU/NewCMMath-Book.otf(1)/m/n/12 = [] [](−𝑥)[] = [](−1)[][]
 𝑥[] = [](−1)[](−1)[][]𝑥[]
  []
 
-Package cleveref Info: loaded `english' language definitions on input line 568.
+Package cleveref Info: loaded `english' language definitions on input line 572.
 
-[14]
-Package cleveref Info: loaded `english' language definitions on input line 592.
+[15]
+Package cleveref Info: loaded `english' language definitions on input line 596.
 
- [15]
-Overfull \hbox (12.26009pt too wide) in paragraph at lines 601--601
+ [16]
+Overfull \hbox (12.26009pt too wide) in paragraph at lines 605--605
 []\TU/NewCM10-Book.otf(0)/b/n/12 (How many 4 let-ter “  words” can we form 
 out of AAABBC??) 
  []
 
 
-Overfull \hbox (5.65083pt too wide) in paragraph at lines 618--621
+Overfull \hbox (5.65083pt too wide) in paragraph at lines 622--625
 \TU/NewCM10-Book.otf(0)/m/n/12 What is the ex-po-nen-tial gen-er-at-ing func-tio
 n of the se-quence $\TU/NewCMMath-Book.otf(1)/m/n/12 1, −2, 2[], −2[], 
 𝑥[], −𝑥[], …$\TU/NewCM10-Book.otf(0)/m/n/12 ? 
  []
 
-Package cleveref Info: loaded `english' language definitions on input line 672.
+Package cleveref Info: loaded `english' language definitions on input line 676.
 
-[16]
-Package cleveref Info: loaded `english' language definitions on input line 681.
+[17]
+Package cleveref Info: loaded `english' language definitions on input line 685.
 
- [17]
-Underfull \hbox (badness 10000) in paragraph at lines 704--705
+ [18]
+Underfull \hbox (badness 10000) in paragraph at lines 708--709
 
  []
 
 
-Overfull \hbox (61.36864pt too wide) detected at line 717
+Overfull \hbox (61.36864pt too wide) detected at line 721
 []
  []
 
 
-Overfull \hbox (12.0pt too wide) in paragraph at lines 717--717
+Overfull \hbox (12.0pt too wide) in paragraph at lines 721--721
 [] 
  []
 
-Package cleveref Info: loaded `english' language definitions on input line 725.
+Package cleveref Info: loaded `english' language definitions on input line 729.
 
-[18]
-Underfull \hbox (badness 10000) in paragraph at lines 795--802
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 799--806
 
  []
 
 
-Overfull \hbox (49.49602pt too wide) detected at line 820
+Overfull \hbox (49.49602pt too wide) detected at line 824
 [][][]\TU/NewCMMath-Book.otf(1)/m/n/12 𝑋[] = 𝑃𝐷[]𝑃[]𝑋[] = [] [] 
 [] [] = ⋯ = []
  []
 
-Package cleveref Info: loaded `english' language definitions on input line 824.
+Package cleveref Info: loaded `english' language definitions on input line 828.
 
-[19]
-Package cleveref Info: loaded `english' language definitions on input line 857.
-
- [20]
-Package cleveref Info: loaded `english' language definitions on input line 893.
+[20]
+Package cleveref Info: loaded `english' language definitions on input line 861.
 
  [21]
-Underfull \hbox (badness 10000) in paragraph at lines 937--938
+Package cleveref Info: loaded `english' language definitions on input line 897.
+
+ [22]
+Underfull \hbox (badness 10000) in paragraph at lines 941--942
 
  []
 
-Package cleveref Info: loaded `english' language definitions on input line 946.
+Package cleveref Info: loaded `english' language definitions on input line 950.
 
-[22]
-Package cleveref Info: loaded `english' language definitions on input line 1008
-.
- [23]
-Package cleveref Info: loaded `english' language definitions on input line 1062
+[23]
+Package cleveref Info: loaded `english' language definitions on input line 1012
 .
  [24]
-Package cleveref Info: loaded `english' language definitions on input line 1098
+Package cleveref Info: loaded `english' language definitions on input line 1066
 .
  [25]
-Package cleveref Info: loaded `english' language definitions on input line 1139
+Package cleveref Info: loaded `english' language definitions on input line 1102
 .
  [26]
-Package cleveref Info: loaded `english' language definitions on input line 1195
+Package cleveref Info: loaded `english' language definitions on input line 1143
 .
  [27]
-Package cleveref Info: loaded `english' language definitions on input line 1210
+Package cleveref Info: loaded `english' language definitions on input line 1199
 .
  [28]
-Package cleveref Info: loaded `english' language definitions on input line 1256
+Package cleveref Info: loaded `english' language definitions on input line 1214
 .
  [29]
+Package cleveref Info: loaded `english' language definitions on input line 1260
+.
+ [30]
 LaTeX Font Info:    Font shape `TU/NewCMMath-Book.otf(2)/m/n' will be
-(Font)              scaled to size 14.40152pt on input line 1262.
+(Font)              scaled to size 14.40152pt on input line 1266.
 LaTeX Font Info:    Font shape `TU/NewCMMath-Book.otf(3)/m/n' will be
-(Font)              scaled to size 14.39845pt on input line 1262.
+(Font)              scaled to size 14.39845pt on input line 1266.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 1262.
+(hyperref)                removing `math shift' on input line 1266.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 1262.
+(hyperref)                removing `subscript' on input line 1266.
 
-Package cleveref Info: loaded `english' language definitions on input line 1304
+Package cleveref Info: loaded `english' language definitions on input line 1308
 .
-[30]
-Package cleveref Info: loaded `english' language definitions on input line 1357
+[31]
+Package cleveref Info: loaded `english' language definitions on input line 1361
 .
- [31]
-Underfull \hbox (badness 10000) in paragraph at lines 1363--1365
+ [32]
+Underfull \hbox (badness 10000) in paragraph at lines 1367--1369
 
  []
 
 
-Overfull \hbox (32.20227pt too wide) detected at line 1395
+Overfull \hbox (32.20227pt too wide) detected at line 1399
 [][][]\TU/NewCMMath-Book.otf(1)/m/n/12 𝜎(𝑧 + 𝑤) = [] = [] + [] = 𝜎(
 𝑧) + 𝜎(𝑤),  𝜎(𝑧 ⋅ 𝑤) = [] = [] ⋅ [] = 𝜎(𝑧) ⋅ 
 𝜎(𝑤), 𝜎 [] = [] = 1.
  []
 
-Package cleveref Info: loaded `english' language definitions on input line 1406
-.
-[32]
-Underfull \hbox (badness 10000) in paragraph at lines 1451--1454
-
- []
-
-Package cleveref Info: loaded `english' language definitions on input line 1454
+Package cleveref Info: loaded `english' language definitions on input line 1410
 .
 [33]
-Underfull \hbox (badness 10000) in paragraph at lines 1456--1458
+Underfull \hbox (badness 10000) in paragraph at lines 1455--1458
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 1495--1497
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1504--1505
-
- []
-
-Package cleveref Info: loaded `english' language definitions on input line 1508
+Package cleveref Info: loaded `english' language definitions on input line 1458
 .
 [34]
-Package cleveref Info: loaded `english' language definitions on input line 1570
+Underfull \hbox (badness 10000) in paragraph at lines 1460--1462
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1499--1501
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1508--1509
+
+ []
+
+Package cleveref Info: loaded `english' language definitions on input line 1512
 .
- [35]
-Package cleveref Info: loaded `english' language definitions on input line 1611
+[35]
+Package cleveref Info: loaded `english' language definitions on input line 1574
 .
  [36]
-Package cleveref Info: loaded `english' language definitions on input line 1658
+Package cleveref Info: loaded `english' language definitions on input line 1615
 .
  [37]
+Package cleveref Info: loaded `english' language definitions on input line 1662
+.
+ [38]
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `NewCMMono10-Book.otf' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1683--1686
+Underfull \hbox (badness 10000) in paragraph at lines 1687--1690
 
  []
 
-Package cleveref Info: loaded `english' language definitions on input line 1694
+Package cleveref Info: loaded `english' language definitions on input line 1698
 .
-[38]
-Package cleveref Info: loaded `english' language definitions on input line 1751
-.
- [39]
-Package cleveref Info: loaded `english' language definitions on input line 1781
+[39]
+Package cleveref Info: loaded `english' language definitions on input line 1755
 .
  [40]
-Package cleveref Info: loaded `english' language definitions on input line 1822
+Package cleveref Info: loaded `english' language definitions on input line 1785
 .
  [41]
-Package cleveref Info: loaded `english' language definitions on input line 1869
+Package cleveref Info: loaded `english' language definitions on input line 1826
 .
  [42]
-Package cleveref Info: loaded `english' language definitions on input line 1915
+Package cleveref Info: loaded `english' language definitions on input line 1873
 .
  [43]
-Package cleveref Info: loaded `english' language definitions on input line 1967
+Package cleveref Info: loaded `english' language definitions on input line 1919
 .
  [44]
-Package cleveref Info: loaded `english' language definitions on input line 2019
+Package cleveref Info: loaded `english' language definitions on input line 1971
 .
  [45]
-Overfull \hbox (159.07141pt too wide) in paragraph at lines 2036--2041
+Package cleveref Info: loaded `english' language definitions on input line 2023
+.
+ [46]
+Overfull \hbox (159.07141pt too wide) in paragraph at lines 2040--2045
 []\TU/NewCM10-Book.otf(0)/m/n/12 We get the full ta-ble of syn-droms by [] 
  []
 
-Package cleveref Info: loaded `english' language definitions on input line 2066
+Package cleveref Info: loaded `english' language definitions on input line 2070
 .
-[46]
-Package cleveref Info: loaded `english' language definitions on input line 2122
-.
- [47]
-Package cleveref Info: loaded `english' language definitions on input line 2169
+[47]
+Package cleveref Info: loaded `english' language definitions on input line 2126
 .
  [48]
-Package cleveref Info: loaded `english' language definitions on input line 2224
+Package cleveref Info: loaded `english' language definitions on input line 2173
 .
  [49]
-Overfull \hbox (8.09991pt too wide) in paragraph at lines 2257--2258
+Package cleveref Info: loaded `english' language definitions on input line 2228
+.
+ [50]
+Overfull \hbox (8.09991pt too wide) in paragraph at lines 2261--2262
 []\TU/NewCM10-Book.otf(0)/m/n/12 We get $\TU/NewCMMath-Book.otf(1)/m/n/12 𝐶[
 ] ⊆ ℤ[]$ \TU/NewCM10-Book.otf(0)/m/n/12 gen-er-ated by $[]$,
  []
 
-Package cleveref Info: loaded `english' language definitions on input line 2260
+Package cleveref Info: loaded `english' language definitions on input line 2264
 .
-[50]
-Package cleveref Info: loaded `english' language definitions on input line 2273
+[51]
+Package cleveref Info: loaded `english' language definitions on input line 2277
 .
- [51] (./main.aux (./titelseite.aux)
+ [52] (./main.aux (./titelseite.aux)
 Package cleveref Info: loaded `english' language definitions on input line 24.
 )
 
@@ -3247,33 +3250,33 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 )
 
 Here is how much of LuaTeX's memory you used:
- 89488 strings out of 478285
+ 89494 strings out of 478285
  100000,4101490 words of node,token memory allocated
- 6375 words of node memory still in use:
+ 6395 words of node memory still in use:
    32 hlist, 2 vlist, 14 rule, 1 local_par, 9 glue, 4 kern, 1 penalty, 1 margin_
-kern, 3 glyph, 1707 attribute, 78 glue_spec, 891 attribute_list, 2 write, 24 pdf
+kern, 3 glyph, 1707 attribute, 82 glue_spec, 891 attribute_list, 2 write, 24 pdf
 _literal, 24 pdf_colorstack nodes
-   avail lists: 1:2,2:4555,3:1875,4:289,5:534,6:111,7:6465,8:122,9:1724,10:11,11
+   avail lists: 1:3,2:4555,3:1875,4:361,5:534,6:164,7:6465,8:122,9:1724,10:11,11
 :306,12:1
- 106847 multiletter control sequences out of 65536+600000
- 166 fonts using 80876159 bytes
- 122i,20n,155p,10600b,3041s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 106852 multiletter control sequences out of 65536+600000
+ 166 fonts using 80876487 bytes
+ 122i,20n,155p,10600b,4780s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/opentype/public/newcomputermodern/NewCMMono
 10-Book.otf></usr/share/texlive/texmf-dist/fonts/opentype/public/newcomputermode
 rn/NewCM10-Book.otf></usr/share/texlive/texmf-dist/fonts/opentype/public/newcomp
 utermodern/NewCMMath-Book.otf></usr/share/texlive/texmf-dist/fonts/opentype/publ
-ic/newcomputermodern/NewCMMath-Book.otf></usr/share/texlive/texmf-dist/fonts/ope
-ntype/public/newcomputermodern/NewCM08-Book.otf></usr/share/texlive/texmf-dist/f
-onts/opentype/public/newcomputermodern/NewCM10-Bold.otf></usr/share/texlive/texm
+ic/newcomputermodern/NewCM08-Book.otf></usr/share/texlive/texmf-dist/fonts/opent
+ype/public/newcomputermodern/NewCM10-Bold.otf></usr/share/texlive/texmf-dist/fon
+ts/opentype/public/newcomputermodern/NewCMMath-Book.otf></usr/share/texlive/texm
 f-dist/fonts/opentype/public/newcomputermodern/NewCMMath-Book.otf></usr/share/te
 xlive/texmf-dist/fonts/opentype/public/newcomputermodern/NewCM10-BookItalic.otf>
 </usr/share/texlive/texmf-dist/fonts/opentype/public/newcomputermodern/NewCMSans
 10-Bold.otf></usr/share/texlive/texmf-dist/fonts/opentype/public/newcomputermode
 rn/NewCM10-Book.otf>
-Output written on main.pdf (51 pages, 319412 bytes).
+Output written on main.pdf (52 pages, 323557 bytes).
 
-PDF statistics: 951 PDF objects out of 1000 (max. 8388607)
- 832 compressed objects within 9 object streams
- 510 named destinations out of 1000 (max. 131072)
+PDF statistics: 995 PDF objects out of 1000 (max. 8388607)
+ 875 compressed objects within 9 object streams
+ 511 named destinations out of 1000 (max. 131072)
  570 words of extra memory for PDF output out of 10000 (max. 100000000)
 
