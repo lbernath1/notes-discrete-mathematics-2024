@@ -291,7 +291,7 @@ As an exercise do the same thing, but start with a word, that has a repeat, or t
   This is equal to:
   \begin{equation}
     \label{eq:13}
-    \binom{n}{1}(n-1) - \binom{n}{2}(n-2)! + \binom{n}{3}(n-3)! - \dots = n! - \frac{n!}{2!} + \frac{n!}{3!} - \dots = n! \left( 1 - \frac{1}{2!} + \frac{1}{3!} - \frac{1}{4!} + \dots \right)
+    \binom{n}{1}(n-1)! - \binom{n}{2}(n-2)! + \binom{n}{3}(n-3)! - \dots = n! - \frac{n!}{2!} + \frac{n!}{3!} - \dots = n! \left( 1 - \frac{1}{2!} + \frac{1}{3!} - \frac{1}{4!} + \dots \right)
   \end{equation}
 
   The total number of derangements is \(n!\) minus this, so
@@ -361,6 +361,7 @@ As an exercise do the same thing, but start with a word, that has a repeat, or t
     \label{eq:18}
     S(m+1,n) = S(m, n-1) + n S(m,n)
   \end{equation}
+Solution: If we have one object more to distribute, such that no container is left empty, there is the possibility that either even without the extra object none of the containers were empty, which is the case in \(S(m, n)\) cases. Then we can put the extra object in each of the \(n\) containers, hence the \(nS(m, n)\) term. If before, one container was empty then the extra object must go into this container and for the others, there are \(S(m, n-1)\) possibilities, that this is the case.
 \end{example}
 
 
