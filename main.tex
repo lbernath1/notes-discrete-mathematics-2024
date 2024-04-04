@@ -1152,7 +1152,7 @@ Is there a graph of \(6\) vertices with degree sequence, \(4,4,4,3,2,2\)? No, be
 \end{theorem}
 \begin{proof}
   \(⟹\) If \(G\) has an Euler circuit, clearly \(G\) is connected.\\
-  Traverse the circuit. Each vertex that we enter, we want to leave again. So when we come back to the starting point, we've goe through an even number of edges at every vertex.
+  Traverse the circuit. Each vertex that we enter, we want to leave again. So when we come back to the starting point, we've gone through an even number of edges at every vertex.
 
   \(\Longleftarrow\) Induction on the number of edges.\\
   It clearly is true for a graph with \(\abs{E}=0\) and \(\abs{E}=1\).\\
@@ -1542,28 +1542,31 @@ Now we can proof \cref{eq:163} using this.
 \begin{proof}
   The same as Fermat's little theorem.
 \end{proof}
-In particular if \(p\) is prime then
-\begin{equation}
-  \label{eq:114}
-  a^{p} ≡ a \mod p
-\end{equation}
-for all \(a\). Similarly, if \(p, q\) prime, then if \(\gcd(a, pq)=1\)
-\begin{equation}
-  \label{eq:115}
-  a^{(p-1)(q-1)} ≡ a^{𝛷(pq)}≡1 \mod pq
-\end{equation}
-Therefore
-\begin{equation}
-  \label{eq:116}
-  a^{(p-1)(q-1)m}=1 \mod pq
-\end{equation}
-Therefore
-\begin{equation}
-  \label{eq:117}
-  a^{(p-1)(q-1)m + 1} ≡ a \mod pq
-\end{equation}
-even if \(a\) happens to be divisible by \(p\) or \(q\). (Fill in the details.)
 
+\begin{remark}{}{}
+  In particular if \(p\) is prime then
+  \begin{equation}
+    \label{eq:114}
+    a^{p} ≡ a \mod p
+  \end{equation}
+  for all \(a\). Similarly, if \(p, q\) prime, then if \(\gcd(a, pq)=1\)
+  \begin{equation}
+    \label{eq:115}
+    a^{(p-1)(q-1)} ≡ a^{𝛷(pq)}≡1 \mod pq
+  \end{equation}
+  Therefore
+  \begin{equation}
+    \label{eq:116}
+    a^{(p-1)(q-1)m}=1 \mod pq
+  \end{equation}
+  Therefore
+  \begin{equation}
+    \label{eq:117}
+    a^{(p-1)(q-1)m + 1} ≡ a \mod pq
+  \end{equation}
+  even if \(a\) happens to be divisible by \(p\) or \(q\). (Fill in the details.)
+\end{remark}
+\begin{remark}{RSA algorithm}{}
 This observation is in fact the key idea behind RSA.\\
 \begin{enumerate}
   \item\label{item:61}
@@ -1579,6 +1582,7 @@ This observation is in fact the key idea behind RSA.\\
     D^{d}=(C^{e})^{d} = C^{ed}=C^{(p-1)(q-1)m+1}\arr[≡]{Euler}C \mod pq.
   \end{equation}
 \end{enumerate}
+\end{remark}
 
 \subsection{The Chinese remainder theorem}
 \label{sec:chin-rema-theor}
@@ -1856,7 +1860,9 @@ cannot contain any other code words from \(C\) (other than \(x\)). How many elem
   \label{eq:134}
   \abs{B(x,k)}= ∑_{j=0}^{k} \binom{n}{j}(q-1)^{j}
 \end{equation}
-(Why?)
+\begin{proof}
+From Wikipedia: A word that is in such a ball can deviate in at most \(k\) components from those of the ball's centre, which is a codeword. The number of such words is then obtained by choosing up to \(k\) of the \(n\) components of a codeword to deviate to one of \(q-1\) possible other values.
+\end{proof}
 
 Hence we have the following estimate on the number of possible code words in \(C\).
 
